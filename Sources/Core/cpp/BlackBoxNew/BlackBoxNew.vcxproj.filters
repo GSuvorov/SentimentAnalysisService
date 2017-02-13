@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="GetXML">
+      <UniqueIdentifier>{7bed7ef5-9c00-4856-b080-64f96f95776b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Query">
+      <UniqueIdentifier>{13363c59-c8e6-4d79-8545-08404de184f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Query\Text">
+      <UniqueIdentifier>{1a306cd1-bd91-4338-94cf-994e423c393d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BlackBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LeafItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectDescr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RootItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RootIterateItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SyntaxFeature.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GetXML\FeatureHelper.cpp">
+      <Filter>GetXML</Filter>
+    </ClCompile>
+    <ClCompile Include="GetXML\ITextFile.cpp">
+      <Filter>GetXML</Filter>
+    </ClCompile>
+    <ClCompile Include="GetXML\XmlFile.cpp">
+      <Filter>GetXML</Filter>
+    </ClCompile>
+    <ClCompile Include="Group.cpp">
+      <Filter>Query</Filter>
+    </ClCompile>
+    <ClCompile Include="Query.cpp">
+      <Filter>Query</Filter>
+    </ClCompile>
+    <ClCompile Include="QueryStorage.cpp">
+      <Filter>Query</Filter>
+    </ClCompile>
+    <ClCompile Include="QueryUnit.cpp">
+      <Filter>Query</Filter>
+    </ClCompile>
+    <ClCompile Include="QueryUnitIndex.cpp">
+      <Filter>Query</Filter>
+    </ClCompile>
+    <ClCompile Include="QueryUnitIndexCollection.cpp">
+      <Filter>Query</Filter>
+    </ClCompile>
+    <ClCompile Include="Transformation.cpp">
+      <Filter>Query</Filter>
+    </ClCompile>
+    <ClCompile Include="DictionaryIndex.cpp">
+      <Filter>Query\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="Feature.cpp">
+      <Filter>Query\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="Index.cpp">
+      <Filter>Query\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="Paragraph.cpp">
+      <Filter>Query\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="Sentence.cpp">
+      <Filter>Query\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Query\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="TextFeature.cpp">
+      <Filter>Query\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="TextStorage.cpp">
+      <Filter>Query\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit.cpp">
+      <Filter>Query\Text</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BlackBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LeafItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectDescr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RootItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RootIterateItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SyntaxFeature.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GetXML\FeatureHelper.h">
+      <Filter>GetXML</Filter>
+    </ClInclude>
+    <ClInclude Include="GetXML\FileSaver.h">
+      <Filter>GetXML</Filter>
+    </ClInclude>
+    <ClInclude Include="GetXML\ITextFile.h">
+      <Filter>GetXML</Filter>
+    </ClInclude>
+    <ClInclude Include="GetXML\TypeFeatureWrapper.h">
+      <Filter>GetXML</Filter>
+    </ClInclude>
+    <ClInclude Include="GetXML\XmlFile.h">
+      <Filter>GetXML</Filter>
+    </ClInclude>
+    <ClInclude Include="Group.h">
+      <Filter>Query</Filter>
+    </ClInclude>
+    <ClInclude Include="Query.h">
+      <Filter>Query</Filter>
+    </ClInclude>
+    <ClInclude Include="QueryStorage.h">
+      <Filter>Query</Filter>
+    </ClInclude>
+    <ClInclude Include="QueryUnit.h">
+      <Filter>Query</Filter>
+    </ClInclude>
+    <ClInclude Include="QueryUnitIndex.h">
+      <Filter>Query</Filter>
+    </ClInclude>
+    <ClInclude Include="QueryUnitIndexCollection.h">
+      <Filter>Query</Filter>
+    </ClInclude>
+    <ClInclude Include="Transformation.h">
+      <Filter>Query</Filter>
+    </ClInclude>
+    <ClInclude Include="DictionaryIndex.h">
+      <Filter>Query\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="Feature.h">
+      <Filter>Query\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="Index.h">
+      <Filter>Query\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="Paragraph.h">
+      <Filter>Query\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="Sentence.h">
+      <Filter>Query\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Query\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="TextFeature.h">
+      <Filter>Query\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="TextStorage.h">
+      <Filter>Query\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit.h">
+      <Filter>Query\Text</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
