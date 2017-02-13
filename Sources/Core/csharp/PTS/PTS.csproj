@@ -80,10 +80,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\UserResources\Patsearch\en_entity.xml">
+    <Content Include="..\..\..\UserResources\PTS\en_entity.xml">
       <Link>regex\en_entity.xml</Link>
     </Content>
-    <Content Include="..\..\..\UserResources\Patsearch\ru_entity.xml">
+    <Content Include="..\..\..\UserResources\PTS\ru_entity.xml">
       <Link>regex\ru_entity.xml</Link>
     </Content>
   </ItemGroup>

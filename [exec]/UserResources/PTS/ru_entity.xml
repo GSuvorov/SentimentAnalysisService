@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+  <!-- Таблица -->
+  <entity TYPE="Tables">
+    <regex>(&lt;tables.*?>.*?&lt;/tables>)</regex>
+  </entity>
+  <!-- Пункт -->
+  <entity TYPE="Point">
+    <regex>(\s[п]\.\s?\d+)|([п]{2}\.\s?\d+(\-\d+|((\,\s\d+)*(\s[и]{1,1}\s\d+)?)))</regex>
+  </entity>
+  <entity TYPE="PointNumber">
+    <regex>(&lt;/?(p|br|b)[^>]*>\s*(\(?\d+(\)|\.)))</regex>
+  </entity>
+  <entity TYPE="ClaimsPointNumber">
+    <regex>((?&lt;=&lt;claim-text>)\s*\d+\.(?=\s*[\wА-Яа-я]))</regex>
+  </entity>
+  <!-- Чертеж -->
+  <entity TYPE="Figure">
+    <regex>((?i)(фиг|рис|черт|табл|пр|прил|прим)\.\s?\d+[\wА-Яа-я]?(\s?((\-)|(и))\s?\d+)?)</regex>
+  </entity>
+  <entity TYPE="FigureWithPrefixNumber">
+    <regex>((?i)(\d+)\s+(фиг|рис|черт|табл|пр|прил|прим)\.)</regex>
+  </entity>
+  <entity TYPE="FullFigure">
+    <regex>((?i)(фигур(а|е|у|ы|ам|ах|ами)?|рисун(ок|ку|ки|ками|ках|кам)|черт(еж|ёж|еже|ежу|ежом|ежах|ежей|ежам)|таблиц(а|е|у|ы|ам|ами|ах)?|приложен(ие|ию|ии|иях|иям)|пример(а|е|у|ы|ам|ами|ах)?)\s+(№{1,2}\s?)?\d+[\wА-Яа-я]?(\s?((\-)|(и))\s?\d+[\wА-Яа-я]?)?)</regex>
+  </entity>
+  <!-- Ссылка -->
+  <entity TYPE="Reference">
+    <regex>\[\d+(\,\s\d+)*\]|\[\d+\-\d+\]</regex>
+  </entity>
+  <!-- Иллюстрация -->
+  <entity TYPE="Illustration">
+    <regex>(\d+\s?(илл\.|ил\.))</regex>
+  </entity>
+  <!-- Подстрочные символы -->
+  <entity TYPE="SubscriptCharacters">
+    <regex>((&lt;sub>).*?(&lt;/sub>))</regex>
+  </entity>
+  <!-- Число с надстрочными символами -->
+  <entity TYPE="NumberWithDiacriticalCharacters">
+    <regex>(((\d+((\.|,)(\d+))?)\s?[*••×]\s?)?(\d+)\s?&lt;sup>\s*(-?\d+)&lt;/sup>)</regex>
+  </entity>
+  <!-- Отдельные надстрочные символы -->
+  <entity TYPE="SimpleDiacriticalCharacters">
+    <regex>(\d+&lt;sup>\s?[0][0-9]\s?&lt;/sup>)|((?&lt;=[^\d])&lt;sup>[^&lt;]*?&lt;/sup>)</regex>
+  </entity>
+  <!-- Надстрочные символы -->
+  <entity TYPE="DiacriticalCharacters">
+    <regex>(&lt;sup>[^&lt;]*?&lt;/sup>)</regex>
+  </entity>
+  <!-- Элемент математической формулы -->
+  <entity TYPE="MathemamaticalFormulaPart">
+    <regex>(&lt;maths.*?>.*?&lt;/maths>)</regex>
+  </entity>
+  <!-- Стандартная форма числа -->
+  <entity TYPE="StandartNumber">
+    <regex>(\d+((\.|\,)\d+)?[E][+-]?\d{1,2})</regex>
+  </entity>
+  <!-- Дробь -->
+  <entity TYPE="Fraction">
+    <regex>(¼|½|¾)</regex>
+  </entity>
+  <!-- Номера патентов -->
+  <entity TYPE="PatentNumber">
+    <regex>\b((\d{1,3},\d{3},\d{3})|(\d{1,3}\s\d{3}\s\d{3}|\d{1,3}\s\d{3}))\b</regex>
+  </entity>
+</root>
