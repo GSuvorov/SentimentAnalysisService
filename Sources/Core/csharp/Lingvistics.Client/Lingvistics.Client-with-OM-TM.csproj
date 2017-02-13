@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5C93BD69-CE81-48E8-9D8C-00C36917DC5D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lingvistics.Client</RootNamespace>
+    <AssemblyName>Lingvistics.Client-with-OM-TM</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin-with-OM-TM\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;WITH_OM_TM</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin-with-OM-TM\</OutputPath>
+    <DefineConstants>TRACE;WITH_OM_TM</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Common\DataContracts\InputParamsBase.cs">
+      <Link>TextMining.Core - linked\Common\DataContracts\InputParamsBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Common\DataContracts\OutputResultBase.cs">
+      <Link>TextMining.Core - linked\Common\DataContracts\OutputResultBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Common\DataContracts\OutputResultTupleBase.cs">
+      <Link>TextMining.Core - linked\Common\DataContracts\OutputResultTupleBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Common\Enums\InputTextFormat.cs">
+      <Link>TextMining.Core - linked\Common\Enums\InputTextFormat.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Common\Enums\LanguageType.cs">
+      <Link>TextMining.Core - linked\Common\Enums\LanguageType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Common\Enums\ObjectAllocateMethod.cs">
+      <Link>TextMining.Core - linked\Common\Enums\ObjectAllocateMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Common\Enums\RoleAttributeValue.cs">
+      <Link>TextMining.Core - linked\Common\Enums\RoleAttributeValue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Common\Enums\SubsentenceType.cs">
+      <Link>TextMining.Core - linked\Common\Enums\SubsentenceType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Common\Enums\ThemeType.cs">
+      <Link>TextMining.Core - linked\Common\Enums\ThemeType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Common\Enums\TonalityType.cs">
+      <Link>TextMining.Core - linked\Common\Enums\TonalityType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Common\Enums\TypeAttributeValue.cs">
+      <Link>TextMining.Core - linked\Common\Enums\TypeAttributeValue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Common\Infrastructure\Extensions.cs">
+      <Link>TextMining.Core - linked\Common\Infrastructure\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Common\Infrastructure\SentenceText.cs">
+      <Link>TextMining.Core - linked\Common\Infrastructure\SentenceText.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Common\Infrastructure\ServiceModelExtensions.cs">
+      <Link>TextMining.Core - linked\Common\Infrastructure\ServiceModelExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Common\Infrastructure\XLinqExtensions.cs">
+      <Link>TextMining.Core - linked\Common\Infrastructure\XLinqExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Common\Infrastructure\XLinqTonalityMarkingExtensions.cs">
+      <Link>TextMining.Core - linked\Common\Infrastructure\XLinqTonalityMarkingExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Digest.Interface\ClientContract\IDigestWcfClient.cs">
+      <Link>TextMining.Core - linked\Digest.Interface\ClientContract\IDigestWcfClient.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Digest.Interface\DataContracts\DigestInputParams.cs">
+      <Link>TextMining.Core - linked\Digest.Interface\DataContracts\DigestInputParams.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Digest.Interface\DataContracts\DigestOutputResult.cs">
+      <Link>TextMining.Core - linked\Digest.Interface\DataContracts\DigestOutputResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Digest.Interface\DataContracts\DigestTuple.cs">
+      <Link>TextMining.Core - linked\Digest.Interface\DataContracts\DigestTuple.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\Digest.Interface\ServiceContracts\IDigest.cs">
+      <Link>TextMining.Core - linked\Digest.Interface\ServiceContracts\IDigest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\OpinionMining.Interface\ClientContract\IOpinionMiningWcfClient.cs">
+      <Link>TextMining.Core - linked\OpinionMining.Interface\ClientContract\IOpinionMiningWcfClient.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\OpinionMining.Interface\DataContracts\OpinionMiningInputParams.cs">
+      <Link>TextMining.Core - linked\OpinionMining.Interface\DataContracts\OpinionMiningInputParams.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\OpinionMining.Interface\DataContracts\OpinionMiningOutputResult.cs">
+      <Link>TextMining.Core - linked\OpinionMining.Interface\DataContracts\OpinionMiningOutputResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\OpinionMining.Interface\DataContracts\OpinionMiningTuple.cs">
+      <Link>TextMining.Core - linked\OpinionMining.Interface\DataContracts\OpinionMiningTuple.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\OpinionMining.Interface\ServiceContracts\IOpinionMining.cs">
+      <Link>TextMining.Core - linked\OpinionMining.Interface\ServiceContracts\IOpinionMining.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\TonalityMarking.Interface\ClientContract\ITonalityMarkingWcfClient.cs">
+      <Link>TextMining.Core - linked\TonalityMarking.Interface\ClientContract\ITonalityMarkingWcfClient.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\TonalityMarking.Interface\DataContracts\Blogs\OutputBlogsFormat.cs">
+      <Link>TextMining.Core - linked\TonalityMarking.Interface\DataContracts\Blogs\OutputBlogsFormat.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\TonalityMarking.Interface\DataContracts\Blogs\ProcessingBlogsMode.cs">
+      <Link>TextMining.Core - linked\TonalityMarking.Interface\DataContracts\Blogs\ProcessingBlogsMode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\TonalityMarking.Interface\DataContracts\Blogs\TonalityMarkingInputParams4Blogs.cs">
+      <Link>TextMining.Core - linked\TonalityMarking.Interface\DataContracts\Blogs\TonalityMarkingInputParams4Blogs.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\TonalityMarking.Interface\DataContracts\Blogs\TonalityMarkingOutputResult4Blogs.cs">
+      <Link>TextMining.Core - linked\TonalityMarking.Interface\DataContracts\Blogs\TonalityMarkingOutputResult4Blogs.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\TonalityMarking.Interface\DataContracts\Blogs\TonalityMarkingTuple4Blogs.cs">
+      <Link>TextMining.Core - linked\TonalityMarking.Interface\DataContracts\Blogs\TonalityMarkingTuple4Blogs.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\TonalityMarking.Interface\DataContracts\Socview\SocviewMessage.cs">
+      <Link>TextMining.Core - linked\TonalityMarking.Interface\DataContracts\Socview\SocviewMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\TonalityMarking.Interface\DataContracts\Socview\SocviewProcessingData.cs">
+      <Link>TextMining.Core - linked\TonalityMarking.Interface\DataContracts\Socview\SocviewProcessingData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\TonalityMarking.Interface\DataContracts\TonalityMarkingInputParams.cs">
+      <Link>TextMining.Core - linked\TonalityMarking.Interface\DataContracts\TonalityMarkingInputParams.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\TonalityMarking.Interface\DataContracts\TonalityMarkingObject.cs">
+      <Link>TextMining.Core - linked\TonalityMarking.Interface\DataContracts\TonalityMarkingObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\TonalityMarking.Interface\DataContracts\TonalityMarkingOutputResult.cs">
+      <Link>TextMining.Core - linked\TonalityMarking.Interface\DataContracts\TonalityMarkingOutputResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\TonalityMarking.Interface\DataContracts\TonalityMarkingTuple.cs">
+      <Link>TextMining.Core - linked\TonalityMarking.Interface\DataContracts\TonalityMarkingTuple.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\TonalityMarking.Interface\Enums\InquiryAllocateStatus.cs">
+      <Link>TextMining.Core - linked\TonalityMarking.Interface\Enums\InquiryAllocateStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\TextMining\Core\TextMining.Core\TonalityMarking.Interface\ServiceContracts\ITonalityMarking.cs">
+      <Link>TextMining.Core - linked\TonalityMarking.Interface\ServiceContracts\ITonalityMarking.cs</Link>
+    </Compile>
+    <Compile Include="..\Linguistics.Core\Enums\EntityRole.cs">
+      <Link>EntityRole.cs</Link>
+    </Compile>
+    <Compile Include="..\Linguistics.Core\Enums\EntityType.cs">
+      <Link>EntityType.cs</Link>
+    </Compile>
+    <Compile Include="..\Linguistics.Core\Enums\SubSentenceType.cs">
+      <Link>SubSentenceType.cs</Link>
+    </Compile>
+    <Compile Include="..\Linguistics.Core\Enums\UnitTextType.cs">
+      <Link>UnitTextType.cs</Link>
+    </Compile>
+    <Compile Include="..\SemanticResolution\ExportEnums.cs">
+      <Link>ExportEnums.cs</Link>
+    </Compile>
+    <Compile Include="..\SemanticResolution\SemanticNetwork\EntityNormalizer.cs">
+      <Link>TextMining.Core - linked\Common\EntityNormalizer.cs</Link>
+    </Compile>
+    <Compile Include="EntityTypesProperties.cs" />
+    <Compile Include="ILingvisticsServer.cs" />
+    <Compile Include="LingvisticsServer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TonInquiryType.cs" />
+    <Compile Include="WindowsEvent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lingvistics.Types\Lingvistics.Types.csproj">
+      <Project>{9a1890dc-37d1-4784-97de-690fd50b029d}</Project>
+      <Name>Lingvistics.Types</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

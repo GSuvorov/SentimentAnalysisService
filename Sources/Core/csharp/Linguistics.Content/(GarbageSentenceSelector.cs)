@@ -1,0 +1,120 @@
+﻿using Linguistics.Core.ContentSelectors;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Linguistics.Core
+{
+    /// <summary>
+    /// Класс для выделения мусорных предложений
+    /// </summary>
+    internal sealed class GarbageSentenceSelector
+    {
+        #region [.consts.]
+        /// <summary>
+        /// Максимальное количество одного слова подряд в предложении
+        /// </summary>
+        private const int MaxSameWordCount = 10;
+        /// <summary>
+        /// Доля нормальных слов в предложении
+        /// </summary>
+        private const double NormalWordProportion = 0.7;
+        #endregion
+
+        /// <summary>
+        /// Проверка, что заданный текст - мусор
+        /// </summary>
+        /// <param name="text">текст</param>
+        /// <returns>результат проверки</returns>
+        public static bool IsGarbage( string text )
+        {
+            bool result = WordTest( text );
+            return result;
+        }
+
+        #region [.word test.]
+        /// <summary>
+        /// Применение всех тестов, работающих по словам
+        /// </summary>
+        /// <param name="test">текст</param>
+        /// <returns>результат проверки</returns>
+        private static bool WordTest( string test )
+        {
+            var words = test.Split( new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries );
+            if ( words.Any() )
+            {
+                var result = SameWordTest( words );
+                if ( !result )
+                {
+                    result = NormalWordsProportion( words );
+                }
+                return (result);
+            }
+            return (false);
+        }
+
+        /// <summary>
+        /// Проверка, что доля нормальных слов превышает NormalWordProportion
+        /// </summary>
+        /// <param name="words">коллекция слов</param>
+        /// <returns>результат проверки</returns>
+        private static bool NormalWordsProportion( IList<string> words )
+        {
+            int normalWord = 0;
+            foreach ( var word in words )
+            {
+                if ( IsNormalWord( word ) )
+                {
+                    ++normalWord;
+                }
+            }
+            return (((double) normalWord / words.Count) < NormalWordProportion);
+        }
+
+        /// <summary>
+        /// Проверка, что слово является простым
+        /// </summary>
+        /// <param name="word">слово</param>
+        /// <returns>результат проверки</returns>
+        private static bool IsNormalWord( string word )
+        {
+            if ( word.Any() )
+            {
+                if ( DirectSpeechSelector.IsOpenQuote( word.First() ) && DirectSpeechSelector.IsCloseQuote( word.Last() ) )
+                {
+                    word = word.Substring( 1, word.Length - 2 );
+                }
+                return (word.All( _ => (_ == '-') || (_ == '.') || Char.IsLetterOrDigit( _ ) ));
+            }
+            return (false);
+        }
+
+        /// <summary>
+        /// Проверка, что в заданной коллекции одно и тоже слово встречается MaxSameWordCount раз подряд
+        /// </summary>
+        /// <param name="words">коллекция слов</param>
+        /// <returns>результат проверки</returns>
+        private static bool SameWordTest( IEnumerable<string> words )
+        {
+            string currentWord = words.First();
+            int sameWordCount = 0;
+            foreach ( var word in words.Skip( 1 ) )
+            {
+                if ( word == currentWord )
+                {
+                    ++sameWordCount;
+                    if ( sameWordCount >= MaxSameWordCount )
+                        return true;
+                }
+                else
+                {
+                    currentWord = word;
+                    sameWordCount = 0;
+                }
+            }
+            return false;
+        }
+        #endregion
+    }
+}

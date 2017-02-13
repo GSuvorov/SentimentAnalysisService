@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BB6CF68C-B8B8-4CE9-BEE9-4AADDAD01C45}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PTS</RootNamespace>
+    <AssemblyName>PTS</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extensions.cs" />
+    <Compile Include="MarkedTextMap.cs" />
+    <Compile Include="Number.cs" />
+    <Compile Include="RegexEntityType.cs" />
+    <Compile Include="NumberParser.cs" />
+    <Compile Include="NumberRange.cs" />
+    <Compile Include="NumberRangeExpression-Impl\NumberErrorExpression.cs" />
+    <Compile Include="NumberRangeExpression-Impl\NumberOpenRangeExpression.cs" />
+    <Compile Include="NumberRangeExpression-Impl\NumberRangeExpression.cs" />
+    <Compile Include="NumberRangeExpression-Impl\VerbalOpenRangeExpression.cs" />
+    <Compile Include="NumberRangeExpression-Impl\VerbalRangeExpression.cs" />
+    <Compile Include="NumberRangeExpressionBase.cs" />
+    <Compile Include="NumberRangeSelector.cs" />
+    <Compile Include="NumberRangeUnitCoder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleXmlParser.cs" />
+    <Compile Include="TableBlock.cs" />
+    <Compile Include="TextRange.cs" />
+    <Compile Include="NumberValue.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Linguistics.Core\Linguistics.Core.csproj">
+      <Project>{1c26de25-f10c-442b-9483-0e0b0e6485d2}</Project>
+      <Name>Linguistics.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleEntities\SimpleEntities.csproj">
+      <Project>{61d53ea1-ed0a-45a5-ba83-122cf51c112b}</Project>
+      <Name>SimpleEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SurfaceSyntaxAnalyzer\SurfaceSyntaxAnalyzer.csproj">
+      <Project>{5016ed7a-762d-4a32-9911-737ec83211cc}</Project>
+      <Name>SurfaceSyntaxAnalyzer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{44189d32-b782-4edb-a0f9-8606c916e18f}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\UserResources\Patsearch\en_entity.xml">
+      <Link>regex\en_entity.xml</Link>
+    </Content>
+    <Content Include="..\..\..\UserResources\Patsearch\ru_entity.xml">
+      <Link>regex\ru_entity.xml</Link>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

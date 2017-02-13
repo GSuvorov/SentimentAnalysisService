@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{449C9700-77EB-46F4-A32B-D7669D2A86BF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Linguistics.Core</RootNamespace>
+    <AssemblyName>Linguistics.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entity\EntityInfos-Impl\Ceterus\ConjunctionEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\Ceterus\QuestionWordEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\AdjectiveForm\AdjectiveFormEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\AdjectiveForm\ComparativeEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\AdjectiveForm\SuperlativeEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\HomogeneousEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\NamedEntity\EventEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\NamedEntity\ProductEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\VerbForm\InfinitiveEntityInfo.cs" />
+    <Compile Include="Entity\EntitySortedTree.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\Ceterus\CeterusEntityInfoBase.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\Ceterus\NumericEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\Ceterus\PredicativeEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\Ceterus\PretextEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\Ceterus\QuoteEntityInfo.cs" />
+    <Compile Include="Entity\Entity.cs" />
+    <Compile Include="Entity\EntityInfoBase.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\AdjectiveForm\AdjectiveEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\AdverbEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\DateEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\LingvisticEntityInfoBase.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\NamedEntity\NamedEntityInfoBase.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\NamedEntity\NounVerbEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\NamedEntity\OrgAbbrEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\NamedEntity\OrgNameEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\NamedEntity\OrgNoInfoEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\NamedEntity\PersonEntity\PersonEntityInfoBase.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\NamedEntity\PersonEntity\PersonInfoEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\NamedEntity\PersonEntity\PersonNameEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\NamedEntity\PersonEntity\PersonNoInfoEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\NamedEntity\PlaceNameEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\NamedEntity\PlaceNoInfoEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\PronounEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\AdjectiveForm\ShortAdjectiveEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\NamedEntity\UnknownEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\LingvisticEntity\NamedEntity\UnknownProperEntityInfo.cs" />
+    <Compile Include="Entity\EntityTypeStructure.cs" />
+    <Compile Include="Entity\TextEntity.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\VerbForm\DeeprEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\VerbForm\ParticipleEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\VerbForm\VerbEntityInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\VerbForm\VerbFormEntityInfoBase.cs" />
+    <Compile Include="Enums\EntityRole.cs" />
+    <Compile Include="Enums\Language.cs" />
+    <Compile Include="Enums\SubSentenceType.cs" />
+    <Compile Include="TextHierarchy\SerializerFromRDF.cs" />
+    <Compile Include="Tonality\TonalityInfo.cs" />
+    <Compile Include="Tonality\TonalityType.cs" />
+    <Compile Include="RDF.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="IdGenerator.cs" />
+    <Compile Include="Interfaces\ISerializerToRDF.cs" />
+    <Compile Include="Interfaces\IUnitPositionInfo.cs" />
+    <Compile Include="Morpho\Enums\AnimationType.cs" />
+    <Compile Include="Morpho\Enums\Case.cs" />
+    <Compile Include="Morpho\Enums\Face.cs" />
+    <Compile Include="Morpho\Enums\Gender.cs" />
+    <Compile Include="Morpho\Enums\Number.cs" />
+    <Compile Include="Morpho\Enums\TransitionalType.cs" />
+    <Compile Include="Morpho\Enums\Voice.cs" />
+    <Compile Include="Enums\EntityType.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\StandartEntityInfoBase.cs" />
+    <Compile Include="Morpho\MorphoInformation.cs" />
+    <Compile Include="Enums\UnitTextType.cs" />
+    <Compile Include="Morpho\MorphoInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entity\EntityInfos-Impl\AdditionalEntityInfo.cs" />
+    <Compile Include="TextHierarchy\SubTextInfo.cs" />
+    <Compile Include="Interfaces\IText.cs" />
+    <Compile Include="Interfaces\IRelations.cs" />
+    <Compile Include="TextHierarchy\Sentence.cs" />
+    <Compile Include="TextHierarchy\SubSentence.cs" />
+    <Compile Include="TextHierarchy\Text.cs" />
+    <Compile Include="TextHierarchy\UnitTextBase.cs" />
+    <Compile Include="TextHierarchy\UnmarkedText.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MAR\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

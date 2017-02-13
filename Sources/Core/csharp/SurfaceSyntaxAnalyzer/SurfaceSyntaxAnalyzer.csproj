@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5016ED7A-762D-4A32-9911-737EC83211CC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SurfaceSyntaxAnalyzer</RootNamespace>
+    <AssemblyName>SurfaceSyntaxAnalyzer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConcreateDecorators\CompoundVerbDecorator.cs" />
+    <Compile Include="ConcreateDecorators\PassiveSubjectDecorator.cs" />
+    <Compile Include="ConcreateDecorators\QuestionWordDecorator.cs" />
+    <Compile Include="ConcreateDecorators\SubSentenceByContentDecoratorBase.cs" />
+    <Compile Include="Syntax\SyntaxAnalyzer.cs" />
+    <Compile Include="Syntax\SyntaxAnalyzerEN.cs" />
+    <Compile Include="Transformers\Conjunction\Conjunction.cs" />
+    <Compile Include="Transformers\Conjunction\ConjunctionBuilder.cs" />
+    <Compile Include="ConcreateDecorators\ConjunctionDecorator.cs" />
+    <Compile Include="ConcreateDecorators\HomogeneousDecorator.cs" />
+    <Compile Include="ConcreateDecorators\RoleDecorator.cs" />
+    <Compile Include="ConcreateDecorators\SeparatorDecorator.cs" />
+    <Compile Include="DictionaryResource.cs" />
+    <Compile Include="ConcreateDecorators\UnmarkedUnionDecorator.cs" />
+    <Compile Include="Syntax\SubSentenceHierarchy.cs" />
+    <Compile Include="Syntax\SubSentenceInfo.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Syntax\SyntaxAnalyzerRU.cs" />
+    <Compile Include="SyntaxAnalyzerBase.cs" />
+    <Compile Include="SyntaxAnalyzerDecoratorBase.cs" />
+    <Compile Include="ConcreateDecorators\IntroductoryDecorator.cs" />
+    <Compile Include="SurfaceSyntaxAnalyzer.cs" />
+    <Compile Include="TextSentence.cs" />
+    <Compile Include="Transformers\CompoundVerbTransformer.cs" />
+    <Compile Include="Transformers\ConjunctionTransformer.cs" />
+    <Compile Include="Transformers\HomogeneousTransformer.cs" />
+    <Compile Include="Transformers\Homogeneous\HomogeneousChain.cs" />
+    <Compile Include="Transformers\Homogeneous\HomogeneousFormatBase.cs" />
+    <Compile Include="Transformers\Homogeneous\HomogeneousFormats-Impl\HomogeneousAdjectives.cs" />
+    <Compile Include="Transformers\Homogeneous\HomogeneousFormats-Impl\HomogeneousAdverbs.cs" />
+    <Compile Include="Transformers\Homogeneous\HomogeneousFormats-Impl\HomogeneousEntities.cs" />
+    <Compile Include="Transformers\Homogeneous\HomogeneousFormats-Impl\HomogeneousEntitiesWithNeg.cs" />
+    <Compile Include="Transformers\Homogeneous\HomogeneousFormats-Impl\HomogeneousEntitiesWithNegAndPretext.cs" />
+    <Compile Include="Transformers\Homogeneous\HomogeneousFormats-Impl\HomogeneousEntitiesWithPretext.cs" />
+    <Compile Include="Transformers\Homogeneous\HomogeneousFormats-Impl\HomogeneousPronouns.cs" />
+    <Compile Include="Transformers\Homogeneous\HomogeneousUnitCoder.cs" />
+    <Compile Include="Transformers\IndividualTextItemsTransformer.cs" />
+    <Compile Include="Transformers\UnmarkedUnionTransformer.cs" />
+    <Compile Include="UnitCoderBase.cs" />
+    <Compile Include="UnitCollectionTransformerBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Linguistics.Core\Linguistics.Core.csproj">
+      <Project>{1c26de25-f10c-442b-9483-0e0b0e6485d2}</Project>
+      <Name>Linguistics.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{44189d32-b782-4edb-a0f9-8606c916e18f}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

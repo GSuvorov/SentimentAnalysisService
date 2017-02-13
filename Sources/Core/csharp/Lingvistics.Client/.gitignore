@@ -1,0 +1,5 @@
+/bin/*
+/bin-with-OM-TM/*
+/obj/*
+*.csproj.user
+Lingvistics.Client-3.5.csproj
