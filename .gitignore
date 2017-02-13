@@ -48,3 +48,7 @@ Temporary Items
 
 *.rar
 *.xml)
+Sources/[libraries]/cppunit-1.9.11/aclocal.m4
+Sources/[libraries]/cppunit-1.9.11/AUTHORS
+Sources/[libraries]/cppunit-1.9.11/ChangeLog
+Sources/[libraries]/cppunit-1.9.11/CodingGuideLines.txt
