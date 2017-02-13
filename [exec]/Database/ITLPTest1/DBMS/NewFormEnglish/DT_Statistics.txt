@@ -1,0 +1,45 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "NewFormEnglish"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 4, all are key-fields):
+
+       0  IDSource            : INT32   - COMMON KEY-FIELD
+       1  Source              : WSTRING - COMMON KEY-FIELD
+       2  SourceLower         : WSTRING - COMMON KEY-FIELD
+       3  IDType              : INT32   - COMMON KEY-FIELD
+
+   -----------------------------------------------
+
+   Number of data_table records : 0
+   Number of deleted records    : 0
+   Number of data_table elenents: 0
+
+
+   Real data volume : 0,000,000 bytes
+   Disk data volume : 6,667,176 bytes
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_EVEN (next block will be the same volume)
+   Volumes of HASH-blocks  : 1000000.
+   Sum HASH-blocks volume  : 1000000
+   Sum number of HASH-keys : 0 (ReTry:0, ReRead:0, ReValue:0)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "NewFormEnglish" : START_SIZE(1000000), GROW_EVEN, SAVE_EVERY(20000)
+
+          #DATA_FIELD_INFO = "IDSource"   : INT32 // 
+          #DATA_FIELD_INFO = "Source"     : WSTRING// 
+          #DATA_FIELD_INFO = "SourceLower": WSTRING// 
+          #DATA_FIELD_INFO = "IDType"     : INT32 // 
+
+      #END_DATA_TABLE  
+
+   ============================================================================

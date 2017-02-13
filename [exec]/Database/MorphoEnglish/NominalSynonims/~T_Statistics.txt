@@ -1,0 +1,41 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "NominalSynonims"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 2, key-fields: 1):
+
+       0  IDSource            : INT32   - COMMON KEY-FIELD
+       1  IDSynonins          : INT32   - DATA (search is not available)
+
+   -----------------------------------------------
+
+   Number of data_table records : 0
+   Number of deleted records    : 0
+   Number of data_table elenents: 0
+
+
+   Real data volume : 0,000,000 bytes
+   Disk data volume : 0,200,512 bytes
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 30000.
+   Sum HASH-blocks volume  : 30000
+   Sum number of HASH-keys : 0 (ReTry:0, ReRead:0, ReValue:0)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "NominalSynonims" : START_SIZE(30000), GROW_DOWN  // START_SIZE(36000), GROW_DOWN 
+
+          #DATA_FIELD_INFO = "IDSource"       : INT32             // Основы
+          #DATA_FIELD_INFO = "IDSynonins"     : INT32  - IS_DATA  // Синонимы и однокоренные слова
+
+      #END_DATA_TABLE
+
+   ============================================================================

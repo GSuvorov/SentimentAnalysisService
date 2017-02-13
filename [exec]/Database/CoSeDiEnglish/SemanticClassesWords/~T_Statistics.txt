@@ -1,0 +1,42 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "SemanticClassesWords"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 2, all are key-fields):
+
+       0  IDSource            : INT32   - COMMON KEY-FIELD
+       1  IDClass             : INT32   - COMMON KEY-FIELD
+
+   -----------------------------------------------
+
+   Number of data_table records : 33962
+   Number of deleted records    : 0
+   Number of data_table elenents: 67924
+
+
+   Real data volume : 0,271,696 bytes
+   Disk data volume : 0,911,198 bytes
+   Outgoings        : 235.4%
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 50000.
+   Sum HASH-blocks volume  : 50000
+   Sum number of HASH-keys : 19393 (ReTry:8190, ReRead:0, ReValue:29)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "SemanticClassesWords" : START_SIZE(50000), GROW_DOWN  
+
+          #DATA_FIELD_INFO = "IDSource"           : INT32              // Индекс основы
+          #DATA_FIELD_INFO = "IDClass"            : INT32              // Индекс семантического класса
+
+      #END_DATA_TABLE
+
+   ============================================================================

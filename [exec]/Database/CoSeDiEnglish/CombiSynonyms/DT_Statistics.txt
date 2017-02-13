@@ -1,0 +1,44 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "CombiSynonyms"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 3, key-fields: 2):
+
+       0  IDSource            : INT32   - COMMON KEY-FIELD
+       1  DictionaryNumber    : INT32   - SEARCH IS NOT AVAILABLE
+       2  IDClass             : INT32   - COMMON KEY-FIELD
+
+   -----------------------------------------------
+
+   Number of data_table records : 219
+   Number of deleted records    : 0
+   Number of data_table elenents: 657
+
+
+   Real data volume : 0,002,628 bytes
+   Disk data volume : 0,071,775 bytes
+   Outgoings        : 2631.2%
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 10000.
+   Sum HASH-blocks volume  : 10000
+   Sum number of HASH-keys : 322 (ReTry:1, ReRead:0, ReValue:0)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "CombiSynonyms" : START_SIZE(10000), GROW_DOWN  
+
+          #DATA_FIELD_INFO = "IDSource"           : INT32             // Индекс основы
+          #DATA_FIELD_INFO = "DictionaryNumber"   : INT32 - NO_FIND   // Номер словаря
+          #DATA_FIELD_INFO = "IDClass" 	    : INT32             // Индекс синонимического класса
+
+      #END_DATA_TABLE
+
+   ============================================================================

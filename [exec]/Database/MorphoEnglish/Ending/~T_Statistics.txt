@@ -1,0 +1,42 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "Ending"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 2, key-fields: 1):
+
+       0  ID                  : INT32   - COMMON KEY-FIELD
+       1  PartOfWord          : WSTRING - SEARCH IS NOT AVAILABLE
+
+   -----------------------------------------------
+
+   Number of data_table records : 679
+   Number of deleted records    : 0
+   Number of data_table elenents: 1358
+
+
+   Real data volume : 0,009,700 bytes
+   Disk data volume : 0,084,345 bytes
+   Outgoings        : 769.5%
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 10000.
+   Sum HASH-blocks volume  : 10000
+   Sum number of HASH-keys : 1358 (ReTry:65, ReRead:0, ReValue:1)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "Ending" : START_SIZE(10000), GROW_DOWN  
+
+          #DATA_FIELD_INFO = "ID"              : INT32              // Индекс окончания
+          #DATA_FIELD_INFO = "PartOfWord"      : WSTRING - NO_FIND  // Литеральное представление окончания
+
+      #END_DATA_TABLE
+
+   ============================================================================

@@ -1,0 +1,48 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "SemanticClassesTree"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 5, all are key-fields):
+
+       0  IDClass             : INT32   - COMMON KEY-FIELD
+       1  IDParent            : INT32   - COMMON KEY-FIELD
+       2  Name                : WSTRING - COMMON KEY-FIELD
+       3  ShortName           : WSTRING - COMMON KEY-FIELD
+       4  Color               : UINT32  - COMMON KEY-FIELD
+
+   -----------------------------------------------
+
+   Number of data_table records : 4675
+   Number of deleted records    : 0
+   Number of data_table elenents: 23375
+
+
+   Real data volume : 0,171,082 bytes
+   Disk data volume : 0,427,155 bytes
+   Outgoings        : 149.7%
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 18000.
+   Sum HASH-blocks volume  : 18000
+   Sum number of HASH-keys : 9369 (ReTry:2149, ReRead:0, ReValue:9)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "SemanticClassesTree" : START_SIZE(18000), GROW_DOWN  
+
+          #DATA_FIELD_INFO = "IDClass"     : INT32    // Индекс семантического класса
+          #DATA_FIELD_INFO = "IDParent"    : INT32    // Индекс семантического класса, который является отцом текущего
+          #DATA_FIELD_INFO = "Name"        : WSTRING  // Имя семантического класса
+          #DATA_FIELD_INFO = "ShortName"   : WSTRING  // Короткое имя класса
+          #DATA_FIELD_INFO = "Color"       : UINT32   // Цвет отображения
+
+      #END_DATA_TABLE
+
+   ============================================================================

@@ -1,0 +1,46 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "MorphoTypes"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 4, all are key-fields):
+
+       0  IDForm              : INT32   - COMMON KEY-FIELD
+       1  IDType              : INT32   - COMMON KEY-FIELD
+       2  IDEnding            : INT32   - COMMON KEY-FIELD
+       3  PartOfSpeech        : INT32   - COMMON KEY-FIELD
+
+   -----------------------------------------------
+
+   Number of data_table records : 127913
+   Number of deleted records    : 0
+   Number of data_table elenents: 511652
+
+
+   Real data volume : 2,046,608 bytes
+   Disk data volume : 4,888,305 bytes
+   Outgoings        : 138.8%
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 100000.
+   Sum HASH-blocks volume  : 100000
+   Sum number of HASH-keys : 11488 (ReTry:12039, ReRead:0, ReValue:0)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "MorphoTypes" : START_SIZE(100000), GROW_DOWN  
+
+          #DATA_FIELD_INFO = "IDForm"         : INT32    // Номер окончания в типе
+          #DATA_FIELD_INFO = "IDType"         : INT32    // Номер типа морфообразования
+          #DATA_FIELD_INFO = "IDEnding"       : INT32    // Индекс окончания 
+          #DATA_FIELD_INFO = "PartOfSpeech"   : INT32    // морфологическая информация о слове
+
+      #END_DATA_TABLE
+
+   ============================================================================

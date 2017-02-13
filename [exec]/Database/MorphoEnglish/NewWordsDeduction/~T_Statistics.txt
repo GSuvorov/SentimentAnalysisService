@@ -1,0 +1,42 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "NewWordsDeduction"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 2, key-fields: 1):
+
+       0  ID                  : INT32   - COMMON KEY-FIELD
+       1  Word                : WSTRING - SEARCH IS NOT AVAILABLE
+
+   -----------------------------------------------
+
+   Number of data_table records : 74959
+   Number of deleted records    : 0
+   Number of data_table elenents: 149918
+
+
+   Real data volume : 1,399,264 bytes
+   Disk data volume : 2,412,545 bytes
+   Outgoings        : 72.4%
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 5, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 10000, 5000, 10000, 20000, 40000.
+   Sum HASH-blocks volume  : 85000
+   Sum number of HASH-keys : 51925 (ReTry:520906, ReRead:5538, ReValue:1953)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "NewWordsDeduction" : START_SIZE(10000), GROW_DOWN  
+
+          #DATA_FIELD_INFO = "ID"              : INT32              // IDType
+          #DATA_FIELD_INFO = "Word"      : WSTRING - NO_FIND  // Литеральное представление окончания
+
+      #END_DATA_TABLE
+
+   ============================================================================

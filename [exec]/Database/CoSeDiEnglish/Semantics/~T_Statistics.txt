@@ -1,0 +1,44 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "Semantics"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 3, key-fields: 2):
+
+       0  IDSource            : INT32   - COMMON KEY-FIELD
+       1  DictionaryNumber    : INT32   - SEARCH IS NOT AVAILABLE
+       2  IDClass             : INT32   - COMMON KEY-FIELD
+
+   -----------------------------------------------
+
+   Number of data_table records : 64866
+   Number of deleted records    : 0
+   Number of data_table elenents: 194598
+
+
+   Real data volume : 0,778,392 bytes
+   Disk data volume : 1,829,362 bytes
+   Outgoings        : 135.0%
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 70000.
+   Sum HASH-blocks volume  : 70000
+   Sum number of HASH-keys : 64926 (ReTry:50836, ReRead:56, ReValue:133)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "Semantics" : START_SIZE(70000), GROW_DOWN  
+
+          #DATA_FIELD_INFO = "IDSource"           : INT32              // Индекс основы
+          #DATA_FIELD_INFO = "DictionaryNumber"   : INT32  - NO_FIND   // Номер словаря
+          #DATA_FIELD_INFO = "IDClass"            : INT32              // Индекс семантического класса
+
+      #END_DATA_TABLE
+
+   ============================================================================

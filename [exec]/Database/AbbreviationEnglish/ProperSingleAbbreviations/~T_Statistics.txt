@@ -1,0 +1,48 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "ProperSingleAbbreviations"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 5, key-fields: 2):
+
+       0  DictionaryIndex     : INT32   - COMMON KEY-FIELD
+       1  FormLower           : WSTRING - COMMON KEY-FIELD
+       2  Form                : WSTRING - SEARCH IS NOT AVAILABLE
+       3  IDType              : INT32   - DATA (search is not available)
+       4  IDForm              : INT32   - DATA (search is not available)
+
+   -----------------------------------------------
+
+   Number of data_table records : 53
+   Number of deleted records    : 0
+   Number of data_table elenents: 265
+
+
+   Real data volume : 0,001,656 bytes
+   Disk data volume : 0,123,237 bytes
+   Outgoings        : 7341.8%
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 18000.
+   Sum HASH-blocks volume  : 18000
+   Sum number of HASH-keys : 122 (ReTry:0, ReRead:0, ReValue:0)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "ProperSingleAbbreviations" : START_SIZE(18000), GROW_DOWN  
+
+          #DATA_FIELD_INFO = "DictionaryIndex" : INT32              // Номер словаря и индекс основы/слова
+          #DATA_FIELD_INFO = "FormLower"       : WSTRING            // Литеральная фрма в нижнем регистре
+          #DATA_FIELD_INFO = "Form"            : WSTRING - NO_FIND  // Литеральная форма
+          #DATA_FIELD_INFO = "IDType"          : INT32   - IS_DATA  // Ссылка на морфо-тип
+          #DATA_FIELD_INFO = "IDForm"          : INT32   - IS_DATA  // Номер морфо-формы
+
+      #END_DATA_TABLE
+
+   ============================================================================

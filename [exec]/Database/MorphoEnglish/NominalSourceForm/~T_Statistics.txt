@@ -1,0 +1,42 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "NominalSourceForm"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 2, key-fields: 1):
+
+       0  ID                  : INT32   - COMMON KEY-FIELD
+       1  PartOfWord          : WSTRING - SEARCH IS NOT AVAILABLE
+
+   -----------------------------------------------
+
+   Number of data_table records : 93018
+   Number of deleted records    : 0
+   Number of data_table elenents: 186036
+
+
+   Real data volume : 2,144,502 bytes
+   Disk data volume : 4,256,200 bytes
+   Outgoings        : 98.5%
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 200000.
+   Sum HASH-blocks volume  : 200000
+   Sum number of HASH-keys : 171472 (ReTry:100539, ReRead:83, ReValue:350)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "NominalSourceForm" : START_SIZE(200000), GROW_DOWN  
+
+          #DATA_FIELD_INFO = "ID"             : INT32              // Индекс основы
+          #DATA_FIELD_INFO = "PartOfWord"     : WSTRING - NO_FIND  // Литеральное представление основы
+
+      #END_DATA_TABLE
+
+   ============================================================================

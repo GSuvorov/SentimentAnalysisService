@@ -1,0 +1,70 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "Combinatory"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 16, key-fields: 8):
+
+       0  ID                  : INT32   - COMMON KEY-FIELD
+       1  HashKey             : INT32   - COMMON KEY-FIELD
+       2  HashKey_2           : INT32   - COMMON KEY-FIELD
+       3  CombiType           : INT32   - DATA (search is not available)
+       4  IDType              : INT32   - DATA (search is not available)
+       5  NumOfMembers        : INT32   - DATA (search is not available)
+       6  IDSource0           : INT32   - COMMON KEY-FIELD
+       7  IDForm0             : INT32   - DATA (search is not available)
+       8  IDSource1           : INT32   - COMMON KEY-FIELD
+       9  IDForm1             : INT32   - DATA (search is not available)
+      10  IDSource2           : INT32   - COMMON KEY-FIELD
+      11  IDForm2             : INT32   - DATA (search is not available)
+      12  IDSource3           : INT32   - COMMON KEY-FIELD
+      13  IDForm3             : INT32   - DATA (search is not available)
+      14  IDSource4           : INT32   - COMMON KEY-FIELD
+      15  IDForm4             : INT32   - DATA (search is not available)
+
+   -----------------------------------------------
+
+   Number of data_table records : 18514
+   Number of deleted records    : 0
+   Number of data_table elenents: 296224
+
+
+   Real data volume : 1,184,896 bytes
+   Disk data volume : 2,296,370 bytes
+   Outgoings        : 93.8%
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 75000.
+   Sum HASH-blocks volume  : 75000
+   Sum number of HASH-keys : 69365 (ReTry:53129, ReRead:53, ReValue:208)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "Combinatory" : START_SIZE(75000), GROW_DOWN
+
+          #DATA_FIELD_INFO = "ID"                     : INT32              // Индекс комбинации
+          #DATA_FIELD_INFO = "HashKey"                : INT32              // Hash-ключ комбинации
+          #DATA_FIELD_INFO = "HashKey_2"              : INT32              // Hash-ключ комбинации в режиме 2
+          #DATA_FIELD_INFO = "CombiType"              : INT32  - IS_DATA   // Номер буквы в комбинации
+          #DATA_FIELD_INFO = "IDType"                 : INT32  - IS_DATA   // Тип морфообразования полученной комбинации
+          #DATA_FIELD_INFO = "NumOfMembers"           : INT32  - IS_DATA   // Число членов комбинации
+          #DATA_FIELD_INFO = "IDSource0"              : INT32              // Индекс основы и DictionaryNumber (в старшем байте)
+          #DATA_FIELD_INFO = "IDForm0"                : INT32  - IS_DATA   // Номер окончания в IDType
+          #DATA_FIELD_INFO = "IDSource1"              : INT32              // Индекс основы и DictionaryNumber (в старшем байте)
+          #DATA_FIELD_INFO = "IDForm1"                : INT32  - IS_DATA   // Номер окончания в IDType
+          #DATA_FIELD_INFO = "IDSource2"              : INT32              // Индекс основы и DictionaryNumber (в старшем байте)
+          #DATA_FIELD_INFO = "IDForm2"                : INT32  - IS_DATA   // Номер окончания в IDType
+          #DATA_FIELD_INFO = "IDSource3"              : INT32              // Индекс основы и DictionaryNumber (в старшем байте)
+          #DATA_FIELD_INFO = "IDForm3"                : INT32  - IS_DATA   // Номер окончания в IDType
+          #DATA_FIELD_INFO = "IDSource4"              : INT32              // Индекс основы и DictionaryNumber (в старшем байте)
+          #DATA_FIELD_INFO = "IDForm4"                : INT32  - IS_DATA   // Номер окончания в IDType
+
+      #END_DATA_TABLE
+
+   ============================================================================

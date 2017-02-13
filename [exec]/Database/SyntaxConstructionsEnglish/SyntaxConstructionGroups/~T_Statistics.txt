@@ -1,0 +1,42 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "SyntaxConstructionGroups"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 2, all are key-fields):
+
+       0  IDConstruction      : INT32   - COMMON KEY-FIELD
+       1  IDGroup             : INT32   - COMMON KEY-FIELD
+
+   -----------------------------------------------
+
+   Number of data_table records : 369
+   Number of deleted records    : 0
+   Number of data_table elenents: 738
+
+
+   Real data volume : 0,002,952 bytes
+   Disk data volume : 0,126,785 bytes
+   Outgoings        : 4194.9%
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 18000.
+   Sum HASH-blocks volume  : 18000
+   Sum number of HASH-keys : 407 (ReTry:0, ReRead:0, ReValue:0)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "SyntaxConstructionGroups" : START_SIZE(18000), GROW_DOWN  
+
+          #DATA_FIELD_INFO = "IDConstruction"	  	: INT32  		// индекс конструкции
+          #DATA_FIELD_INFO = "IDGroup"			: INT32			// индекс группы
+
+      #END_DATA_TABLE
+
+   ============================================================================

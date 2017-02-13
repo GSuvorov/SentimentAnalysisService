@@ -1,0 +1,42 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "DetectWordsGroups"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 2, all are key-fields):
+
+       0  DetectWordsGroupName: WSTRING - COMMON KEY-FIELD
+       1  DetectWord          : WSTRING - COMMON KEY-FIELD
+
+   -----------------------------------------------
+
+   Number of data_table records : 647
+   Number of deleted records    : 0
+   Number of data_table elenents: 1294
+
+
+   Real data volume : 0,023,642 bytes
+   Disk data volume : 0,138,635 bytes
+   Outgoings        : 486.4%
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 18000.
+   Sum HASH-blocks volume  : 18000
+   Sum number of HASH-keys : 481 (ReTry:13, ReRead:0, ReValue:0)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "DetectWordsGroups" : START_SIZE(18000), GROW_DOWN  
+
+          #DATA_FIELD_INFO = "DetectWordsGroupName"	  	: WSTRING  		// им€ группы дл€ детектировани€
+          #DATA_FIELD_INFO = "DetectWord"			: WSTRING		// им€ детект слова
+
+      #END_DATA_TABLE
+
+   ============================================================================

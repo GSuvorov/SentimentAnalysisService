@@ -1,0 +1,42 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "ProperSourceForm"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 2, key-fields: 1):
+
+       0  ID                  : INT32   - COMMON KEY-FIELD
+       1  PartOfWord          : WSTRING - SEARCH IS NOT AVAILABLE
+
+   -----------------------------------------------
+
+   Number of data_table records : 77389
+   Number of deleted records    : 0
+   Number of data_table elenents: 154778
+
+
+   Real data volume : 1,626,904 bytes
+   Disk data volume : 3,388,703 bytes
+   Outgoings        : 108.3%
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 200000.
+   Sum HASH-blocks volume  : 200000
+   Sum number of HASH-keys : 132447 (ReTry:49093, ReRead:4, ReValue:155)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "ProperSourceForm" : START_SIZE(200000), GROW_DOWN  
+
+          #DATA_FIELD_INFO = "ID"          : INT32              // Индекс основы
+          #DATA_FIELD_INFO = "PartOfWord"  : WSTRING - NO_FIND  // Литеральное представление основы
+
+      #END_DATA_TABLE
+
+   ============================================================================

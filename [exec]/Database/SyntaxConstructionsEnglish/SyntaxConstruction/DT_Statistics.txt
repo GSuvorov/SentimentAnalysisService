@@ -1,0 +1,50 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "SyntaxConstruction"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 6, key-fields: 2):
+
+       0  ID                  : INT32   - COMMON KEY-FIELD
+       1  Name                : WSTRING - COMMON KEY-FIELD
+       2  DetectWordGroupName : WSTRING - DATA (search is not available)
+       3  Data                : VECTOR  - DATA (search is not available)
+       4  DataSize            : INT32   - DATA (search is not available)
+       5  Level               : INT32   - DATA (search is not available)
+
+   -----------------------------------------------
+
+   Number of data_table records : 1056
+   Number of deleted records    : 0
+   Number of data_table elenents: 6336
+
+
+   Real data volume : 0,710,988 bytes
+   Disk data volume : 0,767,814 bytes
+   Outgoings        : 8.0%
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 18000.
+   Sum HASH-blocks volume  : 18000
+   Sum number of HASH-keys : 729 (ReTry:33, ReRead:0, ReValue:0)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "SyntaxConstruction" : START_SIZE(18000), GROW_DOWN  
+
+          #DATA_FIELD_INFO = "ID"	  		: INT32  		// Индекс конструкции
+          #DATA_FIELD_INFO = "Name"			: WSTRING		// название конструкции
+	  #DATA_FIELD_INFO = "DetectWordGroupName"	: WSTRING - IS_DATA	// название группы слов для детектирования
+	  #DATA_FIELD_INFO = "Data"			: VECTOR - IS_DATA	// данные
+	  #DATA_FIELD_INFO = "DataSize"			: INT32	 - IS_DATA	// размер данных
+	  #DATA_FIELD_INFO = "Level"			: INT32	 - IS_DATA	// номер элемента конструкции
+
+      #END_DATA_TABLE
+
+   ============================================================================

@@ -1,0 +1,42 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "OneRoot"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 2, key-fields: 1):
+
+       0  IDSource            : INT32   - COMMON KEY-FIELD
+       1  IDOneRoot           : INT32   - DATA (search is not available)
+
+   -----------------------------------------------
+
+   Number of data_table records : 464
+   Number of deleted records    : 0
+   Number of data_table elenents: 928
+
+
+   Real data volume : 0,003,712 bytes
+   Disk data volume : 0,126,544 bytes
+   Outgoings        : 3309.1%
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 18000.
+   Sum HASH-blocks volume  : 18000
+   Sum number of HASH-keys : 324 (ReTry:1, ReRead:0, ReValue:0)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "OneRoot" : START_SIZE(18000), GROW_DOWN  // START_SIZE(36000), GROW_DOWN 
+
+          #DATA_FIELD_INFO = "IDSource"       : INT32             // Основы
+          #DATA_FIELD_INFO = "IDOneRoot"      : INT32  - IS_DATA  // Синонимы и однокоренные слова
+
+      #END_DATA_TABLE
+
+   ============================================================================

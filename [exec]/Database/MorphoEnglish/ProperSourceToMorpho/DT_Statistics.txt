@@ -1,0 +1,42 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "ProperSourceToMorpho"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 2, all are key-fields):
+
+       0  IDSource            : INT32   - COMMON KEY-FIELD
+       1  IDType              : INT32   - COMMON KEY-FIELD
+
+   -----------------------------------------------
+
+   Number of data_table records : 56168
+   Number of deleted records    : 0
+   Number of data_table elenents: 112336
+
+
+   Real data volume : 0,449,344 bytes
+   Disk data volume : 2,288,700 bytes
+   Outgoings        : 409.3%
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 200000.
+   Sum HASH-blocks volume  : 200000
+   Sum number of HASH-keys : 56202 (ReTry:5976, ReRead:0, ReValue:10)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "ProperSourceToMorpho" : START_SIZE(200000), GROW_DOWN  
+
+          #DATA_FIELD_INFO = "IDSource"    : INT32             // Индекс основы
+          #DATA_FIELD_INFO = "IDType"      : INT32             // Номер типа морфообразования
+
+      #END_DATA_TABLE
+
+   ============================================================================

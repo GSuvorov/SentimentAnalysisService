@@ -1,0 +1,45 @@
+
+   ----------------------------------------------------------------------------
+   DataTable:   "SemanticIDSourceTree"   (INFORMATION and STATISTICS)
+   ----------------------------------------------------------------------------
+
+      DATA_FIELDS (total: 4, key-fields: 2):
+
+       0  DictionaryNumberParent: INT32   - SEARCH IS NOT AVAILABLE
+       1  IDSourceParent      : INT32   - COMMON KEY-FIELD
+       2  DictionaryNumberChild: INT32   - SEARCH IS NOT AVAILABLE
+       3  IDSourceChild       : INT32   - COMMON KEY-FIELD
+
+   -----------------------------------------------
+
+   Number of data_table records : 0
+   Number of deleted records    : 0
+   Number of data_table elenents: 0
+
+
+   Real data volume : 0,000,000 bytes
+   Disk data volume : 0,120,512 bytes
+
+   -----------------------------------------------
+
+   Number  of HASH-blocks  : 1, mode of block-adding: GROW_DOWN (next block will be two times smaller)
+   Volumes of HASH-blocks  : 18000.
+   Sum HASH-blocks volume  : 18000
+   Sum number of HASH-keys : 0 (ReTry:0, ReRead:0, ReValue:0)
+
+   -----------------------------------------------
+
+
+   Table original structure from INI-file
+   -----------------------------------------------
+
+      #DATA_TABLE_NAME = "SemanticIDSourceTree" : START_SIZE(18000), GROW_DOWN  
+
+          #DATA_FIELD_INFO = "DictionaryNumberParent"   : INT32 - NO_FIND   // Индекс словаря родителя
+          #DATA_FIELD_INFO = "IDSourceParent"           : INT32             // Индекс основы родителя
+          #DATA_FIELD_INFO = "DictionaryNumberChild"    : INT32 - NO_FIND   // Индекс словаря ребенка
+          #DATA_FIELD_INFO = "IDSourceChild"            : INT32             // Индекс основы ребенка
+
+      #END_DATA_TABLE
+
+   ============================================================================
