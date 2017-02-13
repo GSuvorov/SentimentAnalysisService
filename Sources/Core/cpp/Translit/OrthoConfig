@@ -1,0 +1,37 @@
+
+%pure_parser
+%locations
+%defines
+
+
+%start CONFIG_FILE
+
+%token o_rus
+%token o_startrus
+%token o_weight
+%token o_breaker
+%token o_unknown
+
+%%
+
+CONFIG_FILE:
+	CONFIG
+;
+
+CONFIG:
+	PATTERN CONFIG
+|	PATTERN
+;
+
+PATTERN:
+	o_startrus PAIRSET { AddLat(parm, $1); }
+;
+
+PAIRSET:
+	PAIR PAIRSET
+|	PAIR
+;
+
+PAIR:
+	o_rus o_weight o_breaker { AddRus(parm, $1, $2); }
+;

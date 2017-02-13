@@ -1,0 +1,39 @@
+
+%pure_parser
+%locations
+%defines
+
+
+%start CONFIG_FILE
+
+%token t_rus
+%token t_lat
+%token t_weight
+%token t_breaker
+%token t_unknown
+
+%%
+
+CONFIG_FILE:
+	CONFIG
+;
+
+CONFIG:
+	PATTERN CONFIG
+|	PATTERN
+;
+
+PATTERN:
+	t_lat PAIRSET { AddLat(parm, $1); }
+|	t_weight PAIRSET { AddLat(parm, $1); }
+;
+
+PAIRSET:
+	PAIR PAIRSET
+|	PAIR
+;
+
+PAIR:
+	t_rus t_weight t_breaker { AddRus(parm, $1, $2); }
+|	t_rus t_breaker { AddRus(parm, $1); }
+;
