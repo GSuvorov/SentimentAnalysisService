@@ -8,7 +8,7 @@ namespace DiskSearchEngine.Hashtable
     /// </summary>
     public sealed class HashtableSearcher : IDisposable
     {
-        private delegate bool IsExistsFunction( ref string searchText );
+        private delegate bool IsExistsFunction( string searchText );
 
         #region [.Private field's.]
         private TextLineReader _DataFileTextLineReader;
@@ -84,12 +84,12 @@ namespace DiskSearchEngine.Hashtable
             if ( searchText.IsEmptyOrNull() )
                 throw (new ArgumentNullException("searchText"));
             
-            //return (IsExistsDiskRoutine( IndexFileHelper.NormlizeText( ref searchText ) ));
-            return (_IsExistsFunction( ref searchText ) );
+            //return (IsExistsDiskRoutine( IndexFileHelper.NormlizeText( searchText ) ));
+            return (_IsExistsFunction( searchText ) );
         }        
 
         //-private DiskTag diskTag = new DiskTag();
-        private bool IsExistsDiskRoutine( ref string searchText )
+        private bool IsExistsDiskRoutine( string searchText )
         {
             //Normlize text if allowed
             if ( _NormlizeTextFunction != null )
@@ -98,7 +98,7 @@ namespace DiskSearchEngine.Hashtable
             }
 
             //Calculate hash-code
-	        uint hashCode = IndexFileHelper.HashFunction( ref searchText, this.IndexHeader.HashtableSize );
+	        uint hashCode = IndexFileHelper.HashFunction( searchText, this.IndexHeader.HashtableSize );
 
 
             //Search in hashtable
@@ -133,8 +133,7 @@ namespace DiskSearchEngine.Hashtable
 
 
             //Search in hashtable tag chain's
-	        DiskTag diskTag = new DiskTag();
-            diskTag.NextTagOffset = diskSlot.FirstTagOffset;
+            var diskTag = new DiskTag() { NextTagOffset = diskSlot.FirstTagOffset };
             while ( 0 < diskTag.NextTagOffset )
             {
                 diskTag = _IndexFileBinaryReader.SeekAndReadDiskTag( diskTag.NextTagOffset, _DiskTagReadBuffer );
@@ -161,7 +160,7 @@ namespace DiskSearchEngine.Hashtable
         /// </summary>
         /// <param name="searchText"></param>
         /// <returns></returns>
-        private bool IsExistsDiskRoutineIn32( ref string searchText )
+        private bool IsExistsDiskRoutineIn32( string searchText )
         {
             //Normlize text if allowed
             if ( _NormlizeTextFunction != null )
@@ -170,7 +169,7 @@ namespace DiskSearchEngine.Hashtable
             }
 
             //Calculate hash-code
-	        uint hashCode = IndexFileHelper.HashFunction( ref searchText, this.IndexHeader.HashtableSize );
+	        uint hashCode = IndexFileHelper.HashFunction( searchText, this.IndexHeader.HashtableSize );
 
 
             //Search in hashtable
@@ -205,8 +204,7 @@ namespace DiskSearchEngine.Hashtable
 
 
             //Search in hashtable tag chain's
-	        DiskTagInt32 diskTag = new DiskTagInt32();
-            diskTag.NextTagOffset = diskSlot.FirstTagOffset;
+            DiskTagInt32 diskTag = new DiskTagInt32() { NextTagOffset = diskSlot.FirstTagOffset };
             while ( 0 < diskTag.NextTagOffset )
             {
                 diskTag = _IndexFileBinaryReader.SeekAndReadDiskTagInt32( diskTag.NextTagOffset, _DiskTagInt32ReadBuffer );

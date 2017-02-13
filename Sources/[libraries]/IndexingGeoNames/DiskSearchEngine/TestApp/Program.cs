@@ -38,9 +38,9 @@ namespace TestApp
         #region [.config class.]
         private static class config
         {
-            public static string dataFileFullName
+            public static string dataFileName
             {
-                get { return (ConfigurationManager.AppSettings[ "dataFileFullName" ]); }
+                get { return (ConfigurationManager.AppSettings[ "dataFileName" ]); }
             }
             public static Encoding dataFileEncoding
             {
@@ -77,9 +77,9 @@ namespace TestApp
         }
         #endregion
 
-        static void create_datafile_in_need_encoding( string dataFileFullName, Encoding dataFileEncoding ) //, Encoding newDataFileEncoding )
+        static void create_datafile_in_need_encoding( string dataFileName, Encoding dataFileEncoding ) //, Encoding newDataFileEncoding )
         {
-            using ( var sw = new StreamWriter( dataFileFullName, false, dataFileEncoding ) )
+            using ( var sw = new StreamWriter( dataFileName, false, dataFileEncoding ) )
             {
                 //sw.Write( new string('w', 1023) + "ф" + '!' + '\n' );
                 sw.Write( "XY\r\n" );
@@ -97,7 +97,7 @@ namespace TestApp
                 sw.Write( "с. петербург" + "\r\n" );
             }
         }        
-        static void toUtf8( string dataFileFullName, Encoding dataFileEncoding )
+        static void toUtf8( string dataFileName, Encoding dataFileEncoding )
         {
             using ( var sr = new StreamReader( @"E:\GeoDB\data\GeoNames.data", dataFileEncoding ) )
             using ( var sw = new StreamWriter( @"E:\GeoDB\data\GeoNames.utf8.data", false, Encoding.UTF8 ) )
@@ -108,18 +108,18 @@ namespace TestApp
         }
         static void test_2()
         {
-            var dataFileFullName = @"E:\GeoDB\DiskSearchEngine\data\fusking.rotter.data";
+            var dataFileName = @"E:\GeoDB\DiskSearchEngine\data\fusking.rotter.data";
             var dataFileEncoding = Encoding.UTF7; //Encoding.Unicode; //Encoding.UTF8; //
 
-            create_datafile_in_need_encoding( dataFileFullName, dataFileEncoding );
+            create_datafile_in_need_encoding( dataFileName, dataFileEncoding );
 
 
-            //var indexHeader = HashtableIndexer.GetIndexHeaderByDataFile( dataFileFullName );
+            //var indexHeader = HashtableIndexer.GetIndexHeaderByDataFile( dataFileName );
 
-            var allRecordCountInDataFile = HashtableEngineHelper.CalulateAllRecordCountInDataFile( dataFileFullName, dataFileEncoding );
-            HashtableIndexer.BuildIndex( dataFileFullName, dataFileEncoding, allRecordCountInDataFile.NearestPrimeNumber(), HashtableEngineHelper.NormlizeText );
+            var allRecordCountInDataFile = HashtableEngineHelper.CalulateAllRecordCountInDataFile( dataFileName, dataFileEncoding );
+            HashtableIndexer.BuildIndex( dataFileName, dataFileEncoding, allRecordCountInDataFile.NearestPrimeNumber(), HashtableEngineHelper.NormlizeText );
 
-            using ( var searcher = new HashtableSearcher( dataFileFullName, HashtableEngineHelper.NormlizeText ) )
+            using ( var searcher = new HashtableSearcher( dataFileName, HashtableEngineHelper.NormlizeText ) )
             {               
                 var max_len = geo_names.Max( _ => _.Length );
 
@@ -132,23 +132,23 @@ namespace TestApp
         }
 
 
-        static void test_GetIndexHeaderByDataFile( string dataFileFullName )
+        static void test_GetIndexHeaderByDataFile( string dataFileName )
         {
             //test get index info
             try
             {
-                var indexHeader = HashtableIndexer.GetIndexHeaderByDataFile( dataFileFullName );
+                var indexHeader = HashtableIndexer.GetIndexHeaderByDataFile( dataFileName );
 
                 Console.WriteLine( indexHeader.ToString() );
             }
             catch ( Exception e )
             {
-                Console.WriteLine("HashtableIndexer.GetIndexHeaderByDataFile( '" + dataFileFullName  + "') => " + e.Message + Environment.NewLine );
+                Console.WriteLine("HashtableIndexer.GetIndexHeaderByDataFile( '" + dataFileName  + "') => " + e.Message + Environment.NewLine );
             }
         }
-        static void test_Search_small( string dataFileFullName )
+        static void test_Search_small( string dataFileName )
         {
-            using ( var searcher = new HashtableSearcher( dataFileFullName, HashtableEngineHelper.NormlizeText ) )
+            using ( var searcher = new HashtableSearcher( dataFileName, HashtableEngineHelper.NormlizeText ) )
             {               
                 var max_len = geo_names.Max( _ => _.Length );
 
@@ -159,11 +159,11 @@ namespace TestApp
                 }
             }
         }
-        static void test_Search_big  ( string dataFileFullName, Encoding dataFileEncoding )
+        static void test_Search_big  ( string dataFileName, Encoding dataFileEncoding )
         {
             Console.WriteLine("Begin fetch test data for search...");
             var testList = new List< string >( 4000000 );
-            using ( var sr = new StreamReader( dataFileFullName, dataFileEncoding ) )
+            using ( var sr = new StreamReader( dataFileName, dataFileEncoding ) )
             {
                 while ( !sr.EndOfStream )
                 {
@@ -176,7 +176,7 @@ namespace TestApp
 
 
             Console.WriteLine("Begin full search...");
-            using ( var searcher = new HashtableSearcher( dataFileFullName, HashtableEngineHelper.NormlizeText ) )
+            using ( var searcher = new HashtableSearcher( dataFileName, HashtableEngineHelper.NormlizeText ) )
             {
                 var sw = Stopwatch.StartNew();
                 var i  = 0;
@@ -197,11 +197,11 @@ namespace TestApp
 
             #region [.commented. disk read.]
             /*Console.WriteLine("Begin full search...");
-            using ( var searcher = new HashtableSearcher( dataFileFullName ) )
+            using ( var searcher = new HashtableSearcher( dataFileName ) )
             {
                 var sw = Stopwatch.StartNew();
                 var i = 0;
-                using ( var sr = new StreamReader( dataFileFullName, dataFileEncoding ) )
+                using ( var sr = new StreamReader( dataFileName, dataFileEncoding ) )
                 {
                     while ( !sr.EndOfStream )
                     {
@@ -219,10 +219,10 @@ namespace TestApp
             }*/
             #endregion
         }
-        static void test_BuildIndex64( string dataFileFullName, Encoding dataFileEncoding )
+        static void test_BuildIndex64( string dataFileName, Encoding dataFileEncoding )
         {
             Console.WriteLine( "Begin calulate record count in data file..." );
-            var allRecordCountInDataFile = HashtableEngineHelper.CalulateAllRecordCountInDataFile( dataFileFullName, dataFileEncoding );
+            var allRecordCountInDataFile = HashtableEngineHelper.CalulateAllRecordCountInDataFile( dataFileName, dataFileEncoding );
             Console.WriteLine( "End calulate record count in data file: " + allRecordCountInDataFile + Environment.NewLine );
 
 
@@ -230,17 +230,17 @@ namespace TestApp
             Console.WriteLine( "Begin build int64-index...");
             var sw = Stopwatch.StartNew();
 
-            HashtableIndexer.BuildIndex( dataFileFullName, dataFileEncoding, allRecordCountInDataFile
+            HashtableIndexer.BuildIndex( dataFileName, dataFileEncoding, allRecordCountInDataFile
                 //.RoundBeforeGreaterBorder()
                 .NearestPrimeNumber(), HashtableEngineHelper.NormlizeText );
-            //HashtableIndexer.BuildIndex( dataFileFullName, dataFileEncoding, 3000000 );
+            //HashtableIndexer.BuildIndex( dataFileName, dataFileEncoding, 3000000 );
 
             Console.WriteLine( "End build int64-index, elapsed: " + sw.Elapsed + Environment.NewLine );
         }
-        static void test_BuildIndex32( string dataFileFullName, Encoding dataFileEncoding )
+        static void test_BuildIndex32( string dataFileName, Encoding dataFileEncoding )
         {
             Console.WriteLine( "Begin calulate record count in data file..." );
-            var allRecordCountInDataFile = HashtableEngineHelper.CalulateAllRecordCountInDataFile( dataFileFullName, dataFileEncoding );
+            var allRecordCountInDataFile = HashtableEngineHelper.CalulateAllRecordCountInDataFile( dataFileName, dataFileEncoding );
             Console.WriteLine( "End calulate record count in data file: " + allRecordCountInDataFile + Environment.NewLine );
 
 
@@ -251,18 +251,18 @@ namespace TestApp
                 .NearestPrimeNumber() );
             var sw = Stopwatch.StartNew();
             
-            HashtableIndexer.BuildIndexInt32( dataFileFullName, dataFileEncoding, allRecordCountInDataFile
+            HashtableIndexer.BuildIndexInt32( dataFileName, dataFileEncoding, allRecordCountInDataFile
                 //.RoundBeforeGreaterBorder()
                 .NearestPrimeNumber(), HashtableEngineHelper.NormlizeText );
-            //HashtableIndexer.BuildIndexInt32( dataFileFullName, dataFileEncoding, 3000000 );
+            //HashtableIndexer.BuildIndexInt32( dataFileName, dataFileEncoding, 3000000 );
 
             Console.WriteLine( "End build int32-index, elapsed: " + sw.Elapsed + Environment.NewLine );
         }
-        static void test_BuildIndexAutomatic( string dataFileFullName, Encoding dataFileEncoding )
+        static void test_BuildIndexAutomatic( string dataFileName, Encoding dataFileEncoding )
         {
             /*
             Console.WriteLine( "Begin calulate record count in data file..." );
-            var allRecordCountInDataFile = HashtableEngineHelper.CalulateAllRecordCountInDataFile( dataFileFullName, dataFileEncoding );
+            var allRecordCountInDataFile = HashtableEngineHelper.CalulateAllRecordCountInDataFile( dataFileName, dataFileEncoding );
             Console.WriteLine( "End calulate record count in data file: " + allRecordCountInDataFile + Environment.NewLine );
 
             //test automatic-Indexing
@@ -270,21 +270,21 @@ namespace TestApp
             Console.WriteLine( "Hash-table size: " + allRecordCountInDataFile.NearestPrimeNumber() );
             var sw = Stopwatch.StartNew();
             
-            HashtableIndexer.BuildIndexAutomatic( dataFileFullName, dataFileEncoding, allRecordCountInDataFile.NearestPrimeNumber() );
+            HashtableIndexer.BuildIndexAutomatic( dataFileName, dataFileEncoding, allRecordCountInDataFile.NearestPrimeNumber() );
 
             Console.WriteLine( "End build automatic-index, elapsed: " + sw.Elapsed + Environment.NewLine );
             */
 
             Console.WriteLine( "Begin build automatic-index...");
             var sw = Stopwatch.StartNew();
-            HashtableIndexer.BuildIndexAutomatic( dataFileFullName, dataFileEncoding, HashtableEngineHelper.NormlizeText );
+            HashtableIndexer.BuildIndexAutomatic( dataFileName, dataFileEncoding, HashtableEngineHelper.NormlizeText );
 
             Console.WriteLine( "End build automatic-index, elapsed: " + sw.Elapsed + Environment.NewLine );
         }
-        static void test_BuildIndex32OnDisk( string dataFileFullName, Encoding dataFileEncoding )
+        static void test_BuildIndex32OnDisk( string dataFileName, Encoding dataFileEncoding )
         {
             Console.WriteLine( "Begin calulate record count in data file..." );
-            var allRecordCountInDataFile = HashtableEngineHelper.CalulateAllRecordCountInDataFile( dataFileFullName, dataFileEncoding );
+            var allRecordCountInDataFile = HashtableEngineHelper.CalulateAllRecordCountInDataFile( dataFileName, dataFileEncoding );
             Console.WriteLine( "End calulate record count in data file: " + allRecordCountInDataFile + Environment.NewLine );
 
 
@@ -292,44 +292,44 @@ namespace TestApp
             Console.WriteLine( "Begin build int32-index on disk...");
             var sw = Stopwatch.StartNew();
 
-            HashtableIndexer.BuildIndexInt32OnDisk( dataFileFullName, dataFileEncoding, allRecordCountInDataFile.NearestPrimeNumber(), HashtableEngineHelper.NormlizeText );
+            HashtableIndexer.BuildIndexInt32OnDisk( dataFileName, dataFileEncoding, allRecordCountInDataFile.NearestPrimeNumber(), HashtableEngineHelper.NormlizeText );
 
             Console.WriteLine( "End build int32-index on disk, elapsed: " + sw.Elapsed + Environment.NewLine );
         }
 
         static void Main( string[] args )
         {
-            AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+            AppDomain.CurrentDomain.UnhandledException += (s, e) =>
                 Extensions.Write2Console( "AppDomain::UnhandledException => " + e.ExceptionObject.ToString(), ConsoleColor.Red );
 
             //toUtf8( "XZ", Encoding.Unicode );
 
             //=====================//
-            Console.WriteLine( "Data file:          '" + config.dataFileFullName + '\'' );
+            Console.WriteLine( "Data file:          '" + Path.GetFullPath( config.dataFileName ) + '\'' );
             Console.WriteLine( "Data file encoding: '" + config.dataFileEncoding.BodyName + '\'' + Environment.NewLine );
 
 
             if ( config.test_BuildIndex32OnDisk )
-                test_BuildIndex32OnDisk( config.dataFileFullName, config.dataFileEncoding );
+                test_BuildIndex32OnDisk( config.dataFileName, config.dataFileEncoding );
 
 
             if ( config.test_BuildIndex64 )
-                test_BuildIndex64( config.dataFileFullName, config.dataFileEncoding );
+                test_BuildIndex64( config.dataFileName, config.dataFileEncoding );
 
             if ( config.test_BuildIndex32 )
-                test_BuildIndex32( config.dataFileFullName, config.dataFileEncoding );
+                test_BuildIndex32( config.dataFileName, config.dataFileEncoding );
 
             if ( config.test_BuildIndexAutomatic )
-                test_BuildIndexAutomatic( config.dataFileFullName, config.dataFileEncoding );
+                test_BuildIndexAutomatic( config.dataFileName, config.dataFileEncoding );
 
             if ( config.test_GetIndexHeaderByDataFile )
-                test_GetIndexHeaderByDataFile( config.dataFileFullName );
+                test_GetIndexHeaderByDataFile( config.dataFileName );
 
             if ( config.test_Search_small )
-                test_Search_small( config.dataFileFullName );
+                test_Search_small( config.dataFileName );
 
             if ( config.test_Search_big )
-                test_Search_big( config.dataFileFullName, config.dataFileEncoding );
+                test_Search_big( config.dataFileName, config.dataFileEncoding );
 
             //=====================//
             Console.WriteLine("\r\n\r\n\r\n\t{.....push fusking button.finita.fusking rotter....}");

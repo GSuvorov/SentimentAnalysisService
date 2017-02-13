@@ -21,7 +21,7 @@ namespace DiskSearchEngine
             return (Path.ChangeExtension( dataFileFullName, IndexFileHelper.INDEX_FILE_EXTENSION ));
         }
 
-        public static uint HashFunction( ref string value, uint hashTableSize )
+        public static uint HashFunction( string value, uint hashTableSize )
         {
 		    uint __hash = 0;
 		    foreach ( var _ch in value )

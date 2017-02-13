@@ -73,20 +73,19 @@ namespace DiskSearchEngine.Hashtable
         private static void BuildIndexInMemory( string dataFileFullName, Encoding dataFileEncoding, uint hashTableSize, NormlizeTextFunction normlizeTextFunction )
         {
             //
-            HashtableIndexFileHeader indexHeader = new HashtableIndexFileHeader
+            var indexHeader = new HashtableIndexFileHeader
                 (
                 dataFileFullName,
                 dataFileEncoding, 
                 hashTableSize 
                 );
             //
-            MemorySlot[] hashTable = new MemorySlot[ indexHeader.HashtableSize ];
+            var hashTable = new MemorySlot[ indexHeader.HashtableSize ];
             
             //
             using ( var dataFileTextLineReader = new TextLineReader( indexHeader.DataFileFullName, indexHeader.DataFileEncoding ) )
             {
-
-            #region [.2 calc index in memory.]
+                #region [.2 calc index in memory.]
                 int dataRecordCount     = 0;
                 int dataRecordMaxLenght = 0;
 		        while ( !dataFileTextLineReader.EndOfStream )
@@ -109,7 +108,7 @@ namespace DiskSearchEngine.Hashtable
                         }
                     }
 
-			        uint hashCode = IndexFileHelper.HashFunction( ref text, indexHeader.HashtableSize );
+			        uint hashCode = IndexFileHelper.HashFunction( text, indexHeader.HashtableSize );
 
 			        MemorySlot memorySlot = hashTable[ hashCode ];
                     if ( memorySlot == null )
@@ -142,12 +141,10 @@ namespace DiskSearchEngine.Hashtable
 
                 indexHeader.SetDataRecordCount    ( dataRecordCount );
                 indexHeader.SetDataRecordMaxBytesLenght( indexHeader.DataFileEncoding.GetMaxByteCount( dataRecordMaxLenght ) );
-
-            #endregion
-
+                #endregion
             }
 
-        #region [.Calulate Tag collision statistica.]
+            #region [.Calulate Tag collision statistica.]
             foreach ( var memorySlot in hashTable ) 
             {
                 if ( memorySlot == null )
@@ -175,14 +172,12 @@ namespace DiskSearchEngine.Hashtable
                     indexHeader.TagCollisionStatistica.IncremetByKey( currentTagChainDepth );
                 }
             }
-        #endregion
+            #endregion
             
             //
             using ( var indexFileBinaryWriter = IndexFileHelper.CreateBinaryWriterRandomAccess( indexHeader.GetIndexFileFullName() ) )
             {
-
-		    #region [.3 write hash table on disk.]
-
+		        #region [.3 write hash table on disk.]
 		        DiskSlot diskSlot = new DiskSlot();
                 DiskTag  diskTag  = new DiskTag();
                 byte[] emptyDiskSlotBytes = DiskSlot.GetEmptyDiskSlot().StructureToByteArray();		        
@@ -254,9 +249,7 @@ namespace DiskSearchEngine.Hashtable
 
                     hashTableItemIndex++;
 		        }
-
-            #endregion
-
+                #endregion
             }
 
             //Free memory
@@ -344,7 +337,7 @@ namespace DiskSearchEngine.Hashtable
                         }
                     }
 
-			        uint hashCode = IndexFileHelper.HashFunction( ref text, indexHeader.HashtableSize );
+			        uint hashCode = IndexFileHelper.HashFunction( text, indexHeader.HashtableSize );
 
 			        MemorySlotInt32 memorySlot = hashTable[ hashCode ];
                     if ( memorySlot == null )
@@ -565,7 +558,7 @@ namespace DiskSearchEngine.Hashtable
         public static void BuildIndexInt32OnDisk( string dataFileFullName, Encoding dataFileEncoding, uint hashTableSize, NormlizeTextFunction normlizeTextFunction = null )
         {
             //create header-of-disk-hashtable
-            HashtableIndexFileHeader indexHeader = new HashtableIndexFileHeader
+            var indexHeader = new HashtableIndexFileHeader
                 ( 
                 dataFileFullName,
                 dataFileEncoding, 
@@ -600,7 +593,7 @@ namespace DiskSearchEngine.Hashtable
                 //open data-file
                 using ( var dataFileTextLineReader = new TextLineReader( indexHeader.DataFileFullName, indexHeader.DataFileEncoding ) )
                 {
-                #region [.build index on disk.]
+                    #region [.build index on disk.]
                     int dataRecordCount     = 0;
                     int dataRecordMaxLenght = 0;
 		            while ( !dataFileTextLineReader.EndOfStream )
@@ -629,9 +622,9 @@ namespace DiskSearchEngine.Hashtable
                             }
                         }
 
-			            uint hashCode = IndexFileHelper.HashFunction( ref text, indexHeader.HashtableSize );
+			            uint hashCode = IndexFileHelper.HashFunction( text, indexHeader.HashtableSize );
 
-                    #region [..]
+                        #region [.code.]
                         DiskSlotInt32 diskSlot = indexFileStream.SeekAndReadDiskSlotInt32
                             ( 
                             indexHeader.SizeOf + hashCode * DiskSlotInt32.SizeOf, 
@@ -704,7 +697,7 @@ namespace DiskSearchEngine.Hashtable
                             if (tagAreaOffset > MemorySlotInt32.MaxValue)
                                 throw (new InvalidOperationException("tag area offset more then allow possible value => tag area offset: " + tagAreaOffset + ", possible value: " + MemorySlotInt32.MaxValue));
                         }
-                    #endregion
+                        #endregion
 
                         dataRecordCount++;
                         
@@ -713,8 +706,7 @@ namespace DiskSearchEngine.Hashtable
 
                     indexHeader.SetDataRecordCount( dataRecordCount );
                     indexHeader.SetDataRecordMaxBytesLenght( indexHeader.DataFileEncoding.GetMaxByteCount( dataRecordMaxLenght ) );
-
-                #endregion
+                    #endregion
                 }
 
                 //one more time - Write header in index file

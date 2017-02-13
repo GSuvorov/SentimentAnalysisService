@@ -103,8 +103,7 @@ namespace DiskSearchEngine
 		{
             var fileInfo = new FileInfo( dataFileFullName );
 
-            return (fileInfo.LastWriteTime == this.DataFileLastWriteTime 
-                        && 
+            return (/*check only file-size*//*fileInfo.LastWriteTime == this.DataFileLastWriteTime && */
                     fileInfo.Length == this.DataFileSize);
 		}
         internal void SetDataRecordCount( int dataRecordCount )

@@ -140,11 +140,11 @@ namespace DiskSearchEngine.Hashtable
         /// <returns>Normlized text</returns>
         /*public static string NormlizeText( string text )
         {
-            return (NormlizeText( ref text ));
+            return (NormlizeText( text ));
         }
         public static string HashtableEngineNormlizeText( this string text )
         {
-            return (NormlizeText( ref text ));
+            return (NormlizeText( text ));
         }*/
         public static string NormlizeText( string text )
         {
