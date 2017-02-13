@@ -1,0 +1,396 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Collections.ObjectModel;
+
+namespace DiskSearchEngine
+{
+    internal static class BoyerMooreAlgorithm
+    {
+        /* Вход: needle+nlen - что искать
+         *   offset - позиция конца суффикса; suffixlen - его длина
+         * Выход: 1, если есть совпадение суффикса (и нет совпадения более длинного суффикса)
+         */
+        private static bool suffix_match( ref string needle/*, size_t nlen*/, int offset, int suffixlen )
+        {
+            if ( offset > suffixlen )
+            {
+                //---return needle[offset - suffixlen - 1] != needle[needle.Length - suffixlen - 1] &&
+                    //memcmp(needle + needle.Length - suffixlen, needle + offset - suffixlen, suffixlen) == 0;
+
+                if ( needle[ offset - suffixlen - 1 ] != needle[ needle.Length - suffixlen - 1 ] )
+                {
+                    for ( int i = 0; i < suffixlen; i++ )
+                    {
+                        if ( needle[ needle.Length - suffixlen + i ] != needle[ offset - suffixlen + i ] )
+                            return (false);
+                    }
+                    return (true);
+                }
+                return (false);
+            }
+            else
+            {
+                //---return memcmp( needle + needle.Length - offset, needle, offset) == 0;
+                for ( int i = 0; i < offset; i++ )
+                {
+                    if ( needle[ needle.Length - suffixlen + i ] != needle[ i ] )
+                        return (false);
+                }
+                return (true);
+            }
+        }
+        internal static bool suffix_match( byte[] needle, int nlen, int offset, int suffixlen )
+        {
+            if ( offset > suffixlen )
+            {
+                //---return needle[offset - suffixlen - 1] != needle[nlen - suffixlen - 1] &&
+                    //memcmp(needle + nlen - suffixlen, needle + offset - suffixlen, suffixlen) == 0;
+
+                if ( needle[ offset - suffixlen - 1 ] != needle[ nlen - suffixlen - 1 ] )
+                {
+                    for ( int i = 0; i < suffixlen; i++ )
+                    {
+                        if ( needle[ nlen - suffixlen + i ] != needle[ offset - suffixlen + i ] )
+                            return (false);
+                    }
+                    return (true);
+                }
+                return (false);
+            }
+            else
+            {
+                //---return memcmp( needle + nlen - offset, needle, offset) == 0;
+                for ( int i = 0; i < offset; i++ )
+                {
+                    if ( needle[ nlen - suffixlen + i ] != needle[ i ] )
+                        return (false);
+                }
+                return (true);
+            }
+        }
+
+        /* Вход: haystack - где искать, needle - что искать.
+         *   hlen - длина haystack, nlen - длина needle
+         * Выход: указатель на первое вхождение needle в haystack, либо NULL
+         */
+        public static int IndexOf( ref string haystack, ref string needle )
+        {
+            if ( haystack.IsEmptyOrNull() || needle.IsEmptyOrNull() || 
+                 needle.Length > haystack.Length /*|| needle.Length <= 0*/ )
+                return (NOT_FOUND);
+
+            int[] skip = new int[ needle.Length     ]; /* Таблица суффиксов */
+            int[] occ  = new int[ char.MaxValue + 1 ]; /* Таблица стоп-символов */        
+         
+            /* ПОСТРОЕНИЕ ТАБЛИЦЫ СТОП-СИМВОЛОВ */
+         
+            /* Заполняем -1 (в Си нумерация символов с 0!!) */
+            for(int a=0; a< occ.Length; ++a)
+                occ[a] = -1;
+         
+            /* В таблицу occ записывается последнее вхождение в needle  */
+            /* (исключая последний символ) */
+            for(int a = 0; a < needle.Length - 1; ++a) 
+                occ[needle[a]] = a;
+         
+            /* ПОСТРОЕНИЕ ТАБЛИЦЫ СУФФИКСОВ */  
+            /* Упрощённый вариант. Можно реализовать быстрее. */
+            for(int a = 0; a < needle.Length; ++a)
+            {
+                int offs = needle.Length;
+                while( (offs != 0) && !suffix_match( ref needle, offs, a ) )
+                    --offs;
+                skip[needle.Length - a - 1] = needle.Length - offs;
+            }
+         
+            /* ПОИСК */
+            for(int hpos = 0; hpos <= haystack.Length - needle.Length; )
+            {
+                int npos = needle.Length - 1;
+                /* Сверка needle и haystack с конца */
+                while(needle[npos] == haystack[npos + hpos])
+                {
+                    if(npos == 0) 
+                        return (hpos);
+         
+                    --npos;
+                }
+                /* Не совпало! */
+                hpos += Math.Max(skip[npos], npos - occ[haystack[npos + hpos]]);
+                /*          ^^^         ^^^^                               */
+                /*        суффикс     стоп-символ                          */
+            }
+            return (NOT_FOUND);
+        }
+        public static int IndexOf( byte[] haystack, int hlen, byte[] needle, int nlen )
+        {
+            if ( haystack == null || needle == null || 
+                 nlen > hlen || nlen <= 0 )
+                return (NOT_FOUND);
+
+            int[] skip = new int[ nlen              ]; /* Таблица суффиксов */
+            int[] occ  = new int[ byte.MaxValue + 1 ]; /* Таблица стоп-символов */        
+         
+            /* ПОСТРОЕНИЕ ТАБЛИЦЫ СТОП-СИМВОЛОВ */
+         
+            /* Заполняем -1 (в Си нумерация символов с 0!!) */
+            for ( int a = 0; a < occ.Length; ++a )
+                occ[ a ] = -1;
+         
+            /* В таблицу occ записывается последнее вхождение в needle  */
+            /* (исключая последний символ) */
+            for ( int a = 0; a < nlen - 1; ++a ) 
+                occ[ needle[ a ] ] = a;
+         
+            /* ПОСТРОЕНИЕ ТАБЛИЦЫ СУФФИКСОВ */  
+            /* Упрощённый вариант. Можно реализовать быстрее. */
+            for(int a = 0; a < nlen; ++a)
+            {
+                int offs = nlen;
+                while( (offs != 0) && !suffix_match( needle, nlen, offs, a ) )
+                    --offs;
+                skip[nlen - a - 1] = nlen - offs;
+            }
+         
+            /* ПОИСК */
+            for(int hpos = 0; hpos <= hlen - nlen; )
+            {
+                int npos = nlen - 1;
+                /* Сверка needle и haystack с конца */
+                while(needle[npos] == haystack[npos + hpos])
+                {
+                    if(npos == 0) 
+                        return (hpos);
+         
+                    --npos;
+                }
+                /* Не совпало! */
+                hpos += Math.Max( skip[ npos ], npos - occ[ haystack[ npos + hpos ] ] );
+                /*          ^^^         ^^^^                               */
+                /*        суффикс     стоп-символ                          */
+            }
+            return (NOT_FOUND);
+        }
+
+        public static int BoyerMooreIndexOf( this string haystack, ref string needle )
+        {
+            return (IndexOf( ref haystack, ref needle ));
+        }
+
+        public const int NOT_FOUND = -1;
+    }
+
+    internal interface IFindBytesInByteBuffer
+    {
+        int IndexOf( byte[] haystack );
+        int IndexOf( byte[] haystack, int hlen );
+        int IndexOf( byte[] haystack, int hstart, int hlen );
+        ReadOnlyCollection< byte > Needle { get; }
+        int NeedleLength { get; }
+    }
+
+    internal class FindBytesInByteBuffer : IFindBytesInByteBuffer
+    {
+        private byte[] _Needle;
+
+        private int[] _Skip; /* Таблица суффиксов */
+        private int[] _Occ;  /* Таблица стоп-символов */   
+
+        public FindBytesInByteBuffer( byte[] needle )
+        {
+            if ( needle == null || needle.Length == 0 )
+                throw (new ArgumentNullException("needle"));
+
+            _Needle = new byte[ needle.Length ];
+            needle.CopyTo( _Needle, 0 );
+
+            //------------------------------------------------//
+            _Skip = new int[ _Needle.Length    ]; /* Таблица суффиксов */
+            _Occ  = new int[ byte.MaxValue + 1 ]; /* Таблица стоп-символов */        
+         
+            /* ПОСТРОЕНИЕ ТАБЛИЦЫ СТОП-СИМВОЛОВ */
+         
+            /* Заполняем -1 (в Си нумерация символов с 0!!) */
+            for ( int a = 0; a < _Occ.Length; ++a )
+                _Occ[ a ] = -1;
+         
+            /* В таблицу occ записывается последнее вхождение в needle  */
+            /* (исключая последний символ) */
+            for ( int a = 0; a < _Needle.Length - 1; ++a ) 
+                _Occ[ needle[ a ] ] = a;
+         
+            /* ПОСТРОЕНИЕ ТАБЛИЦЫ СУФФИКСОВ */  
+            /* Упрощённый вариант. Можно реализовать быстрее. */
+            for ( int a = 0; a < _Needle.Length; ++a )
+            {
+                int offs = _Needle.Length;
+                while( (offs != 0) && !BoyerMooreAlgorithm.suffix_match( needle, _Needle.Length, offs, a ) )
+                    --offs;
+                _Skip[ _Needle.Length - a - 1 ] = _Needle.Length - offs;
+            }
+            //------------------------------------------------//
+        }
+
+        private ReadOnlyCollection< byte > _ReadOnlyNeedle;
+        public ReadOnlyCollection< byte > Needle
+        {
+            get
+            {
+                if ( _ReadOnlyNeedle == null )
+                {
+                    _ReadOnlyNeedle = _Needle.ToList().AsReadOnly();
+                }
+                return (_ReadOnlyNeedle);
+            }
+        }
+
+        public int NeedleLength
+        {
+            get { return (_Needle.Length); }
+        }
+
+        public int IndexOf( byte[] haystack )
+        {
+            return (IndexOf( haystack, (haystack != null) ? haystack.Length : 0 ));
+        }
+        public int IndexOf( byte[] haystack, int hlen )
+        {
+            return (IndexOf( haystack, 0, hlen ));
+        }
+        public int IndexOf( byte[] haystack, int hstart, int hlen )
+        {
+            if ( haystack == null || 
+                 _Needle.Length > hlen )
+                return (BoyerMooreAlgorithm.NOT_FOUND);
+         
+            /* ПОИСК */
+            for ( int hpos = hstart; hpos <= hlen - _Needle.Length; )
+            {
+                int npos = _Needle.Length - 1;
+                /* Сверка needle и haystack с конца */
+                while ( _Needle[ npos ] == haystack[ npos + hpos ] )
+                {
+                    if ( npos == 0 ) 
+                        return (hpos);
+         
+                    --npos;
+                }
+                /* Не совпало! */
+                hpos += Math.Max( _Skip[ npos ], npos - _Occ[ haystack[ npos + hpos ] ] );
+                /*          ^^^         ^^^^                               */
+                /*        суффикс     стоп-символ                          */
+            }
+            return (BoyerMooreAlgorithm.NOT_FOUND);
+        }        
+    }
+
+    /*internal class FindCarriageTransferInByteBuffer : FindBytesInByteBuffer
+    {
+        public const char CARRIAGE_TRANSFER = '\n';
+
+        public FindCarriageTransferInByteBuffer( Encoding encoding )
+            : base( encoding.GetBytes( new[] { CARRIAGE_TRANSFER } ) )
+        {
+        }
+    }*/
+
+    internal class FindCarriageTransferInByteBuffer : IFindBytesInByteBuffer
+    {
+    #region [.Field's & Const's.]
+        public static readonly string[] CARRIAGES_TRANSFERS = new[] { /*"\r\n",*/ "\n", "\r" };
+
+        private IFindBytesInByteBuffer[] _FindersArray;
+        private IFindBytesInByteBuffer   _LastSuccessFoundFinder;
+
+        private class FindResult
+        {
+            public int CarriageTransferIndex;
+            public IFindBytesInByteBuffer Finder;
+        }
+    #endregion
+
+    #region [.ctor().]
+        public FindCarriageTransferInByteBuffer( Encoding encoding )
+        {
+            if ( encoding == null )
+                throw (new ArgumentNullException("encoding"));
+
+
+            _FindersArray = new IFindBytesInByteBuffer[ CARRIAGES_TRANSFERS.Length ];
+
+            var i = 0;
+            foreach ( var carriageTransfer in CARRIAGES_TRANSFERS.OrderByDescending( _ => _.Length ) )
+            {
+                _FindersArray[ i++ ] = new FindBytesInByteBuffer( encoding.GetBytes( carriageTransfer ) );
+            }
+
+            MaxNeedleLength = _FindersArray.Max( _ => _.NeedleLength );
+        }
+    #endregion
+
+    #region [.IFindBytesInByteBuffer.]
+        public int IndexOf( byte[] haystack )
+        {
+            return (IndexOf( haystack, (haystack != null) ? haystack.Length : 0 ));
+        }
+        public int IndexOf( byte[] haystack, int hlen )
+        {
+            return (IndexOf( haystack, 0, hlen ));
+        }
+        public int IndexOf( byte[] haystack, int hstart, int hlen )
+        {
+            var findResult = (from finder in _FindersArray
+                      let _ = new FindResult()
+                      { 
+                          CarriageTransferIndex = finder.IndexOf( haystack, hstart, hlen ),
+                          Finder = finder
+                      }
+                      where ( _.CarriageTransferIndex != BoyerMooreAlgorithm.NOT_FOUND )
+                      orderby _.CarriageTransferIndex
+                      select _
+                      ).FirstOrDefault();
+
+            if ( findResult != default(FindResult) )
+            {
+                _LastSuccessFoundFinder = findResult.Finder;
+                return (findResult.CarriageTransferIndex);
+            }
+
+            _LastSuccessFoundFinder = null;
+            return (BoyerMooreAlgorithm.NOT_FOUND);
+        }
+
+        public int MaxNeedleLength
+        {
+            get;
+            private set;
+        }
+
+        public ReadOnlyCollection< byte > Needle
+        {
+            get 
+            {
+                if ( _LastSuccessFoundFinder != null )
+                    return (_LastSuccessFoundFinder.Needle);
+
+                //return (null);
+                throw new NotImplementedException(); 
+            }
+        }
+
+        public int NeedleLength
+        {
+            get 
+            {
+                if ( _LastSuccessFoundFinder != null )
+                    return (_LastSuccessFoundFinder.NeedleLength);
+
+                //return (0);
+                throw new NotImplementedException(); 
+            }
+        }
+    #endregion
+    }
+}

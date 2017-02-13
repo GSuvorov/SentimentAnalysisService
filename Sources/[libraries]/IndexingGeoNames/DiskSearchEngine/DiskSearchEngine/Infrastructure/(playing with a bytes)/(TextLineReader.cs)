@@ -1,0 +1,591 @@
+﻿//#define _REALLOC_BUFFER_ON_FLY
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+
+namespace DiskSearchEngine
+{
+    internal class TextLineReader : IDisposable
+    {
+        private const int READ_BUFFER_SIZE_IN_BYTES = 1024;
+
+        private BinaryReader _BinaryReader;
+        private Encoding     _Encoding;
+        private FindCarriageTransferInByteBuffer _FindCarriageTransfer;
+        private byte[] _ReadBuffer;
+        private long   _StreamLength;
+        private long   _StreamPosition;
+        private long   _EncodingPreambleLen;
+    
+    #region [.ctor().]
+        public TextLineReader( string fileFullName, Encoding fileEncoding )
+            : this( fileFullName, fileEncoding, READ_BUFFER_SIZE_IN_BYTES )
+        {            
+        }
+
+        public TextLineReader( string fileFullName, Encoding fileEncoding, int readBufferSizeInBytes )
+        {
+            if ( fileFullName.IsEmptyOrNull() )
+                throw (new ArgumentNullException("fileFullName"));
+            if ( fileEncoding == null )
+                throw (new ArgumentNullException("fileEncoding"));
+            if ( readBufferSizeInBytes < 0 )
+                throw (new ArgumentException("readBufferSizeInBytes"));
+
+
+            _BinaryReader = DataFileHelper.CreateBinaryReaderRandomAccess( fileFullName );
+            _Encoding     = fileEncoding;
+            _Decoder      = _Encoding.GetDecoder();
+
+            _FindCarriageTransfer = new FindCarriageTransferInByteBuffer( _Encoding );
+            _Tail = new byte[ 2 * (_FindCarriageTransfer.MaxNeedleLength - 1) ];
+
+            if ( readBufferSizeInBytes <= 0 ) readBufferSizeInBytes = READ_BUFFER_SIZE_IN_BYTES;
+            _ReadBuffer  = new byte[ readBufferSizeInBytes ];
+            _Accumulator = new StringBuilder( _ReadBuffer.Length );
+            _CharBuffer  = new char[ _Encoding.GetMaxCharCount( _ReadBuffer.Length ) ];
+
+            _StreamLength   = _BinaryReader.BaseStream.Length;
+            _StreamPosition = 0;
+
+            //If file-pointer in begin of file try trim possible encoding preamble
+            SeekFromBegin
+                ( 
+                    ( _BinaryReader.StartsWithEncodingPreamble( _Encoding ) ) 
+                    ? _Encoding.GetPreamble().Length : 0
+                );
+            _EncodingPreambleLen = _StreamPosition;
+        }
+    #endregion
+
+        public long StreamPosition
+        {
+            //get { return (_BinaryReader.BaseStream.Position); }
+            get { return (_StreamPosition); }
+        }
+
+        public bool EndOfStream
+        {
+            //get { return (_BinaryReader.BaseStream.Position == _Length); }
+            get { return (_StreamPosition == _StreamLength); }
+        }
+
+        private void SetEndOfStream()
+        {
+            _StreamPosition = _StreamLength;
+        }
+        private bool EndOfStreamInternal
+        {
+            get { return (_BinaryReader.BaseStream.Position == _StreamLength); }
+        }
+
+        public void SeekFromBegin( long position )
+        {
+            _StreamPosition = position;
+            _BinaryReader.BaseStream.Seek( position, SeekOrigin.Begin );
+
+            ClearReadBuffer_II();
+        }
+
+    #region [.variant #1.]
+        /// <summary>
+        ///If Carriage Transfer not found in whole reading buffer do 
+        ///swap read while not meet Carriage Transfer or not ended stream 
+        /// </summary>
+        /// <param name="bytesCount">Last read operation reading bytes count</param>
+        /// <returns>Text ended of Carriage Transfer or [null] if ended stream</returns>
+        private string ReadLineSwap( int bytesCount )
+        {
+            //Create temp accumulator reading bytes list
+            var accumulateBytesList = _ReadBuffer.Take( bytesCount ).ToList();
+            //End-Index of accumulator bytes list where search has been fulfilled
+            var skip4Search = 0;
+
+            while ( true )
+            {
+                //Add last read operation reading bytes count
+                skip4Search += bytesCount;
+
+                //Read data from disk in bytes buffer
+                bytesCount = _BinaryReader.Read( _ReadBuffer, 0, _ReadBuffer.Length );
+
+                //Add readed bytes to accumulator bytes list
+                accumulateBytesList.AddRange( _ReadBuffer.Take( bytesCount ) );
+
+                //Create temp byte buffer for search Carriage Transfer within
+                var tempBuffer = accumulateBytesList.Skip( skip4Search - (_FindCarriageTransfer.NeedleLength - 1) ).ToArray();
+
+                //look for Carriage Transfer in reading text line (temp byte buffer)
+                var carriageTransferPosition = _FindCarriageTransfer.IndexOf( tempBuffer );
+
+                //Carriage Transfer successful found in reading text line
+                if ( carriageTransferPosition != -1 )
+                {
+                    //Offset in accumulator bytes list to text ended of Carriage Transfer
+                    var offset = skip4Search - (_FindCarriageTransfer.NeedleLength - 1) + carriageTransferPosition;
+
+                    //Text ended of Carriage Transfer
+                    var text = _Encoding.GetString( accumulateBytesList.Take( offset ).ToArray() );
+
+                    //Offset of file position by current
+                    offset += _FindCarriageTransfer.NeedleLength;
+
+                    //Real file position
+                    _StreamPosition += offset;
+
+                    //Seek real file position
+                    _BinaryReader.BaseStream.Seek( -(accumulateBytesList.Count - offset), SeekOrigin.Current );
+
+                #if _REALLOC_BUFFER_ON_FLY
+                    //Realloc buffer on fly 4 future reading
+                    _ReadBuffer = new byte[ bytesList.Count ];
+                #endif
+
+                    //Result
+                    return (text);
+                }
+
+                //if end of stream => return null & set position to equal lenght
+                if ( EndOfStreamInternal )
+                {
+                    _StreamPosition = _StreamLength;
+                    return (null);
+                }
+            }
+        }
+        public string _ReadLine()
+        {
+            //Read data from disk in bytes buffer
+            int bytesCount = _BinaryReader.Read( _ReadBuffer, 0, _ReadBuffer.Length );
+            //Nothing is readed, return [null]
+            if ( bytesCount == 0 )
+                return (null);
+
+            //look for Carriage Transfer in reading text line (byte buffer)
+            int carriageTransferPosition = _FindCarriageTransfer.IndexOf( _ReadBuffer, bytesCount );
+
+            //Carriage Transfer not found in reading text line
+            if ( carriageTransferPosition == -1 )
+            {
+                //if end of stream => return null & set position to equal lenght
+                if ( EndOfStreamInternal )
+                {
+                    _StreamPosition = _StreamLength;
+                    return (null);
+                }
+
+                //If Carriage Transfer not found in whole reading buffer do 
+                //swap read while not meet Carriage Transfer or not ended stream 
+                return (ReadLineSwap( bytesCount ));
+            }
+
+            //Text ended of Carriage Transfer
+            var text = _Encoding.GetString( _ReadBuffer, 0, carriageTransferPosition );
+
+            //Offset of file position by current
+            var offset = carriageTransferPosition + _FindCarriageTransfer.NeedleLength;
+
+            //Real file position
+            _StreamPosition += offset;
+
+            //Seek real file position
+            _BinaryReader.BaseStream.Seek( -(Math.Min( _ReadBuffer.Length, bytesCount ) - offset), SeekOrigin.Current );
+
+            //Result
+            return (text);
+        }
+    #endregion
+
+    #region [.variant #2.]
+        //0. check that byte-buffer no content remaind of data
+        //1. read disk-data into byte-buffer
+        //2. search in byte-buffer Carriages Transfers (\r, \n, \r\n)
+        //3. if found - get text to this, store real disk position, return text
+        //4. 
+        private int _ReadBufferLen = 0;
+        private int _ReadBufferPos = 0;
+        private bool ReadBufferIsEmpty
+        {
+            get { return (_ReadBufferPos == _ReadBufferLen); }
+        }
+        private void ClearReadBuffer()
+        {
+            _ReadBufferLen = 0;
+            _ReadBufferPos = 0;
+        }       
+
+        private bool ReadDiskDataIntoBuffer()
+        {
+            SaveTail_1();
+
+            _ReadBufferPos = 0;
+            _ReadBufferLen = _BinaryReader.Read( _ReadBuffer, 0, _ReadBuffer.Length );
+
+            SaveTail_2();
+
+            return (_ReadBufferLen > 0);
+        }
+
+        private byte[] _Tail;
+        private bool _TailSaved;
+        private void SaveTail_1()
+        {
+            _TailSaved = false;
+            if ( _Tail.Length != 0 && (_ReadBufferLen >= (_FindCarriageTransfer.MaxNeedleLength - 1)) )
+            {
+                Array.Copy
+                    ( 
+                    _ReadBuffer,
+                    _ReadBufferLen - (_FindCarriageTransfer.MaxNeedleLength - 1), //_Tail.Length / 2, 
+                    _Tail,
+                    0,
+                    (_FindCarriageTransfer.MaxNeedleLength - 1) //_Tail.Length / 2
+                    );
+                _TailSaved = true;
+            }
+        }
+        private void SaveTail_2()
+        {
+            if ( _TailSaved && _Tail.Length != 0 && _ReadBufferLen != 0 )
+            {
+            Array.Copy
+                ( 
+                _ReadBuffer,
+                0, 
+                _Tail,
+                (_FindCarriageTransfer.MaxNeedleLength - 1), //_Tail.Length / 2,
+                Math.Min( (_FindCarriageTransfer.MaxNeedleLength - 1), _ReadBufferLen ) //_Tail.Length / 2
+                );
+            }
+        }
+
+        public string ReadLine_on_bytes_SLOW()
+        {
+            //If no data in byte-buffer
+            if ( ReadBufferIsEmpty )
+            {
+                //Read data from disk in bytes buffer
+                if ( !this.ReadDiskDataIntoBuffer() )
+                {
+                    SetEndOfStream();
+                    //No more data
+                    return (null);
+                }
+            }
+
+            List< byte > accumulatorList = null;
+
+            while ( true )
+            {
+                if ( (_ReadBufferPos == 0) && (accumulatorList != null) && _TailSaved )
+                {
+                    int carriageTransferPosInTail = _FindCarriageTransfer.IndexOf( _Tail );
+                    //Carriage Transfer is found in tail
+                    if ( carriageTransferPosInTail != -1 && (carriageTransferPosInTail < (_Tail.Length / 2)) )
+                    {
+                        var shift = (_Tail.Length / 2) - carriageTransferPosInTail;
+
+                        accumulatorList.RemoveRange( accumulatorList.Count - shift, shift );
+
+                        var text = _Encoding.GetString( accumulatorList.ToArray() );
+
+                        _ReadBufferPos = _FindCarriageTransfer.NeedleLength - shift;
+
+                        _StreamPosition += accumulatorList.Count + _FindCarriageTransfer.NeedleLength;
+
+#if _DEBUG
+    var p = _BinaryReader.BaseStream.Position;
+    _BinaryReader.BaseStream.Position = _StreamPosition;
+
+    byte[] temp = new byte[ _ReadBufferLen - _ReadBufferPos ];
+    int readBytes = _BinaryReader.BaseStream.Read( temp, 0, temp.Length );
+
+    System.Diagnostics.Debug.Assert
+    (
+        _Encoding.GetString( _ReadBuffer, _ReadBufferPos, _ReadBufferLen - _ReadBufferPos )
+            ==
+        _Encoding.GetString( temp, 0, readBytes )
+    );
+
+    _BinaryReader.BaseStream.Position = p;
+#endif
+
+                        return (text);
+                    }
+                }
+
+                int carriageTransferPos = _FindCarriageTransfer.IndexOf( _ReadBuffer, _ReadBufferPos, _ReadBufferLen );
+                
+                //Carriage Transfer is found in reading bytes buffer //text line
+                if ( carriageTransferPos != -1 )
+                {
+                    var text = ((accumulatorList != null) ? _Encoding.GetString( accumulatorList.ToArray() ) : string.Empty) +
+                        _Encoding.GetString( _ReadBuffer, _ReadBufferPos, carriageTransferPos - _ReadBufferPos );
+
+                    _StreamPosition += ((accumulatorList != null) ? accumulatorList.Count : 0) +
+                        carriageTransferPos + _FindCarriageTransfer.NeedleLength - _ReadBufferPos;
+
+                    _ReadBufferPos = carriageTransferPos + _FindCarriageTransfer.NeedleLength;
+
+#if _DEBUG
+    var p = _BinaryReader.BaseStream.Position;
+    _BinaryReader.BaseStream.Position = _StreamPosition;
+
+    byte[] temp = new byte[ _ReadBufferLen - _ReadBufferPos ];
+    int readBytes = _BinaryReader.BaseStream.Read( temp, 0, temp.Length );
+
+    System.Diagnostics.Debug.Assert
+    (
+        _Encoding.GetString( _ReadBuffer, _ReadBufferPos, _ReadBufferLen - _ReadBufferPos )
+            ==
+        _Encoding.GetString( temp, 0, readBytes )
+    );
+
+    _BinaryReader.BaseStream.Position = p;
+#endif
+
+                    return (text);
+                }
+
+                //Carriage Transfer not found
+
+                //if end of stream => return null & set position to equal lenght
+                if ( EndOfStreamInternal )
+                {
+                    SetEndOfStream();
+                    return (null);
+                }
+
+                //Accumulate current content of byte buffer
+                var content = _ReadBuffer.Skip( _ReadBufferPos ).Take( _ReadBufferLen - _ReadBufferPos );
+                if ( accumulatorList == null )
+                    accumulatorList = new List< byte >( _ReadBuffer.Length );
+                accumulatorList.AddRange( content );
+                
+                //Read data from disk in bytes buffer
+                if ( !this.ReadDiskDataIntoBuffer() )
+                {
+                    var text = _Encoding.GetString( accumulatorList.ToArray() );
+
+                    //No more data
+                    return (text);
+                }
+            }
+        }
+    #endregion
+
+    #region[.some variant.]
+        public string ReadLine_II()
+        {
+            StringBuilder accumulator = new StringBuilder( _ReadBuffer.Length );
+
+            while ( true )
+            {
+                //Read data from disk in bytes buffer
+                int bytesCount = _BinaryReader.Read( _ReadBuffer, 0, _ReadBuffer.Length );
+                //Nothing is readed, return [null]
+                if ( bytesCount == 0 )
+                    return (null);
+
+                //
+                int carriageTransferPosition = accumulator.Length;
+                accumulator.Append( _Encoding.GetString( _ReadBuffer, 0, bytesCount ) );
+
+                for ( ; carriageTransferPosition < accumulator.Length;
+                        carriageTransferPosition++ )
+                {
+                    switch ( accumulator[ carriageTransferPosition ] )
+                    {
+                        case '\r':
+                        case '\n':
+
+                            var text = accumulator.ToString().Substring( 0, carriageTransferPosition );
+
+                            //Offset of file position by current
+                            var offset = _Encoding.GetByteCount( text + 1 );
+                                //carriageTransferPosition + 1; // _FindCarriageTransfer.NeedleLength;
+
+                            //Real file position
+                            _StreamPosition += offset;
+
+                            //Seek real file position
+                            _BinaryReader.BaseStream.Seek( -(_Encoding.GetByteCount( accumulator.ToString() ) - offset), SeekOrigin.Current );
+
+                            return (text);
+                    }
+                }
+
+                //if end of stream => return null & set position to equal lenght
+                if ( EndOfStreamInternal )
+                {
+                    _StreamPosition = _StreamLength;
+                    return (null);
+                }
+            }
+        }
+    #endregion
+
+        private Decoder       _Decoder;
+        private StringBuilder _Accumulator;
+        private char[]        _CharBuffer;
+        private int _CharBufferLen = 0;
+        private int _CharBufferPos = 0;
+
+        private bool ReadBufferIsEmpty_II
+        {
+            get { return (_CharBufferPos == _CharBufferLen); }
+        }
+        private bool ReadDiskDataIntoBuffer_II()
+        {
+            _ReadBufferPos = 0;
+            _ReadBufferLen = _BinaryReader.Read( _ReadBuffer, 0, _ReadBuffer.Length );
+
+            _CharBufferPos = 0;
+            _CharBufferLen = _Decoder.GetChars( _ReadBuffer, 0, _ReadBufferLen, _CharBuffer, 0 );
+
+            return (_CharBufferLen > 0);
+        }
+        private void ClearReadBuffer_II()
+        {
+            _CharBufferLen = 0;
+            _CharBufferPos = 0;
+        }  
+
+        public string ReadLine()
+        {
+#if DEBUG
+            var for_test_StreamPosition = _StreamPosition;
+#endif
+
+            //If no data in byte-buffer
+            if ( ReadBufferIsEmpty_II )
+            {
+                //Read data from disk in bytes buffer
+                if ( !ReadDiskDataIntoBuffer_II() )
+                {
+                    SetEndOfStream();
+                    //No more data
+                    return (null);
+                }
+            }
+
+            //---_Accumulator.Length = 0;
+
+            while ( true )
+            {
+                for ( int i = _CharBufferPos; i < _CharBufferLen; i++ )
+                {
+                    char ch = _CharBuffer[ i ];
+                    switch ( ch )
+                    {
+                        //Carriage Transfer is found
+                        case '\r':
+                        case '\n':
+                            var text = default(string);
+                            if ( _Accumulator.Length != 0 )
+                            {
+                                _Accumulator.Append( _CharBuffer, _CharBufferPos, i - _CharBufferPos );
+
+                                text = _Accumulator.ToString(); 
+                                       _Accumulator.Length = 0;
+
+                                _StreamPosition += _Encoding.GetBytes( text ).Length;
+                            }
+                            else
+                            {
+                                text = new string( _CharBuffer, _CharBufferPos, i - _CharBufferPos ); 
+
+                                _StreamPosition += _Encoding.GetBytes( _CharBuffer, _CharBufferPos, i - _CharBufferPos ).Length;
+                            }
+
+                            _CharBufferPos = i + 1;
+                            if ( ch == '\r' ) 
+                            {
+                                if ( ((_CharBufferPos < _CharBufferLen) || ReadDiskDataIntoBuffer_II())
+                                        &&
+                                     (_CharBuffer[ _CharBufferPos ] == '\n') )
+                                {
+                                    _CharBufferPos++;
+
+                                    _StreamPosition += _Encoding.GetBytes("\r\n").Length;
+                                }
+                                else
+                                {
+                                    _StreamPosition += _Encoding.GetBytes("\r").Length;
+                                }
+                            }
+                            else
+                            {
+                                _StreamPosition += _Encoding.GetBytes("\n").Length;
+                            }
+
+#if DEBUG
+                            CheckDebug( text, for_test_StreamPosition );
+#endif
+
+                            return (text);                       
+                    }
+                }
+
+                //Carriage Transfer not found
+                _Accumulator.Append( _CharBuffer, _CharBufferPos, _CharBufferLen - _CharBufferPos );
+
+               //Read data from disk in bytes buffer
+                if ( !ReadDiskDataIntoBuffer_II() )
+                {
+                    SetEndOfStream();
+                    //No more data
+                    var text = _Accumulator.ToString();
+                               _Accumulator.Length = 0;
+
+                    _StreamPosition += _Encoding.GetBytes( text ).Length;
+
+#if DEBUG
+                    CheckDebug( text, for_test_StreamPosition );
+#endif
+
+                    return (text);
+                }
+
+                //if end of stream => return null & set position to equal lenght
+                /*?!?if ( EndOfStreamInternal )
+                {
+                    SetEndOfStream();
+                    return (null);
+                }*/
+            }
+        }
+#if DEBUG
+        private void CheckDebug( string valueToCheck, long for_test_StreamPosition )
+        {
+    var p = _BinaryReader.BaseStream.Position;
+    _BinaryReader.BaseStream.Position = for_test_StreamPosition;
+
+    byte[] temp = new byte[ _Encoding.GetBytes( valueToCheck ).Length ];
+    int readBytes = _BinaryReader.BaseStream.Read( temp, 0, temp.Length );
+
+    var text = _Encoding.GetString( temp, 0, readBytes );
+
+    //System.Diagnostics.Debug.Assert( text == valueToCheck );
+    if ( text != valueToCheck )
+        System.Diagnostics.Debugger.Break();
+
+    _BinaryReader.BaseStream.Position = p;
+        }
+#endif
+
+    #region [.IDisposable.]
+        public void Dispose()
+        {
+            if ( _BinaryReader != null )
+            {
+                _BinaryReader.BaseStream.Dispose();
+                _BinaryReader = null;
+            }
+        }
+    #endregion
+    }
+}
