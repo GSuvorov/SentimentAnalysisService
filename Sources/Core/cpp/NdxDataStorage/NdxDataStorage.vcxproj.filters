@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="UnitTests">
+      <UniqueIdentifier>{2838a58d-5e87-4da3-93d6-3ace8e4cb39d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTests\Source Files">
+      <UniqueIdentifier>{dcc53c7c-e6ea-4f6e-a76c-1be506143171}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTests\Header Files">
+      <UniqueIdentifier>{5ff6575a-4100-4123-8e89-b4fb3aa756b0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="basisfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cashed_files.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="console.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data_storages_factory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data_unit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file_cash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file_cash_members.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="files_collections.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="index_stat_storage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="index_storage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="level_storage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NdxDataStorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="table_storage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="update_file.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vector_storage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BasisFile_test.cpp">
+      <Filter>UnitTests\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CashedFile_test.cpp">
+      <Filter>UnitTests\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileCash_test.cpp">
+      <Filter>UnitTests\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FilesCollectionEx_test.cpp">
+      <Filter>UnitTests\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexStorage_test.cpp">
+      <Filter>UnitTests\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelStorage_test.cpp">
+      <Filter>UnitTests\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TableStorage_test.cpp">
+      <Filter>UnitTests\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestRunner.cpp">
+      <Filter>UnitTests\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateFile_test.cpp">
+      <Filter>UnitTests\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorStorage_test.cpp">
+      <Filter>UnitTests\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_Help.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="basisfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cashed_files.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="console.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleClient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="const.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="data_storages_factory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="data_unit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="file_cash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="file_cash_members.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="files_collections.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="index_stat_storage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="index_storage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="level_storage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NdxDataStorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="table_storage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="update_file.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vector_storage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BasisFile_test.h">
+      <Filter>UnitTests\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CashedFile_test.h">
+      <Filter>UnitTests\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileCash_test.h">
+      <Filter>UnitTests\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FilesCollectionEx_test.h">
+      <Filter>UnitTests\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexStorage_test.h">
+      <Filter>UnitTests\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelStorage_test.h">
+      <Filter>UnitTests\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStorage_test.h">
+      <Filter>UnitTests\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test_const.h">
+      <Filter>UnitTests\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestRunner.h">
+      <Filter>UnitTests\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdateFile_test.h">
+      <Filter>UnitTests\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorStorage_test.h">
+      <Filter>UnitTests\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

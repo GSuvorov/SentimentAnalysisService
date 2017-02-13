@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Default">
+      <UniqueIdentifier>{1afc4afb-89fc-4226-ba23-f32faea2a2a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{fe2d87c2-0991-4a38-bd28-26757fbd2720}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{0a441eab-881b-4e4d-9158-5380fbe43c02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Main">
+      <UniqueIdentifier>{54b783d6-6c58-4d43-b7f9-8d778cdd75a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Small">
+      <UniqueIdentifier>{4556b18d-f66b-44e4-8b61-f17cc83ede2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="temp">
+      <UniqueIdentifier>{290f6f7a-af8f-41ee-942a-967ac80a5f7a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_Help.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="console.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugWorks.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="NdxQuery.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="stl.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ASDInterface\INDXQuery.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectInserter.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="types.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="TestRunner.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="testsettings.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tst_ParametrizedQuery.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="ParametrizedQuery.h">
+      <Filter>Objects\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>Objects\Small</Filter>
+    </ClInclude>
+    <ClInclude Include="Sequence.h">
+      <Filter>Objects\Small</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperTemplate.h">
+      <Filter>Objects\Small</Filter>
+    </ClInclude>
+    <ClInclude Include="Variant.h">
+      <Filter>Objects\Small</Filter>
+    </ClInclude>
+    <ClInclude Include="Word.h">
+      <Filter>Objects\Small</Filter>
+    </ClInclude>
+    <ClInclude Include="LingDecoder.h">
+      <Filter>temp</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="console.cpp">
+      <Filter>Default</Filter>
+    </ClCompile>
+    <ClCompile Include="NdxQuery.cpp">
+      <Filter>Default</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Default</Filter>
+    </ClCompile>
+    <ClCompile Include="TestRunner.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="tst_ParametrizedQuery.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="ParametrizedQuery.cpp">
+      <Filter>Objects\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>Objects\Small</Filter>
+    </ClCompile>
+    <ClCompile Include="Sequence.cpp">
+      <Filter>Objects\Small</Filter>
+    </ClCompile>
+    <ClCompile Include="SuperTemplate.cpp">
+      <Filter>Objects\Small</Filter>
+    </ClCompile>
+    <ClCompile Include="Variant.cpp">
+      <Filter>Objects\Small</Filter>
+    </ClCompile>
+    <ClCompile Include="Word.cpp">
+      <Filter>Objects\Small</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseWithDebugInfo|Win32">
+      <Configuration>ReleaseWithDebugInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{54138354-2A6B-4076-9429-144626E90C5A}</ProjectGuid>
+    <RootNamespace>SemanticAnalyzer</RootNamespace>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWithDebugInfo|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWithDebugInfo|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='ReleaseWithDebugInfo|Win32'">$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseWithDebugInfo|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='ReleaseWithDebugInfo|Win32'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='ReleaseWithDebugInfo|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='ReleaseWithDebugInfo|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='ReleaseWithDebugInfo|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SEMANTICANALYZER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>../FeatureLibrary/Debug/FeatureLibrary.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)SemanticAnalyzer.dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)SemanticAnalyzer.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>$(OutDir)SemanticAnalyzer.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(TargetPath)" "..\..\..\..\[exec]\Core\Linguistics\"  /S/Y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SEMANTICANALYZER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>../FeatureLibrary/Release/FeatureLibrary.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)SemanticAnalyzer.dll</OutputFile>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>$(OutDir)SemanticAnalyzer.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(TargetPath)" "..\..\..\..\[exec]\Core\Linguistics\"  /S/Y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWithDebugInfo|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SEMANTICANALYZER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>../FeatureLibrary/Release/FeatureLibrary.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)SemanticAnalyzer.dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>$(OutDir)SemanticAnalyzer.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(TargetPath)" "..\..\..\..\[exec]\Core\Linguistics\"  /S/Y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="IndexManager.cpp" />
+    <ClCompile Include="LexemType.cpp" />
+    <ClCompile Include="MoAmbResolver.cpp" />
+    <ClCompile Include="OfficialVirtualSemanticDictionary.cpp" />
+    <ClCompile Include="QuestionBase.cpp" />
+    <ClCompile Include="QuestionFrameWork.cpp" />
+    <ClCompile Include="RQChto.cpp" />
+    <ClCompile Include="RQKakoi.cpp" />
+    <ClCompile Include="RQKogda.cpp" />
+    <ClCompile Include="RQKto.cpp" />
+    <ClCompile Include="RQSkolko.cpp" />
+    <ClCompile Include="SemanticAnalyze.cpp" />
+    <ClCompile Include="SemanticAnalyzer.cpp" />
+    <ClCompile Include="SMAdverbialModifier.cpp" />
+    <ClCompile Include="SMAdverbialModifierE.cpp" />
+    <ClCompile Include="SMAdverbialModifierR.cpp" />
+    <ClCompile Include="SMCauseManner.cpp" />
+    <ClCompile Include="SMCauseMannerE.cpp" />
+    <ClCompile Include="SMCauseMannerR.cpp" />
+    <ClCompile Include="SMCitation.cpp" />
+    <ClCompile Include="SMComplementE.cpp" />
+    <ClCompile Include="SMComplementR.cpp" />
+    <ClCompile Include="SMComplexName.cpp" />
+    <ClCompile Include="SMDependentClause.cpp" />
+    <ClCompile Include="SMExAnaphora.cpp" />
+    <ClCompile Include="SMExAnaphoraE.cpp" />
+    <ClCompile Include="SMExAnaphoraR.cpp" />
+    <ClCompile Include="SMExClauseTimePlace.cpp" />
+    <ClCompile Include="SMExClauseTimePlaceE.cpp" />
+    <ClCompile Include="SMExClauseTimePlaceR.cpp" />
+    <ClCompile Include="SMExDieCauseManner.cpp" />
+    <ClCompile Include="SMExNameCauseManner.cpp" />
+    <ClCompile Include="SMExpert.cpp" />
+    <ClCompile Include="SMExpertGroup.cpp" />
+    <ClCompile Include="SMExSimpleQueryParser.cpp" />
+    <ClCompile Include="SMExSimpleQueryParserR.cpp" />
+    <ClCompile Include="SMFeatureCompute.cpp" />
+    <ClCompile Include="SMGenetive.cpp" />
+    <ClCompile Include="SMIndaxation.cpp" />
+    <ClCompile Include="SMInderectObjectR.cpp" />
+    <ClCompile Include="SMIndexRemover.cpp" />
+    <ClCompile Include="SMIndexRemoverR.cpp" />
+    <ClCompile Include="SMManager.cpp" />
+    <ClCompile Include="SMMeasure.cpp" />
+    <ClCompile Include="SMNounDetectionE.cpp" />
+    <ClCompile Include="SMPassiveE.cpp" />
+    <ClCompile Include="SMPassiveR.cpp" />
+    <ClCompile Include="SMPlaceSpecification.cpp" />
+    <ClCompile Include="SMPostSyntax.cpp" />
+    <ClCompile Include="SMQueryG.cpp" />
+    <ClCompile Include="SMQueryGenerator.cpp" />
+    <ClCompile Include="SMQuestion.cpp" />
+    <ClCompile Include="SMQuestionAnalysis.cpp" />
+    <ClCompile Include="SMQuestionAnalysisE.cpp" />
+    <ClCompile Include="SMQuestionAnalysisR.cpp" />
+    <ClCompile Include="SMQuestionParser.cpp" />
+    <ClCompile Include="SMQuestionSubjectObjectE.cpp" />
+    <ClCompile Include="SMSemanticInserter.cpp" />
+    <ClCompile Include="SMSentenceExpert.cpp" />
+    <ClCompile Include="SMSpecifyCategory.cpp" />
+    <ClCompile Include="SMSubjectObjectE.cpp" />
+    <ClCompile Include="SMSubjectR.cpp" />
+    <ClCompile Include="SMSyntaxCategoriesPullDown.cpp" />
+    <ClCompile Include="SMTreeTransformation.cpp" />
+    <ClCompile Include="SMVerbFormCorrector.cpp" />
+    <ClCompile Include="SMWordGroupper.cpp" />
+    <ClCompile Include="SMWordsRemover.cpp" />
+    <ClCompile Include="SMWordsRemoverR.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseWithDebugInfo|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="StringService.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_Help.h" />
+    <ClInclude Include="IndexManager.h" />
+    <ClInclude Include="LexemType.h" />
+    <ClInclude Include="MoAmbResolver.h" />
+    <ClInclude Include="OfficialVirtualSemanticDictionary.h" />
+    <ClInclude Include="QuestionBase.h" />
+    <ClInclude Include="QuestionFrameWork.h" />
+    <ClInclude Include="RQChto.h" />
+    <ClInclude Include="RQKakoi.h" />
+    <ClInclude Include="RQKogda.h" />
+    <ClInclude Include="RQKto.h" />
+    <ClInclude Include="RQSkolko.h" />
+    <ClInclude Include="SemanticAnalyze.h" />
+    <ClInclude Include="SemanticAnalyzer.h" />
+    <ClInclude Include="SMAdverbialModifier.h" />
+    <ClInclude Include="SMAdverbialModifierE.h" />
+    <ClInclude Include="SMAdverbialModifierR.h" />
+    <ClInclude Include="SMCauseManner.h" />
+    <ClInclude Include="SMCauseMannerE.h" />
+    <ClInclude Include="SMCauseMannerR.h" />
+    <ClInclude Include="SMCitation.h" />
+    <ClInclude Include="SMComplementE.h" />
+    <ClInclude Include="SMComplementR.h" />
+    <ClInclude Include="SMComplexName.h" />
+    <ClInclude Include="SMDependentClause.h" />
+    <ClInclude Include="SMExAnaphora.h" />
+    <ClInclude Include="SMExAnaphoraE.h" />
+    <ClInclude Include="SMExAnaphoraR.h" />
+    <ClInclude Include="SMExClauseTimePlace.h" />
+    <ClInclude Include="SMExClauseTimePlaceE.h" />
+    <ClInclude Include="SMExClauseTimePlaceR.h" />
+    <ClInclude Include="SMExDieCauseManner.h" />
+    <ClInclude Include="SMExNameCauseManner.h" />
+    <ClInclude Include="SMExpert.h" />
+    <ClInclude Include="SMExpertGroup.h" />
+    <ClInclude Include="SMExSimpleQueryParser.h" />
+    <ClInclude Include="SMExSimpleQueryParserR.h" />
+    <ClInclude Include="SMFeatureCompute.h" />
+    <ClInclude Include="SMGenetive.h" />
+    <ClInclude Include="SMIndaxation.h" />
+    <ClInclude Include="SMInderectObjectR.h" />
+    <ClInclude Include="SMIndexRemover.h" />
+    <ClInclude Include="SMIndexRemoverR.h" />
+    <ClInclude Include="SMManager.h" />
+    <ClInclude Include="SMMeasure.h" />
+    <ClInclude Include="SMNounDetectionE.h" />
+    <ClInclude Include="SMPassiveE.h" />
+    <ClInclude Include="SMPassiveR.h" />
+    <ClInclude Include="SMPlaceSpecification.h" />
+    <ClInclude Include="SMPostSyntax.h" />
+    <ClInclude Include="SMQueryG.h" />
+    <ClInclude Include="SMQueryGenerator.h" />
+    <ClInclude Include="SMQuestion.h" />
+    <ClInclude Include="SMQuestionAnalysis.h" />
+    <ClInclude Include="SMQuestionAnalysisE.h" />
+    <ClInclude Include="SMQuestionAnalysisR.h" />
+    <ClInclude Include="SMQuestionParser.h" />
+    <ClInclude Include="SMQuestionSubjectObjectE.h" />
+    <ClInclude Include="SMSemanticInserter.h" />
+    <ClInclude Include="SMSentenceExpert.h" />
+    <ClInclude Include="SMSpecifyCategory.h" />
+    <ClInclude Include="SMSubjectObjectE.h" />
+    <ClInclude Include="SMSubjectR.h" />
+    <ClInclude Include="SMSyntaxCategoriesPullDown.h" />
+    <ClInclude Include="SMTreeTransformation.h" />
+    <ClInclude Include="SMVerbFormCorrector.h" />
+    <ClInclude Include="SMWordGroupper.h" />
+    <ClInclude Include="SMWordsRemover.h" />
+    <ClInclude Include="SMWordsRemoverR.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="StringService.h" />
+    <ClInclude Include="types.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

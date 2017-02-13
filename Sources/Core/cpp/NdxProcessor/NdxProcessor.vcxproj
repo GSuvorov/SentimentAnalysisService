@@ -1,0 +1,494 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug_UnitTests|Win32">
+      <Configuration>Debug_UnitTests</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_DebugInfo|Win32">
+      <Configuration>Release_DebugInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_UnitTests|Win32">
+      <Configuration>Release_UnitTests</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C78BCA03-DECC-4BBA-89F6-2973EC19FD63}</ProjectGuid>
+    <RootNamespace>NdxProcessor</RootNamespace>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_DebugInfo|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_UnitTests|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_UnitTests|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_DebugInfo|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_UnitTests|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_UnitTests|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</IntDir>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</IntDir>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug_UnitTests|Win32'">$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug_UnitTests|Win32'">$(Configuration)\</IntDir>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug_UnitTests|Win32'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug_UnitTests|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_UnitTests|Win32'">$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_UnitTests|Win32'">$(Configuration)\</IntDir>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release_UnitTests|Win32'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release_UnitTests|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_DebugInfo|Win32'">$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_DebugInfo|Win32'">$(Configuration)\</IntDir>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release_DebugInfo|Win32'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release_DebugInfo|Win32'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug_UnitTests|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug_UnitTests|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug_UnitTests|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release_DebugInfo|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release_DebugInfo|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_DebugInfo|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release_UnitTests|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release_UnitTests|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_UnitTests|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\[libraries]\cppunit-1.9.11\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;NDXPROCESSOR_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>..\..\..\[libraries]\ZLIB114DLL\dll32\zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)NdxProcessor.dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)NdxProcessor.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>
+      </ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(TargetPath)" "..\..\..\..\[exec]\Core\"  /S/Y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\[libraries]\cppunit-1.9.11\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;NDXPROCESSOR_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>..\..\..\[libraries]\ZLIB114DLL\dll32\zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)NdxProcessor.dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>
+      </ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(TargetPath)" "..\..\..\..\[exec]\Core\"  /S/Y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_UnitTests|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\[libraries]\cppunit-1.9.11\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;NDXPROCESSOR_EXPORTS;_SS_UNITTESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>..\..\..\[libraries]\ZLIB114DLL\dll32\zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)NdxProcessor.dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)NdxProcessor.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>
+      </ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(TargetPath)" "..\..\..\..\[exec]\Core\"  /S/Y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_UnitTests|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\[libraries]\cppunit-1.9.11\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;NDXPROCESSOR_EXPORTS;_SS_UNITTESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>..\..\..\[libraries]\ZLIB114DLL\dll32\zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)NdxProcessor.dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>
+      </ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(TargetPath)" "..\..\..\..\[exec]\Core\"  /S/Y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_DebugInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\[libraries]\cppunit-1.9.11\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;NDXPROCESSOR_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>..\..\..\[libraries]\ZLIB114DLL\dll32\zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)NdxProcessor.dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>
+      </ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(TargetPath)" "..\..\..\..\[exec]\Core\"  /S/Y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="acc_containers.cpp" />
+    <ClCompile Include="arg.cpp" />
+    <ClCompile Include="arg_calc.cpp" />
+    <ClCompile Include="arg_complex.cpp" />
+    <ClCompile Include="arg_res.cpp" />
+    <ClCompile Include="arg_res_hdr.cpp" />
+    <ClCompile Include="arg_res_int.cpp" />
+    <ClCompile Include="b_logic.cpp" />
+    <ClCompile Include="basis_containers.cpp" />
+    <ClCompile Include="basis_storage.cpp" />
+    <ClCompile Include="block_container.cpp" />
+    <ClCompile Include="box_containers.cpp" />
+    <ClCompile Include="box_containers_s.cpp" />
+    <ClCompile Include="byte_align.cpp" />
+    <ClCompile Include="cnt_factory.cpp" />
+    <ClCompile Include="collection_containers.cpp" />
+    <ClCompile Include="console.cpp" />
+    <ClCompile Include="coordinate_convertor.cpp" />
+    <ClCompile Include="coordinate_counter.cpp" />
+    <ClCompile Include="eq.cpp" />
+    <ClCompile Include="eq_block.cpp" />
+    <ClCompile Include="eq_calc.cpp" />
+    <ClCompile Include="eq_res.cpp" />
+    <ClCompile Include="es_filler.cpp" />
+    <ClCompile Include="es_filler_query.cpp" />
+    <ClCompile Include="es_filler_string.cpp" />
+    <ClCompile Include="ev_factory.cpp" />
+    <ClCompile Include="eval.cpp" />
+    <ClCompile Include="extracting_manager.cpp" />
+    <ClCompile Include="f_logic.cpp" />
+    <ClCompile Include="factory_client.cpp" />
+    <ClCompile Include="freq_storage.cpp" />
+    <ClCompile Include="global_pool.cpp" />
+    <ClCompile Include="hdr_containers.cpp" />
+    <ClCompile Include="hdr_logic.cpp" />
+    <ClCompile Include="iep_storage.cpp" />
+    <ClCompile Include="index_cash.cpp" />
+    <ClCompile Include="index_container.cpp" />
+    <ClCompile Include="index_container_nodes.cpp" />
+    <ClCompile Include="index_container_nodes_s.cpp" />
+    <ClCompile Include="index_container_s.cpp" />
+    <ClCompile Include="index_stat_cash.cpp" />
+    <ClCompile Include="index_stat_storage.cpp" />
+    <ClCompile Include="index_storage.cpp" />
+    <ClCompile Include="index_storage_hdr.cpp" />
+    <ClCompile Include="index_storage_tbl.cpp" />
+    <ClCompile Include="indexing_manager.cpp" />
+    <ClCompile Include="int_containers.cpp" />
+    <ClCompile Include="lgc_usings.cpp" />
+    <ClCompile Include="list_containers.cpp" />
+    <ClCompile Include="logged_index_container.cpp" />
+    <ClCompile Include="logic.cpp" />
+    <ClCompile Include="memory_management.cpp" />
+    <ClCompile Include="NdxProcessor.cpp" />
+    <ClCompile Include="norm_storage.cpp" />
+    <ClCompile Include="pool_client.cpp" />
+    <ClCompile Include="pools_manager.cpp" />
+    <ClCompile Include="pos_ba_containers_s.cpp" />
+    <ClCompile Include="pos_containers.cpp" />
+    <ClCompile Include="prx_eval.cpp" />
+    <ClCompile Include="prx_eval_ans.cpp" />
+    <ClCompile Include="prx_eval_hdr.cpp" />
+    <ClCompile Include="prx_eval_tbl.cpp" />
+    <ClCompile Include="prx_pos_containers.cpp" />
+    <ClCompile Include="prx_union.cpp" />
+    <ClCompile Include="r_eval.cpp" />
+    <ClCompile Include="r_evals.cpp" />
+    <ClCompile Include="r_logic.cpp" />
+    <ClCompile Include="res.cpp" />
+    <ClCompile Include="res_check.cpp" />
+    <ClCompile Include="res_check_cnv.cpp" />
+    <ClCompile Include="res_containers.cpp" />
+    <ClCompile Include="search_engine.cpp" />
+    <ClCompile Include="search_factory.cpp" />
+    <ClCompile Include="sr_filler.cpp" />
+    <ClCompile Include="stat_eval.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_UnitTests|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_DebugInfo|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_UnitTests|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="storage_manager.cpp" />
+    <ClCompile Include="subst.cpp" />
+    <ClCompile Include="table_storage.cpp" />
+    <ClCompile Include="tbl_containers.cpp" />
+    <ClCompile Include="TestRunner.cpp" />
+    <ClCompile Include="text_binary_storage_ex.cpp" />
+    <ClCompile Include="text_info_manager.cpp" />
+    <ClCompile Include="texts_binary_storage.cpp" />
+    <ClCompile Include="texts_field_storage.cpp" />
+    <ClCompile Include="texts_info_storage.cpp" />
+    <ClCompile Include="texts_path_storage.cpp" />
+    <ClCompile Include="tl_logic.cpp" />
+    <ClCompile Include="BlockContainer_test.cpp" />
+    <ClCompile Include="BoxContainers_test.cpp" />
+    <ClCompile Include="ByteAlignCompress_test.cpp" />
+    <ClCompile Include="CommonContainersUsing.cpp" />
+    <ClCompile Include="eq_test.cpp" />
+    <ClCompile Include="eval_test.cpp" />
+    <ClCompile Include="IepStorage_test.cpp" />
+    <ClCompile Include="IndexContainer_test.cpp" />
+    <ClCompile Include="PoolsManager_test.cpp" />
+    <ClCompile Include="PosCnt_test.cpp" />
+    <ClCompile Include="ProximityEvaluator_test.cpp" />
+    <ClCompile Include="SearchEngine_test.cpp" />
+    <ClCompile Include="TextsBinaryStorage_test.cpp" />
+    <ClCompile Include="TextsFieldsStorage_test.cpp" />
+    <ClCompile Include="TextsPathStorage_test.cpp" />
+    <ClCompile Include="UnitTestsUsings.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_Help.h" />
+    <ClInclude Include="_Help2.h" />
+    <ClInclude Include="acc_containers.h" />
+    <ClInclude Include="arg.h" />
+    <ClInclude Include="arg_calc.h" />
+    <ClInclude Include="arg_complex.h" />
+    <ClInclude Include="arg_res.h" />
+    <ClInclude Include="arg_res_hdr.h" />
+    <ClInclude Include="arg_res_int.h" />
+    <ClInclude Include="b_logic.h" />
+    <ClInclude Include="basis_containers.h" />
+    <ClInclude Include="basis_storage.h" />
+    <ClInclude Include="block_container.h" />
+    <ClInclude Include="box_containers.h" />
+    <ClInclude Include="box_containers_s.h" />
+    <ClInclude Include="byte_align.h" />
+    <ClInclude Include="cnt_factory.h" />
+    <ClInclude Include="collection_containers.h" />
+    <ClInclude Include="console.h" />
+    <ClInclude Include="ConsoleClient.h" />
+    <ClInclude Include="const.h" />
+    <ClInclude Include="coordinate_convertor.h" />
+    <ClInclude Include="coordinate_counter.h" />
+    <ClInclude Include="eq.h" />
+    <ClInclude Include="eq_block.h" />
+    <ClInclude Include="eq_calc.h" />
+    <ClInclude Include="eq_res.h" />
+    <ClInclude Include="es_filler.h" />
+    <ClInclude Include="es_filler_query.h" />
+    <ClInclude Include="es_filler_string.h" />
+    <ClInclude Include="ev_factory.h" />
+    <ClInclude Include="eval.h" />
+    <ClInclude Include="extracting_manager.h" />
+    <ClInclude Include="f_logic.h" />
+    <ClInclude Include="factory_client.h" />
+    <ClInclude Include="freq_storage.h" />
+    <ClInclude Include="global_pool.h" />
+    <ClInclude Include="hdr_containers.h" />
+    <ClInclude Include="hdr_logic.h" />
+    <ClInclude Include="iep_storage.h" />
+    <ClInclude Include="index_cash.h" />
+    <ClInclude Include="index_container.h" />
+    <ClInclude Include="index_container_nodes.h" />
+    <ClInclude Include="index_container_nodes_s.h" />
+    <ClInclude Include="index_container_s.h" />
+    <ClInclude Include="index_stat_cash.h" />
+    <ClInclude Include="index_stat_storage.h" />
+    <ClInclude Include="index_storage.h" />
+    <ClInclude Include="index_storage_hdr.h" />
+    <ClInclude Include="index_storage_tbl.h" />
+    <ClInclude Include="indexing_manager.h" />
+    <ClInclude Include="int_containers.h" />
+    <ClInclude Include="lgc_usings.h" />
+    <ClInclude Include="list_containers.h" />
+    <ClInclude Include="logged_index_container.h" />
+    <ClInclude Include="logic.h" />
+    <ClInclude Include="memory_management.h" />
+    <ClInclude Include="NdxProcessor.h" />
+    <ClInclude Include="node_containers.h" />
+    <ClInclude Include="norm_storage.h" />
+    <ClInclude Include="pool_client.h" />
+    <ClInclude Include="pools_manager.h" />
+    <ClInclude Include="pos_ba_containers_s.h" />
+    <ClInclude Include="pos_containers.h" />
+    <ClInclude Include="prx_eval.h" />
+    <ClInclude Include="prx_eval_ans.h" />
+    <ClInclude Include="prx_eval_hdr.h" />
+    <ClInclude Include="prx_eval_tbl.h" />
+    <ClInclude Include="prx_pos_containers.h" />
+    <ClInclude Include="prx_union.h" />
+    <ClInclude Include="r_eval.h" />
+    <ClInclude Include="r_evals.h" />
+    <ClInclude Include="r_logic.h" />
+    <ClInclude Include="res.h" />
+    <ClInclude Include="res_check.h" />
+    <ClInclude Include="res_check_cnv.h" />
+    <ClInclude Include="res_containers.h" />
+    <ClInclude Include="search_engine.h" />
+    <ClInclude Include="search_factory.h" />
+    <ClInclude Include="sr_filler.h" />
+    <ClInclude Include="stat_eval.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="stl.h" />
+    <ClInclude Include="storage_manager.h" />
+    <ClInclude Include="subst.h" />
+    <ClInclude Include="table_storage.h" />
+    <ClInclude Include="tbl_containers.h" />
+    <ClInclude Include="test_const.h" />
+    <ClInclude Include="TestRunner.h" />
+    <ClInclude Include="text_binary_storage_ex.h" />
+    <ClInclude Include="text_info_manager.h" />
+    <ClInclude Include="texts_binary_storage.h" />
+    <ClInclude Include="texts_field_storage.h" />
+    <ClInclude Include="texts_info_storage.h" />
+    <ClInclude Include="texts_path_storage.h" />
+    <ClInclude Include="tl_logic.h" />
+    <ClInclude Include="BlockContainer_test.h" />
+    <ClInclude Include="BoxContainers_test.h" />
+    <ClInclude Include="ByteAlignCompress_test.h" />
+    <ClInclude Include="CommonContainersUsing.h" />
+    <ClInclude Include="eq_test.h" />
+    <ClInclude Include="eval_test.h" />
+    <ClInclude Include="IepStorage_test.h" />
+    <ClInclude Include="IndexContainer_test.h" />
+    <ClInclude Include="PoolsManager_test.h" />
+    <ClInclude Include="PosCnt_test.h" />
+    <ClInclude Include="ProximityEvaluator_test.h" />
+    <ClInclude Include="SearchEngine_test.h" />
+    <ClInclude Include="testsettings.h" />
+    <ClInclude Include="TextsBinaryStorage_test.h" />
+    <ClInclude Include="TextsFieldsStorage_test.h" />
+    <ClInclude Include="TextsPathStorage_test.h" />
+    <ClInclude Include="UnitTestsUsings.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
