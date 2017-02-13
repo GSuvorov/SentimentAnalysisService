@@ -1,0 +1,12 @@
+; g:\mingw\3.3.1\bin\dlltool.exe --output-def=pcreposix.def pcreposix.o pcre-dllversion.o pcreposix-dll-res.o
+EXPORTS
+	DllGetVersion @ 1 ; 
+	pcre_callout @ 2 DATA ; 
+	pcre_free @ 3 DATA ; 
+	pcre_malloc @ 4 DATA ; 
+	pcre_stack_free @ 5 DATA ; 
+	pcre_stack_malloc @ 6 DATA ; 
+	regcomp @ 7 ; 
+	regerror @ 8 ; 
+	regexec @ 9 ; 
+	regfree @ 10 ; 

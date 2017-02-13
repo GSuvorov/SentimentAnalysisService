@@ -1,0 +1,31 @@
+; g:\mingw\3.3.1\bin\dlltool.exe --output-def=pcre.def pcre_chartables.o pcre_compile.o pcre_config.o pcre_dfa_exec.o pcre_exec.o pcre_fullinfo.o pcre_get.o pcre_globals.o pcre_info.o pcre_maketables.o pcre_ord2utf8.o pcre_refcount.o pcre_study.o pcre_tables.o pcre_try_flipped.o pcre_ucp_findchar.o pcre_valid_utf8.o pcre_version.o pcre_xclass.o pcreposix.o pcre-dllversion.o pcre-dll-res.o
+EXPORTS
+	DllGetVersion @ 1 ; 
+	pcre_callout @ 2 DATA ; 
+	pcre_compile @ 3 ; 
+	pcre_compile2 @ 4 ; 
+	pcre_config @ 5 ; 
+	pcre_copy_named_substring @ 6 ; 
+	pcre_copy_substring @ 7 ; 
+	pcre_dfa_exec @ 8 ; 
+	pcre_exec @ 9 ; 
+	pcre_free @ 10 DATA ; 
+	pcre_free_substring @ 11 ; 
+	pcre_free_substring_list @ 12 ; 
+	pcre_fullinfo @ 13 ; 
+	pcre_get_named_substring @ 14 ; 
+	pcre_get_stringnumber @ 15 ; 
+	pcre_get_substring @ 16 ; 
+	pcre_get_substring_list @ 17 ; 
+	pcre_info @ 18 ; 
+	pcre_maketables @ 19 ; 
+	pcre_malloc @ 20 DATA ; 
+	pcre_refcount @ 21 ; 
+	pcre_stack_free @ 22 DATA ; 
+	pcre_stack_malloc @ 23 DATA ; 
+	pcre_study @ 24 ; 
+	pcre_version @ 25 ; 
+	regcomp @ 26 ; 
+	regerror @ 27 ; 
+	regexec @ 28 ; 
+	regfree @ 29 ; 
