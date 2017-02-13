@@ -1,0 +1,96 @@
+name file	number words
+list_adjectives_amplf.txt	182
+list_adjectives_neg.txt	381
+list_adjectives_pos.txt	435
+list_adverbs_amplf.txt	368
+list_adverbs_neg.txt	782
+list_adverbs_pos.txt	720
+list_collocation_amplf.txt	202
+list_collocation_neg.txt	430
+list_collocation_neut.txt	34
+list_collocation_pos.txt	198
+list_collocation_vneg.txt	1143
+list_collocation_vneut.txt	39
+list_collocation_vpos.txt	982
+list_nouns_aneg.txt	149
+list_nouns_apos.txt	160
+list_nouns_neg.txt	1010
+list_nouns_pneg.txt	722
+list_nouns_pos.txt	783
+list_nouns_ppos.txt	2674
+list_verbs_flxneg.txt	416
+list_verbs_flxpos.txt	439
+list_verbs_link.txt	108
+list_verbs_neg.txt	859
+list_verbs_opp_neg.txt	4
+list_verbs_opp_pos.txt	49
+list_verbs_pos.txt	1643
+list_verbs_pure_neg.txt	378
+list_verbs_pure_pos.txt	307
+summa	15597
+
+08.09.11
+
+name file	number words
+list_adjectives_amplf.txt	212
+list_adjectives_neg.txt	607
+list_adjectives_pos.txt	497
+list_adverbs_amplf.txt	536
+list_adverbs_neg.txt	1150
+list_adverbs_pos.txt	847
+list_collocation_amplf.txt	208
+list_collocation_neg.txt	431
+list_collocation_neut.txt	35
+list_collocation_pos.txt	199
+list_collocation_vneg.txt	1143
+list_collocation_vneut.txt	39
+list_collocation_vpos.txt	985
+list_nouns_aneg.txt	163
+list_nouns_apos.txt	168
+list_nouns_neg.txt	2008
+list_nouns_pneg.txt	772
+list_nouns_pos.txt	945
+list_nouns_ppos.txt	2828
+list_verbs_flxneg.txt	479
+list_verbs_flxpos.txt	452
+list_verbs_link.txt	116
+list_verbs_neg.txt	1018
+list_verbs_opp_neg.txt	4
+list_verbs_opp_pos.txt	49
+list_verbs_pos.txt	1795
+list_verbs_pure_neg.txt	638
+list_verbs_pure_pos.txt	313
+summa	18637
+
+17.05.12
+
+name file	number words
+list_adjectives_amplf.txt	223
+list_adjectives_neg.txt	659
+list_adjectives_pos.txt	514
+list_adverbs_amplf.txt	545
+list_adverbs_neg.txt	1152
+list_adverbs_pos.txt	845
+list_collocation_amplf.txt	215
+list_collocation_neg.txt	445
+list_collocation_neut.txt	52
+list_collocation_pos.txt	206
+list_collocation_vneg.txt	1178
+list_collocation_vneut.txt	51
+list_collocation_vpos.txt	1019
+list_nouns_aneg.txt	168
+list_nouns_apos.txt	171
+list_nouns_neg.txt	2058
+list_nouns_pneg.txt	779
+list_nouns_pos.txt	947
+list_nouns_ppos.txt	2846
+list_verbs_flxneg.txt	491
+list_verbs_flxpos.txt	458
+list_verbs_link.txt	177
+list_verbs_neg.txt	1040
+list_verbs_opp_neg.txt	4
+list_verbs_opp_pos.txt	50
+list_verbs_pos.txt	1793
+list_verbs_pure_neg.txt	654
+list_verbs_pure_pos.txt	319
+summa	19059

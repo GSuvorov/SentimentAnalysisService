@@ -1,0 +1,119 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dictionaries", "Dictionaries", "{D7BAD1FA-61F9-48D5-9A1F-608EA9FB18EB}"
+	ProjectSection(SolutionItems) = preProject
+		Dictionaries\examples_error.txt = Dictionaries\examples_error.txt
+		Dictionaries\first_word1.txt = Dictionaries\first_word1.txt
+		Dictionaries\intr_word1.txt = Dictionaries\intr_word1.txt
+		Dictionaries\intr_word2.txt = Dictionaries\intr_word2.txt
+		Dictionaries\list_entity_opinion.txt = Dictionaries\list_entity_opinion.txt
+		Dictionaries\list_phrasis_opinion1.txt = Dictionaries\list_phrasis_opinion1.txt
+		Dictionaries\list_phrasis_opinion2.txt = Dictionaries\list_phrasis_opinion2.txt
+		Dictionaries\list_verbs_opinion1.txt = Dictionaries\list_verbs_opinion1.txt
+		Dictionaries\list_verbs_opinion2.txt = Dictionaries\list_verbs_opinion2.txt
+		Dictionaries\list_verbs_opinion3.txt = Dictionaries\list_verbs_opinion3.txt
+		Dictionaries\list_verbs_opinion4.txt = Dictionaries\list_verbs_opinion4.txt
+		Dictionaries\list_verbs_opinion5.txt = Dictionaries\list_verbs_opinion5.txt
+		Dictionaries\list_verbs_opinion6.txt = Dictionaries\list_verbs_opinion6.txt
+		Dictionaries\list_verbs_opinion7.txt = Dictionaries\list_verbs_opinion7.txt
+		Dictionaries\pattern_opinion.xml = Dictionaries\pattern_opinion.xml
+		Dictionaries\test_prop.txt = Dictionaries\test_prop.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Implementation", "Implementation", "{48632BA3-AD99-4C7E-8C22-63909C2F4A2F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{C4C245E1-CAD0-4B79-8942-088CA51B2556}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{1CC0A165-4B81-406D-9E0D-5DD27099444C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{61A22462-5C22-481C-9CA8-07EAD5F798E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{EC5348B2-7DD4-4AFB-BAAB-82EAE72971E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lingvistic", "Lingvistic", "{B7F2D979-0CD9-4AA6-B901-B59A48B99C94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpinionMining.ConsoleServiceHost", "Implementation\Hosting\OpinionMining.ConsoleServiceHost\OpinionMining.ConsoleServiceHost.csproj", "{6FD6FD9D-382D-4A58-8004-376280275922}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpinionMining.WcfService", "Implementation\OpinionMining.WcfService\OpinionMining.WcfService.csproj", "{02C2B0F0-4EF3-4035-85B1-61054A4C09A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.OpinionMining.Web", "Web\Test.OpinionMining.Web\Test.OpinionMining.Web.csproj", "{D81A319A-66FA-499A-9E9C-282251D15AEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpinionMining.WcfClient", "Client\OpinionMining.WcfClient\OpinionMining.WcfClient.csproj", "{8E89AC82-4C47-4417-8749-B219D927CB83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextMining.Core", "..\Core\TextMining.Core\TextMining.Core.csproj", "{F5C8040E-A219-4E32-968D-5A315C11B310}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextMining.Service", "..\Core\TextMining.Service\TextMining.Service.csproj", "{E90B466D-B0D8-4BF3-A463-D08D82251F87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lingvistics.Client", "..\..\Core\csharp\Lingvistics.Client\Lingvistics.Client.csproj", "{3F51EC37-C4E4-458F-A1BE-C9959D3F6431}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lingvistics.Types", "..\..\Core\csharp\Lingvistics.Types\Lingvistics.Types.csproj", "{9A1890DC-37D1-4784-97DE-690FD50B029D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreferenceResolving", "..\..\Core\csharp\CoreferenceResolving\CoreferenceResolving.csproj", "{11528BC6-CA83-452D-9180-6D19F555FE7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linguistics.Core", "..\..\Core\csharp\Linguistics.Core\Linguistics.Core.csproj", "{449C9700-77EB-46F4-A32B-D7669D2A86BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FD6FD9D-382D-4A58-8004-376280275922}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FD6FD9D-382D-4A58-8004-376280275922}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FD6FD9D-382D-4A58-8004-376280275922}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FD6FD9D-382D-4A58-8004-376280275922}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02C2B0F0-4EF3-4035-85B1-61054A4C09A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02C2B0F0-4EF3-4035-85B1-61054A4C09A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02C2B0F0-4EF3-4035-85B1-61054A4C09A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02C2B0F0-4EF3-4035-85B1-61054A4C09A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D81A319A-66FA-499A-9E9C-282251D15AEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D81A319A-66FA-499A-9E9C-282251D15AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D81A319A-66FA-499A-9E9C-282251D15AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D81A319A-66FA-499A-9E9C-282251D15AEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E89AC82-4C47-4417-8749-B219D927CB83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E89AC82-4C47-4417-8749-B219D927CB83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E89AC82-4C47-4417-8749-B219D927CB83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E89AC82-4C47-4417-8749-B219D927CB83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5C8040E-A219-4E32-968D-5A315C11B310}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5C8040E-A219-4E32-968D-5A315C11B310}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5C8040E-A219-4E32-968D-5A315C11B310}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5C8040E-A219-4E32-968D-5A315C11B310}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E90B466D-B0D8-4BF3-A463-D08D82251F87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E90B466D-B0D8-4BF3-A463-D08D82251F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E90B466D-B0D8-4BF3-A463-D08D82251F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E90B466D-B0D8-4BF3-A463-D08D82251F87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F51EC37-C4E4-458F-A1BE-C9959D3F6431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F51EC37-C4E4-458F-A1BE-C9959D3F6431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F51EC37-C4E4-458F-A1BE-C9959D3F6431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F51EC37-C4E4-458F-A1BE-C9959D3F6431}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A1890DC-37D1-4784-97DE-690FD50B029D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A1890DC-37D1-4784-97DE-690FD50B029D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A1890DC-37D1-4784-97DE-690FD50B029D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A1890DC-37D1-4784-97DE-690FD50B029D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11528BC6-CA83-452D-9180-6D19F555FE7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11528BC6-CA83-452D-9180-6D19F555FE7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11528BC6-CA83-452D-9180-6D19F555FE7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11528BC6-CA83-452D-9180-6D19F555FE7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{449C9700-77EB-46F4-A32B-D7669D2A86BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{449C9700-77EB-46F4-A32B-D7669D2A86BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{449C9700-77EB-46F4-A32B-D7669D2A86BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{449C9700-77EB-46F4-A32B-D7669D2A86BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C4C245E1-CAD0-4B79-8942-088CA51B2556} = {48632BA3-AD99-4C7E-8C22-63909C2F4A2F}
+		{02C2B0F0-4EF3-4035-85B1-61054A4C09A9} = {48632BA3-AD99-4C7E-8C22-63909C2F4A2F}
+		{6FD6FD9D-382D-4A58-8004-376280275922} = {C4C245E1-CAD0-4B79-8942-088CA51B2556}
+		{D81A319A-66FA-499A-9E9C-282251D15AEA} = {1CC0A165-4B81-406D-9E0D-5DD27099444C}
+		{8E89AC82-4C47-4417-8749-B219D927CB83} = {61A22462-5C22-481C-9CA8-07EAD5F798E6}
+		{F5C8040E-A219-4E32-968D-5A315C11B310} = {EC5348B2-7DD4-4AFB-BAAB-82EAE72971E9}
+		{E90B466D-B0D8-4BF3-A463-D08D82251F87} = {EC5348B2-7DD4-4AFB-BAAB-82EAE72971E9}
+		{3F51EC37-C4E4-458F-A1BE-C9959D3F6431} = {B7F2D979-0CD9-4AA6-B901-B59A48B99C94}
+		{9A1890DC-37D1-4784-97DE-690FD50B029D} = {B7F2D979-0CD9-4AA6-B901-B59A48B99C94}
+		{11528BC6-CA83-452D-9180-6D19F555FE7C} = {B7F2D979-0CD9-4AA6-B901-B59A48B99C94}
+		{449C9700-77EB-46F4-A32B-D7669D2A86BF} = {B7F2D979-0CD9-4AA6-B901-B59A48B99C94}
+	EndGlobalSection
+EndGlobal

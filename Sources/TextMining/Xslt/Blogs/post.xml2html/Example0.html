@@ -1,0 +1,595 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="chrome-extension://khbjahpecnkenngkidhioicnfpakihgo/iframe_raw.js"></script>
+<head>
+    <title>Текущая активность</title>
+    <style type="text/css">
+        html, body
+        {
+            height: 100%;
+            overflow: auto;
+        }
+        body
+        {
+            padding: 0;
+            margin: 0;
+        }
+        #silverlightControlHost
+        {
+            height: 100%;
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript" src="Silverlight.js"></script>
+    <link href="Content/Client.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+        function onSilverlightError(sender, args) {
+            var appSource = "";
+            if (sender != null && sender != 0) {
+                appSource = sender.getHost().Source;
+            }
+
+            var errorType = args.ErrorType;
+            var iErrorCode = args.ErrorCode;
+
+            if (errorType == "ImageError" || errorType == "MediaError") {
+                return;
+            }
+
+            var errMsg = "Unhandled Error in Silverlight Application " + appSource + "\n";
+
+            errMsg += "Code: " + iErrorCode + "    \n";
+            errMsg += "Category: " + errorType + "       \n";
+            errMsg += "Message: " + args.ErrorMessage + "     \n";
+
+            if (errorType == "ParserError") {
+                errMsg += "File: " + args.xamlFile + "     \n";
+                errMsg += "Line: " + args.lineNumber + "     \n";
+                errMsg += "Position: " + args.charPosition + "     \n";
+            }
+            else if (errorType == "RuntimeError") {
+                if (args.lineNumber != 0) {
+                    errMsg += "Line: " + args.lineNumber + "     \n";
+                    errMsg += "Position: " + args.charPosition + "     \n";
+                }
+                errMsg += "MethodName: " + args.methodName + "     \n";
+            }
+
+            throw new Error(errMsg);
+        }
+    </script>
+</head>
+<body>
+    <form method="post" action="" id="form1" style="height: 100%">
+    <div class="aspNetHidden">
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE0MDkxNzYwNDNkZCWgKZMFT5cqYZzlp8PzsiEG+3yRqxphLg54iMShI6F6">
+    </div>
+    <div id="silverlightControlHost">
+        <object data="data:application/x-silverlight-2," type="application/x-silverlight-2"
+            width="100%" height="100%">
+            <param name="source" value="ClientBin/FoF.Client.UI.xap">
+            <param name="onError" value="onSilverlightError">
+            <param name="background" value="white">
+            <param name="minRuntimeVersion" value="4.0.50401.0">
+            <param name="windowless" value="true">
+            <param name="autoUpgrade" value="true">
+            <a href="http://go.microsoft.com/fwlink/?LinkID=149156&amp;v=4.0.50401.0" style="text-decoration: none">
+                <img src="http://go.microsoft.com/fwlink/?LinkId=161376" alt="Get Microsoft Silverlight"
+                    style="border-style: none">
+            </a>
+        </object>
+        <iframe id="_sl_historyFrame" style="visibility: hidden; height: 0px; width: 0px;
+            border: 0px"></iframe>
+    </div>
+    </form>
+    <div style="z-index: 1; overflow-x: hidden; overflow-y: hidden; position: absolute;
+        clip: rect(0px 784px 539px 0px); left: 248px; top: 182px; visibility: hidden;
+        width: 0px; height: 0px;">
+        <div style="overflow-x: auto; overflow-y: auto; width: 784px; height: 539px;">
+            <div class="post">
+                <h3>
+                    Без комментариев</h3>
+                &nbsp;Европейский союз, составляя список белорусских чиновников, которым запрещен
+                въезд на территорию ЕС, включил в этот перечень уже умершего человека. Помещенный
+                на 3-й позиции в списке Михаил Пищуленок, бывший председателем Витебской областной
+                избирательной комиссии, скончался еще в 2009 году. В некрологе о нем говорилось
+                как о начальнике отдела архивов и делопроизводства.<br>
+                <br>
+                <a href="http://telegraf.by/2011/02/es-zapretil-v-ezd-umershemu-belorusskomu-chinovniku.html">
+                    http://telegraf.by/2011/02/es-zapre<wbr>til-v-ezd-umershemu-belorusskomu-chinovn<wbr>iku.html</a><div
+                        class="footer">
+                        <a href="#" target="__blank">crazy_reader</a><span class="time">04.02.2011 10:49:27</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 30px;">
+                Предусмотрительно. Вдруг он восстанет из мертвых и поедет в ЕС.<div class="footer">
+                    <a href="#" target="__blank">vogluskr</a><span class="time">04.02.2011 11:07:00</span></div>
+            </div>
+        </div>
+    </div>
+    <div style="z-index: 2; overflow-x: hidden; overflow-y: hidden; position: absolute;
+        background-image: initial; background-attachment: initial; background-origin: initial;
+        background-clip: initial; background-color: rgb(105, 105, 105); opacity: 0.8;
+        visibility: hidden; width: 0px; height: 0px; background-position: initial initial;
+        background-repeat: initial initial;">
+    </div>
+    <div style="z-index: 1; overflow-x: hidden; overflow-y: hidden; position: absolute;
+        clip: rect(0px 784px 539px 0px); left: 248px; top: 182px; visibility: hidden;
+        width: 0px; height: 0px;">
+        <div style="overflow-x: auto; overflow-y: auto; width: 784px; height: 539px;">
+            <div class="post">
+                <h3>
+                    Новый суперсенсационный триллер скоро на книжных прилавках!</h3>
+                <br>
+                <p>
+                    Спешу всех предупредить, что в самое ближайшее время на прилавках книжных магазинов
+                    появится роман&nbsp; Анны Пылаевой "Водораздел". Это произведение не имеет аналогов
+                    в современной литературе.&nbsp;Стиль Пылаевой можно охарактеризовать как микс Пелевина,
+                    Латыниной и Дюма-отца, только в еще более жесткой&nbsp;и&nbsp;циничной форме.&nbsp;<br>
+                    Завязка такова. 2000 год - вскоре после провозглашения курса на построение вертикали
+                    власти. Всесильный и своенравный губернатор поволжского региона с замашками восточного
+                    хана пытается отжать крупный речной порт у влиятельного&nbsp;авторитета. Очень быстро
+                    в конфликт вмешиваются силовые структуры, федеральные недруги губернатора и чиновники
+                    Администрации президента. События быстро выходят из-под контроля, и уже никто не
+                    может остановить кровавую мясорубку.&nbsp;<br>
+                    Дальше я приведу несколько&nbsp;фрагментов романа:&nbsp;&nbsp;<br>
+                    &nbsp;<br>
+                    &nbsp;</p>
+                <p>
+                    <span><b>&nbsp;</b></span></p>
+                <a name="cutid1"></a>
+                <p>
+                    <span>Закончив свои дела на Охотном ряду, Волынин опять вызвал Пасюкова. </span>
+                </p>
+                <p>
+                    <span>- Иди, лови такси, - сказал он. </span>
+                </p>
+                <p>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Глава секретариата
+                        вице-спикера послушно кивнул, потом вышел на улицу на пересечение Тверской и Охотного
+                        ряда и не торгуясь заказал такси – желтый </span><span>Hunday</span><span> с шашечками.
+                            После этого он позвонил вице-спикеру на мобильник и сказал, что все готово.
+                    </span>
+                </p>
+                <p>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Волынин спустился
+                        через пятнадцать минут. Перед тем, как сесть в такси, он оглянулся по сторонам,
+                        осматриваясь нет ли слежки. В то время физиономия вице-спикера из Великоволжска
+                        еще мало была известна в Москве, и не только физиономию, но даже фамилию его помнил
+                        лишь узкий круг кулуарных тусовщиков. Поэтому Волынин на московских улицах мог не
+                        опасаться того, что к нему пристанут любители автографов и фоток со звездами.
+                    </span>
+                </p>
+                <p>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Такси поехало
+                        в сторону юго-запада и через час с небольшим доставило вице-спикера и его помощника
+                        к бывшей гостинице «Орленок», а ныне отелю «Корстон». Правда, ехали туда окольными
+                        тропами, то и дело сворачивая в проулки, а пару раз такси останавливалась и стояла,
+                        мерцая аварийкой, около пяти минут. Это Волынин все проверял, нет ли за ним хвоста.
+                        Он понимал, что пасти его могут и новые московские знакомые, и старые великоволжские
+                        коллеги. </span>
+                </p>
+                <p>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Когда такси
+                        остановилось, из него вышел Пасюков, а Волынин остался в машине. Пасюков же прошел
+                        в холл отеля, сказал, что на него забронирован номер на тринадцатом этаже и получив
+                        ключ, пошел наверх. Войдя в номер он набрал мобильник вице-спикера и сказал, что
+                        дорога свободна. Волынин, расплатившись с таксистом, проследовал по пути, проторенном
+                        его помощником, правда все время оглядываясь по сторонам. Когда он достиг номера,
+                        то осмотрелся и сказал своему помощнику: </span>
+                </p>
+                <p>
+                    <span>- Ну все, Коля, ступай себе с миром. </span>
+                </p>
+                <p>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Пасюков вышел
+                        из гостиницы и пошел пешком к метро «Университет», чтобы оттуда по прямой вернуться
+                        на Охотный ряд. </span>
+                </p>
+                <p>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Волынин же
+                        остался в номере, и через полчаса к нему пришел некий персонаж, условно принадлежащий
+                        к мужскому полу. Это был невысокий пухловатый блондин, и любители российской эстрады
+                        с легкостью узнали бы в нем молодого, но подающего надежды оперного певца, который
+                        за последнее время стал одним из ведущих солистов в Большом театре, но по совместительству
+                        активно переходил на поляну российской эстрады. Этот юноша был родом из Питера и
+                        в то время приходился официальным любовником тогдашнему председателю Государственной
+                        Думы, замом которого трудился Волынин. Именно спикер помог молодому дарованию с
+                        обустройством в Москве, он пристроил его в Большой театр и он же ввел его в тусовку
+                        шоу-бизнеса и организовал ему доступ на центральные телеканалы. Однако со сменой
+                        правления котировки спикера сильно просели. Дело в том, что спикер происходил из
+                        коммунистической партии. Хотя он и остался председателем Госдумы на второй срок
+                        в результате сговора прокремлевской фракции с коммунистами, однако влияние его в
+                        новом созыве Думы сильно ослабло. Проницательный юноша, хотя и не производил впечатление
+                        большого интеллектуала, конъюнктуру чувствовал остро. Он понимал, что недалек тот
+                        час, когда его высокий покровитель покинет властный Олимп, и много думал над тем,
+                        как жить дальше. В поисках дальнейших вариантов он и завязал отношения с заместителем
+                        своего прежнего покровителя. Параллельно он еще начал встречаться с генералом госбезопасности,
+                        работавшим в центральном аппарате ФСБ. Волынин про генерала ничего не знал и главного
+                        соперника видел в своем начальнике по Госдуме. Он привязавшись душой к молодому
+                        певцу планировал окончательно вывести его из-под влияния спикера, и для этого задумал
+                        настоящую византийскую комбинацию. Он задумал женить певца, и теперь был занят тем,
+                        что подыскивал ему подходящую партию. Женитьба должна была рассорить того с прежним
+                        любовником, зато стала бы хорошим камуфляжем для отношений его с Волыниным. &nbsp;</span></p>
+                <p>
+                    <span>- Ну, здравствуй, солнце мое, - сказал вице-спикер, едва пришелец захлопнул за
+                        собой дверь. </span>
+                </p>
+                <p>
+                    <span>- Здравствуйте, - манерно улыбнувшись, ответил молодой человек. </span>
+                </p>
+                <p>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Собеседники
+                        поцеловались. </span>
+                </p>
+                <p>
+                    <span>- Ну вот, - сказал вице-спикер, развязывая галстук, теперь и расслабиться можно,
+                        а то все при делах, у всех летний отпуск, а у меня работа, совсем зашиваюсь.
+                    </span>
+                </p>
+                <p>
+                    <span>- Не бережете вы себя, - сочувственно вздохнул молодой певец.<br>
+                        <br>
+                    </span>
+                </p>
+                <p>
+                    <span>...<br>
+                    </span>
+                </p>
+                <p>
+                    <span>Выслушав рассказ Волынина, Зверьков взял блюдце с белым порошком и соломинку,
+                        сделал пару затяжек и протянул ее Волынину. Тот последовал его примеру. Когда церемония
+                        была окончена, Зверьков переспросил: </span>
+                </p>
+                <p>
+                    <span>- Еще раз и по порядку. Так что там тебе этот старый хрен предъявил? </span>
+                </p>
+                <p>
+                    <span>- Что якобы занимаюсь провокациями в Великоволжском крае, что интригую против
+                        Агаркова, губернатора, и этим стравливаю его партию с властями. </span>
+                </p>
+                <p>
+                    <span>- А узнал он это из докладной Есаульского? </span>
+                </p>
+                <p>
+                    <span>- Да, я ее читал своими глазами. </span>
+                </p>
+                <p>
+                    <span>- И что там Есаульский пишет? </span>
+                </p>
+                <p>
+                    <span>- Вот то, что я говорю. Что якобы я создаю угрозы для стабильности и укрепления
+                        вертикали власти своими действиями против губернатора. </span>
+                </p>
+                <p>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Зверьков поднялся
+                        с кресла, схватил кофейную чашку и с размаху шваркнул ее о стену, а черные глаза
+                        куратора внутренней политики озарились хищным горским огоньком, вытравить который
+                        так и не смогло постоянное с пятилетнего возраста проживание в центральной России.
+                    </span>
+                </p>
+                <p>
+                    <span>- Я не понял, этот Дима, он что совсем охуел?! – вскричал Зверьков, - мудила,
+                        блядь, питерская!! Очкарик ебаный! Какого хуя он суется, куда его не просят!
+                    </span>
+                </p>
+                <p>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Потом он снова
+                        присел и уже спокойнее спросил: </span>
+                </p>
+                <p>
+                    <span>- А это правда, что там говорилось в этой записке? Что ты типа дискредитировал
+                        губера? </span>
+                </p>
+                <p>
+                    <span>- Да нет, конечно, Славочка, ты ж меня знаешь, - ответил вице-спикер. </span>
+                </p>
+                <p>
+                    <span>- А вот я смотрю, солнышко, что дыма без огня не бывает. Откуда же уши растут
+                        этой записки в таком случае? Не сам же этот мудак Есаульский все выдумал? </span>
+                </p>
+                <p>
+                    <span>- Да это Агарков, губернатор, ему все мерещится, будто я подсидеть его хочу.
+                    </span>
+                </p>
+                <p>
+                    <span>- А ты и вправду хочешь? – с глумливой улыбкой спросил Зверьков. </span>
+                </p>
+                <p>
+                    <span>- Да мне и в Москве неплохо, - ответил вице-спикер, - к тому же дел невпроворот…
+                    </span>
+                </p>
+                <p>
+                    <span>- Вот и я смотрю, что дел у тебя невпроворот, а ты занимаешься своими местечковыми
+                        разборками. У тебя же конкретное задание есть по партии, сам президент этот проект
+                        на контроле держит, а ты тут хуйней страдаешь… </span>
+                </p>
+                <p>
+                    <span>- Да нет, - стал оправдываться Волынин, - я там вообще ничего не делал. Я просто
+                        один раз приехал и провел встречи со своими помощниками и партийцами, ну с мэром
+                        пообщался, ну журналистов и бизнесменов местных принял. А губер воспринял это так,
+                        что якобы я замышляю там чего-то… </span>
+                </p>
+                <p>
+                    <span>- А Есаульский-то Дима с какого перепоя за твоего губера впрягся? – прищурившись
+                        спросил замглавы АП. </span>
+                </p>
+                <p>
+                    <span>- У них там интерес общий. Агарков на той неделе половину бюджетных счетов в банк
+                        «Прибалтийский» перевел, - объяснил вице-спикер. </span>
+                </p>
+                <p>
+                    <span>- Ну, понятно, - понимающе кивнул Зверьков, - ладно, расскажи лучше, что там у
+                        тебя по партии наклевывается. </span>
+                </p>
+                <p>
+                    <span>- В общем, почти половина фракции у нас в кармане, - доложил Волынин, - из 45
+                        депутатов с двадцати одним диалог налажен. </span>
+                </p>
+                <p>
+                    <span>- А с региональными отделениями что? </span>
+                </p>
+                <p>
+                    <span>- Ну, там где губернаторы в партии, ловить особо нечего. Понятно, что в Москве,
+                        Татарии или Башкирии каши не сваришь. Но вот там где отделения в оппозиции местной
+                        власти, диалог идет успешно. В этом месяце по Волгограду и Брянску удалось все закончить,
+                        они, можно сказать, у нас в кармане, сейчас работаем по Ульяновску, Тюмени, Оренбургу.
+                        Так что может быть к сентябрьскому пленуму большинство у нас будет. </span>
+                </p>
+                <p>
+                    <span>- Ладно, не торопи события, чтоб не сглазить, - произнес Зверьков, - в общем,
+                        я думаю так. Тебе лучше подать в отставку с постов председателя исполкома и заместителя
+                        главы фракции. Самому. </span>
+                </p>
+                <p>
+                    <span>- Это еще почему? </span>
+                </p>
+                <p>
+                    <span>- Смотри сам. Если у тебя такая большая группа сторонников, как ты говоришь, на
+                        сентябрьском пленуме твою отставку могут не принять, и тогда сам Пермяков пойдет
+                        на попятную. Это не тот тип, который из-за какой-то записки будет кадрами разбрасываться.
+                        Кроме тебя, других кадров такой же квалификации у него нет. Не этого же мудака Монса
+                        они будут ставить, он себя еще осенью в ходе выборов проявил. Даже если отставку
+                        твою примут, что для тебя эти должности? Внутрипартийный диалог ты уже наладил,
+                        тебе здесь и должность уже ни к чему, а статус вице-спикера сам по себе будет для
+                        тебя хорошим прикрытием в любом случае. В регионах все эти регалии очень неплохо
+                        ценятся, да ты и сам знаешь, чего я тебе объясняю. А с Есаульским я поговорю, объясню
+                        ему, что он записочками своими поручение президента срывает. </span>
+                </p>
+                <p>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; После этого
+                        Зверьков снова припал к соломинке и втянул в ноздри белый порошок, а закончив достал
+                        мобильник и набрал номер. </span>
+                </p>
+                <p>
+                    <span>- Але, Дима, - сказал он, - ну, привет Питеру. Увидеться бы надо да потолковать.
+                        А когда освободишься? Нет уж, надо сегодня, обязательно. Перезвонишь? Ну, ладно,
+                        давай. </span>
+                </p>
+                <p>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Зверьков сунул
+                        телефон в карман, после чего сказал Волынину: </span>
+                </p>
+                <p>
+                    <span>- Ну вот, считай, и разобрались. Так что давай, работай спокойно. Да, и про великоволжские
+                        свои делишки на время забудь. Нам сейчас лишний геморрой с твоим Агарковым и его
+                        высокими покровителями не нужен. Все понял? </span>
+                </p>
+                <a name="cutid1-end"></a>
+                <p>
+                    &nbsp;</p>
+                <br>
+                <div class="footer">
+                    <a href="#" target="__blank">emmanuellia</a><span class="time">04.02.2011 10:55:07</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 30px;">
+                <h3>
+                    прогресс не стоит на месте...</h3>
+                У Латыниной хотя бы мата в тексте не было. :)<br>
+                <div class="footer">
+                    <a href="#" target="__blank">trilirium</a><span class="time">04.02.2011 11:00:00</span></div>
+            </div>
+        </div>
+    </div>
+    <div style="z-index: 2; overflow-x: hidden; overflow-y: hidden; position: absolute;
+        background-image: initial; background-attachment: initial; background-origin: initial;
+        background-clip: initial; background-color: rgb(105, 105, 105); opacity: 0.8;
+        visibility: hidden; width: 0px; height: 0px; background-position: initial initial;
+        background-repeat: initial initial;">
+    </div>
+    <div style="z-index: 1; overflow-x: hidden; overflow-y: hidden; position: absolute;
+        visibility: visible; clip: rect(0px 784px 539px 0px); width: 784px; height: 539px;
+        left: 248px; top: 182px;">
+        <div style="overflow-x: auto; overflow-y: auto; width: 784px; height: 539px;">
+            <div class="post">
+                <h3>
+                    Заебали постить псто</h3>
+                и отключать возможность комментирования.<div class="footer">
+                    <a href="#" target="__blank">wanderfald</a><span class="time">04.02.2011 9:08:46</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 30px;">
+                где?<div class="footer">
+                    <a href="#" target="__blank">prosto_ko</a><span class="time">04.02.2011 9:10:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 60px;">
+                про кривоножек<div class="footer">
+                    <a href="#" target="__blank">wanderfald</a><span class="time">04.02.2011 9:11:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 90px;">
+                аа, на это всем похуй<div class="footer">
+                    <a href="#" target="__blank">prosto_ko</a><span class="time">04.02.2011 9:12:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 120px;">
+                потому у нас и страна такая<div class="footer">
+                    <a href="#" target="__blank">wanderfald</a><span class="time">04.02.2011 9:12:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 150px;">
+                Да, согласен<div class="footer">
+                    <a href="#" target="__blank">prosto_ko</a><span class="time">04.02.2011 9:14:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 180px;">
+                надо что-то менять<div class="footer">
+                    <a href="#" target="__blank">wanderfald</a><span class="time">04.02.2011 9:15:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 210px;">
+                Абсолютно так!<div class="footer">
+                    <a href="#" target="__blank">prosto_ko</a><span class="time">04.02.2011 9:15:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 240px;">
+                для начала выйти из состояния "мне похуй"<div class="footer">
+                    <a href="#" target="__blank">wanderfald</a><span class="time">04.02.2011 9:16:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 270px;">
+                Да<br>
+                Но не сегодня<div class="footer">
+                    <a href="#" target="__blank">prosto_ko</a><span class="time">04.02.2011 9:27:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 300px;">
+                ок<div class="footer">
+                    <a href="#" target="__blank">wanderfald</a><span class="time">04.02.2011 9:28:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 300px;">
+                потому что сегодня похуй на то, что будет завтра<br>
+                бггг<br>
+                <br>
+                например<div class="footer">
+                    <a href="#" target="__blank">dedmen82</a><span class="time">04.02.2011 9:30:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 120px;">
+                это не всегда соответствует действительности<div class="footer">
+                    <a href="#" target="__blank">alexey_pp</a><span class="time">04.02.2011 10:00:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 60px;">
+                ах5<div class="footer">
+                    <a href="#" target="__blank">mindfucker_rblv</a><span class="time">04.02.2011 9:13:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 90px;">
+                ок<div class="footer">
+                    <a href="#" target="__blank">prosto_ko</a><span class="time">04.02.2011 9:14:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 90px;">
+                говорят, всем похуй<div class="footer">
+                    <a href="#" target="__blank">wanderfald</a><span class="time">04.02.2011 9:14:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 120px;">
+                мне нет<div class="footer">
+                    <a href="#" target="__blank">mindfucker_rblv</a><span class="time">04.02.2011 9:15:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 150px;">
+                Это тоже всем похуй.<div class="footer">
+                    <a href="#" target="__blank">prosto_ko</a><span class="time">04.02.2011 9:16:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 150px;">
+                мне тоже, нас уже легион<div class="footer">
+                    <a href="#" target="__blank">wanderfald</a><span class="time">04.02.2011 9:16:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 180px;">
+                ок<div class="footer">
+                    <a href="#" target="__blank">mindfucker_rblv</a><span class="time">04.02.2011 9:16:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 210px;">
+                твой ответ без энтузиазма написан<div class="footer">
+                    <a href="#" target="__blank">wanderfald</a><span class="time">04.02.2011 9:17:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 240px;">
+                всем похуй<div class="footer">
+                    <a href="#" target="__blank">mindfucker_rblv</a><span class="time">04.02.2011 9:45:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 30px;">
+                у него просто руки из жопы<div class="footer">
+                    <a href="#" target="__blank">bizzzon</a><span class="time">04.02.2011 9:13:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 60px;">
+                значит изолировать от общества<div class="footer">
+                    <a href="#" target="__blank">wanderfald</a><span class="time">04.02.2011 9:14:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 90px;">
+                хотел напесать, что надо еще вырвать руки и засунуть их в жопу, но они вроде уже
+                там...<div class="footer">
+                    <a href="#" target="__blank">bizzzon</a><span class="time">04.02.2011 9:21:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 30px;">
+                При Лужкове сожгли бы нахуй на костре, вместе с его сраным андройдом.<div class="footer">
+                    <a href="#" target="__blank">enosial</a><span class="time">04.02.2011 9:24:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 60px;">
+                Лужков теперь продался Березовскому<div class="footer">
+                    <a href="#" target="__blank">wanderfald</a><span class="time">04.02.2011 9:27:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 90px;">
+                Это не удивительно, за его голову дают миллион фрикаделек и залупу акса пятого.<div
+                    class="footer">
+                    <a href="#" target="__blank">enosial</a><span class="time">04.02.2011 9:29:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 120px;">
+                если разобрать его на части, то можно выручить гораздо больше<div class="footer">
+                    <a href="#" target="__blank">wanderfald</a><span class="time">04.02.2011 9:34:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 30px;">
+                сорок восемь<div class="footer">
+                    <a href="#" target="__blank">iozik</a><span class="time">04.02.2011 9:30:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 60px;">
+                что 48 ?<div class="footer">
+                    <a href="#" target="__blank">wanderfald</a><span class="time">04.02.2011 9:35:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 90px;">
+                семдесят пять<div class="footer">
+                    <a href="#" target="__blank">iozik</a><span class="time">04.02.2011 9:39:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 90px;">
+                Йожик йобнулся. Мне тоже числа свои писал и всё.<br>
+                <br>
+                Зато не напишет, что ему похуй!<div class="footer">
+                    <a href="#" target="__blank">gniloed</a><span class="time">04.02.2011 9:44:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 120px;">
+                как всё сложно<div class="footer">
+                    <a href="#" target="__blank">wanderfald</a><span class="time">04.02.2011 9:45:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 120px;">
+                это единственный человек которому не похуй. Ему страну спасать значит<div class="footer">
+                    <a href="#" target="__blank">alexey_pp</a><span class="time">04.02.2011 9:58:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 30px;">
+                <h3>
+                    раз там коментить нельзя, то буд уздесь</h3>
+                ну не знаю. я бы их все равно трахнул<div class="footer">
+                    <a href="#" target="__blank">connor_ivan</a><span class="time">04.02.2011 9:43:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 60px;">
+                <h3>
+                    Re: раз там коментить нельзя, то буд уздесь</h3>
+                плюсую<br>
+                о том же подумал<br>
+                бгг<br>
+                <br>
+                например<div class="footer">
+                    <a href="#" target="__blank">dedmen82</a><span class="time">04.02.2011 9:47:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 60px;">
+                <h3>
+                    Re: раз там коментить нельзя, то буд уздесь</h3>
+                кого? тех кто отключает комменты? а если негр большой?<div class="footer">
+                    <a href="#" target="__blank">alexey_pp</a><span class="time">04.02.2011 10:00:00</span></div>
+            </div>
+            <div class="comment1" style="padding-left: 30px;">
+                <h3>
+                    ИСПРАВИЛ!!!</h3>
+                Ебаный айфон глюкнул и при пощщении случилась такая хуйня.<br>
+                Пепел посыпал на темя, если чо<div class="footer">
+                    <a href="#" target="__blank">ax5</a><span class="time">04.02.2011 9:45:00</span></div>
+            </div>
+            <div class="comment2" style="padding-left: 60px;">
+                <h3>
+                    Re: ИСПРАВИЛ!!!</h3>
+                обрезание сделал?<div class="footer">
+                    <a href="#" target="__blank">wanderfald</a><span class="time">04.02.2011 9:46:00</span></div>
+            </div>
+        </div>
+    </div>
+    <div style="z-index: 2; overflow-x: hidden; overflow-y: hidden; position: absolute;
+        background-image: initial; background-attachment: initial; background-origin: initial;
+        background-clip: initial; background-color: rgb(105, 105, 105); opacity: 0.8;
+        visibility: visible; background-position: initial initial; background-repeat: initial initial;">
+    </div>
+</body>
+</html>

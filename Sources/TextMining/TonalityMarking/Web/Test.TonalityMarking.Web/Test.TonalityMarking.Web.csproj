@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2720329F-ADD9-4AE4-B655-4DEFA3F14AB3}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Test.TonalityMarking.Web</RootNamespace>
+    <AssemblyName>Test.TonalityMarking.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkProfile />
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\Xslt\TonalityMarking.HtmlView\BackcolorAllTonality.xslt">
+      <Link>App_Data\BackcolorAllTonality.xslt</Link>
+    </Content>
+    <Content Include="..\..\..\Xslt\TonalityMarking.HtmlView\FinalTonality.xslt">
+      <Link>App_Data\FinalTonality.xslt</Link>
+    </Content>
+    <Content Include="..\..\..\Xslt\TonalityMarking.HtmlView\FinalTonalityDividedSentence.xslt">
+      <Link>App_Data\FinalTonalityDividedSentence.xslt</Link>
+    </Content>
+    <Content Include="..\..\..\Xslt\TonalityMarking.HtmlView\TopLevelTonality.xslt">
+      <Link>App_Data\TopLevelTonality.xslt</Link>
+    </Content>
+    <Content Include="..\..\..\Xslt\TonalityMarking.HtmlView\TopLevelTonalityDividedSentence.xslt">
+      <Link>App_Data\TopLevelTonalityDividedSentence.xslt</Link>
+    </Content>
+    <Content Include="..\..\..\Xslt\TonalityMarking.HtmlView\Xml.xslt">
+      <Link>App_Data\Xml.xslt</Link>
+    </Content>
+    <Content Include="Images\Busy.gif" />
+    <Content Include="JavaScript\WaitBanner.js" />
+    <Content Include="ResultXml.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="JavaScript\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Result.aspx" />
+    <Content Include="Test.aspx" />
+    <Content Include="Wait.htm" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ResultXml.aspx.cs">
+      <DependentUpon>ResultXml.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResultXml.aspx.designer.cs">
+      <DependentUpon>ResultXml.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Result.aspx.cs">
+      <DependentUpon>Result.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Result.aspx.designer.cs">
+      <DependentUpon>Result.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Core\csharp\Lingvistics.Client\Lingvistics.Client.csproj">
+      <Project>{3f51ec37-c4e4-458f-a1be-c9959d3f6431}</Project>
+      <Name>Lingvistics.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\TextMining.Core\TextMining.Core.csproj">
+      <Project>{F5C8040E-A219-4E32-968D-5A315C11B310}</Project>
+      <Name>TextMining.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\TextMining.Service\TextMining.Service.csproj">
+      <Project>{E90B466D-B0D8-4BF3-A463-D08D82251F87}</Project>
+      <Name>TextMining.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Client\TonalityMarking.WcfClient\TonalityMarking.WcfClient.csproj">
+      <Project>{8E89AC82-4C47-4417-8749-B219D927CB83}</Project>
+      <Name>TonalityMarking.WcfClient</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1176</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:14300/TonalityMarking</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>echo:
+echo ------------ Copy XSLT-HtmlView Files ------------
+echo Copy file: "..\..\..\..\Xslt\TonalityMarking.HtmlView\BackcolorAllTonality.xslt"
+copy "..\..\..\..\Xslt\TonalityMarking.HtmlView\BackcolorAllTonality.xslt" "$(ProjectDir)\App_Data"
+
+echo Copy file: "..\..\..\..\Xslt\TonalityMarking.HtmlView\FinalTonality.xslt"
+copy "..\..\..\..\Xslt\TonalityMarking.HtmlView\FinalTonality.xslt" "$(ProjectDir)\App_Data"
+
+echo Copy file: "..\..\..\..\Xslt\TonalityMarking.HtmlView\FinalTonalityDividedSentence.xslt"
+copy "..\..\..\..\Xslt\TonalityMarking.HtmlView\FinalTonalityDividedSentence.xslt" "$(ProjectDir)\App_Data"
+
+echo Copy file: "..\..\..\..\Xslt\TonalityMarking.HtmlView\TopLevelTonality.xslt"
+copy "..\..\..\..\Xslt\TonalityMarking.HtmlView\TopLevelTonality.xslt" "$(ProjectDir)\App_Data"
+
+echo Copy file: "..\..\..\..\Xslt\TonalityMarking.HtmlView\TopLevelTonalityDividedSentence.xslt"
+copy "..\..\..\..\Xslt\TonalityMarking.HtmlView\TopLevelTonalityDividedSentence.xslt" "$(ProjectDir)\App_Data"
+
+echo Copy file: "..\..\..\..\Xslt\TonalityMarking.HtmlView\Xml.xslt"
+copy "..\..\..\..\Xslt\TonalityMarking.HtmlView\Xml.xslt" "$(ProjectDir)\App_Data"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

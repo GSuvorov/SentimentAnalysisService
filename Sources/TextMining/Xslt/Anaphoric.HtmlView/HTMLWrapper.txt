@@ -1,0 +1,36 @@
+﻿    <html>
+      <head>
+        <title>linguistic-xml-link-attributes</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <script type="text/javascript">
+          function getVerticalScrollPosition() 
+          {
+            return document.body.scrollTop.toString();
+          }
+          function setVerticalScrollPosition(position) 
+          {
+            document.body.scrollTop = position;
+          }
+          function getHorizontalScrollPosition() 
+          {
+            return document.body.scrollLeft.toString();
+          }
+          function setHorizontalScrollPosition(position) 
+          {
+            document.body.scrollLeft = position;
+          }
+          function scrollIntoViewElement(elementId) 
+          {
+            <!--document.body.scroll = "no";-->
+            var e = document.getElementById(elementId);
+            if (e) 
+            {
+              e.scrollIntoView();
+            }
+          }
+        </script>
+      </head>
+      <body style="background-color: #FFFFFA;">
+	    <PlaceForInsert/>
+	  </body>
+    </html>

@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{02C2B0F0-4EF3-4035-85B1-61054A4C09A9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpinionMining</RootNamespace>
+    <AssemblyName>OpinionMining.WcfService</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkProfile />
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\..\[libraries]\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="OpinionMiningWcfService.svc" />
+    <None Include="OpinionMiningWcfService_log4net.xml" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="OpinionMining\separators.cs" />
+    <Compile Include="OpinionMining\inderectspeechs.cs" />
+    <Compile Include="OpinionMining\extensions-4-SubjectsVerb.cs" />
+    <Compile Include="OpinionMining\patterns.cs" />
+    <Compile Include="Rules\DirectSpeech\2. DS_TwoCitation.cs" />
+    <Compile Include="Rules\IndirectSpeech\2. IS_TwoSubsent.cs" />
+    <Compile Include="Rules\IndirectSpeech\4. IS_ParentChild_DanglingParticiple.cs" />
+    <Compile Include="Rules\IndirectSpeech\4. IS_ParentChild_DanglingParticipleAfterDS.cs" />
+    <Compile Include="Stud Classes\Dictionaries\OneWordWeightDictionary.cs" />
+    <Compile Include="Stud Classes\Dictionaries\MultiWordWeightDictionary.cs" />
+    <Compile Include="Stud Classes\Dictionaries\DictionaryType.cs" />
+    <Compile Include="Rules\DirectSpeech\1. DS_OneCitation.cs" />
+    <Compile Include="Rules\DirectSpeech\3. DS_TwoSubsent.cs" />
+    <Compile Include="Rules\DirectSpeech\4. DS_ThreeSubsent.cs" />
+    <Compile Include="Rules\DirectSpeech\3. DS_TwoSubsent_Ex.cs" />
+    <Compile Include="Rules\IndirectSpeech\1. IS_OneSubsent.cs" />
+    <Compile Include="Rules\IndirectSpeech\4. IS_ParentChild.cs" />
+    <Compile Include="Rules\IndirectSpeech\3. IS_ThreeSubsent.cs" />
+    <Compile Include="Rules\IndirectSpeech\5. IS_ThreeParentChild.cs" />
+    <Compile Include="Rules\Common.cs" />
+    <Compile Include="Rules\IndirectSpeech\4. IS_ParentChild_Desc.cs" />
+    <Compile Include="Rules\RuleBase.cs" />
+    <Compile Include="Rules\DirectSpeech\DirectSpeech.cs" />
+    <Compile Include="Rules\IndirectSpeech\IndirectSpeech.cs" />
+    <Compile Include="Stud Classes\Languages\Language.cs" />
+    <Compile Include="Stud Classes\Languages\LanguagesManager.cs" />
+    <Compile Include="Stud Classes\Dictionaries\DictionaryManager.cs" />
+    <Compile Include="Infrastructure\Config.cs" />
+    <Compile Include="Infrastructure\LinguisticsDecorator.cs" />
+    <Compile Include="Infrastructure\OpinionMiningSectionHandler.cs" />
+    <Compile Include="Infrastructure\OM-Extensions.cs" />
+    <Compile Include="Rules\Rules.cs" />
+    <Compile Include="OpinionMining\ProcessingItem.cs" />
+    <Compile Include="Stud Classes\Themes\Theme.cs" />
+    <Compile Include="Stud Classes\Themes\ThemesManager.cs" />
+    <Compile Include="OpinionMiningWcfService.svc.cs">
+      <DependentUpon>OpinionMiningWcfService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Core\csharp\CoreferenceResolving\CoreferenceResolving.csproj">
+      <Project>{11528bc6-ca83-452d-9180-6d19f555fe7c}</Project>
+      <Name>CoreferenceResolving</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Core\csharp\Lingvistics.Client\Lingvistics.Client.csproj">
+      <Project>{3f51ec37-c4e4-458f-a1be-c9959d3f6431}</Project>
+      <Name>Lingvistics.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Core\csharp\Lingvistics.Types\Lingvistics.Types.csproj">
+      <Project>{9a1890dc-37d1-4784-97de-690fd50b029d}</Project>
+      <Name>Lingvistics.Types</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\TextMining.Core\TextMining.Core.csproj">
+      <Project>{F5C8040E-A219-4E32-968D-5A315C11B310}</Project>
+      <Name>TextMining.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\TextMining.Service\TextMining.Service.csproj">
+      <Project>{E90B466D-B0D8-4BF3-A463-D08D82251F87}</Project>
+      <Name>TextMining.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>14299</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:15299/OpinionMining.WcfService</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,83 @@
+﻿using System;
+using System.IO;
+using System.Xml;
+using System.Threading;
+
+namespace TonalityMarking
+{
+    internal class WriteLock : IDisposable
+    {
+        private ReaderWriterLockSlim _rwls;
+
+        public WriteLock( ReaderWriterLockSlim rwls )
+        {
+            _rwls = rwls;
+            _rwls.EnterWriteLock();
+        }
+
+        public void Dispose()
+        {
+            if ( _rwls != null )
+            {
+                _rwls.ExitWriteLock();
+                _rwls = null;
+            }
+        }
+    }
+
+    internal class ReadLock : IDisposable
+    {
+        private ReaderWriterLockSlim _rwls;
+
+        public ReadLock( ReaderWriterLockSlim rwls )
+        {
+            _rwls = rwls;
+            _rwls.EnterReadLock();
+        }
+
+        public void Dispose()
+        {
+            if ( _rwls != null )
+            {
+                _rwls.ExitReadLock();
+                _rwls = null;
+            }
+        }
+    }
+
+    internal class UpgradeableReadLock : IDisposable
+    {
+        private ReaderWriterLockSlim _rwls;
+
+        public UpgradeableReadLock( ReaderWriterLockSlim rwls )
+        {
+            _rwls = rwls;
+            _rwls.EnterUpgradeableReadLock();
+        }
+
+        public void Dispose()
+        {
+            if ( _rwls != null )
+            {
+                _rwls.ExitUpgradeableReadLock();
+                _rwls = null;
+            }
+        }
+    }
+
+    internal static class Extensions4ReaderWriterLockSlim
+    {
+        public static WriteLock ToWriteLock( this ReaderWriterLockSlim rwls )
+        {
+            return (new WriteLock( rwls ));
+        }
+        public static ReadLock ToReadLock( this ReaderWriterLockSlim rwls )
+        {
+            return (new ReadLock( rwls ));
+        }
+        public static UpgradeableReadLock ToUpgradeableReadLock( this ReaderWriterLockSlim rwls )
+        {
+            return (new UpgradeableReadLock( rwls ));
+        }
+    }
+}

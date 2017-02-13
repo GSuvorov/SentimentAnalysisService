@@ -1,0 +1,158 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dictionaries", "Dictionaries", "{B15816C5-2C42-4CEA-9532-57BAB1C83D81}"
+	ProjectSection(SolutionItems) = preProject
+		Dictionaries\cnt_str_fls = Dictionaries\cnt_str_fls
+		Dictionaries\cnt_str_fls.pl = Dictionaries\cnt_str_fls.pl
+		Dictionaries\del2str.pl = Dictionaries\del2str.pl
+		Dictionaries\list_adjectives_amplf.txt = Dictionaries\list_adjectives_amplf.txt
+		Dictionaries\list_adjectives_neg.txt = Dictionaries\list_adjectives_neg.txt
+		Dictionaries\list_adjectives_pos.txt = Dictionaries\list_adjectives_pos.txt
+		Dictionaries\list_adverbs_amplf.txt = Dictionaries\list_adverbs_amplf.txt
+		Dictionaries\list_adverbs_neg.txt = Dictionaries\list_adverbs_neg.txt
+		Dictionaries\list_adverbs_pos.txt = Dictionaries\list_adverbs_pos.txt
+		Dictionaries\list_collocation_amplf.txt = Dictionaries\list_collocation_amplf.txt
+		Dictionaries\list_collocation_neg.txt = Dictionaries\list_collocation_neg.txt
+		Dictionaries\list_collocation_neut.txt = Dictionaries\list_collocation_neut.txt
+		Dictionaries\list_collocation_pos.txt = Dictionaries\list_collocation_pos.txt
+		Dictionaries\list_collocation_vneg.txt = Dictionaries\list_collocation_vneg.txt
+		Dictionaries\list_collocation_vneut.txt = Dictionaries\list_collocation_vneut.txt
+		Dictionaries\list_collocation_vpos.txt = Dictionaries\list_collocation_vpos.txt
+		Dictionaries\list_ner_neg.txt = Dictionaries\list_ner_neg.txt
+		Dictionaries\list_ner_pos.txt = Dictionaries\list_ner_pos.txt
+		Dictionaries\list_nouns_aneg.txt = Dictionaries\list_nouns_aneg.txt
+		Dictionaries\list_nouns_apos.txt = Dictionaries\list_nouns_apos.txt
+		Dictionaries\list_nouns_neg.txt = Dictionaries\list_nouns_neg.txt
+		Dictionaries\list_nouns_pneg.txt = Dictionaries\list_nouns_pneg.txt
+		Dictionaries\list_nouns_pos.txt = Dictionaries\list_nouns_pos.txt
+		Dictionaries\list_nouns_ppos.txt = Dictionaries\list_nouns_ppos.txt
+		Dictionaries\list_verbs_flxneg.txt = Dictionaries\list_verbs_flxneg.txt
+		Dictionaries\list_verbs_flxpos.txt = Dictionaries\list_verbs_flxpos.txt
+		Dictionaries\list_verbs_link.txt = Dictionaries\list_verbs_link.txt
+		Dictionaries\list_verbs_neg.txt = Dictionaries\list_verbs_neg.txt
+		Dictionaries\list_verbs_opp_neg.txt = Dictionaries\list_verbs_opp_neg.txt
+		Dictionaries\list_verbs_opp_pos.txt = Dictionaries\list_verbs_opp_pos.txt
+		Dictionaries\list_verbs_pos.txt = Dictionaries\list_verbs_pos.txt
+		Dictionaries\list_verbs_pure_neg.txt = Dictionaries\list_verbs_pure_neg.txt
+		Dictionaries\list_verbs_pure_pos.txt = Dictionaries\list_verbs_pure_pos.txt
+		Dictionaries\mod_test.xml = Dictionaries\mod_test.xml
+		Dictionaries\order_rules.xml = Dictionaries\order_rules.xml
+		Dictionaries\order_rules_homogenous.xml = Dictionaries\order_rules_homogenous.xml
+		Dictionaries\order_rules_participial.xml = Dictionaries\order_rules_participial.xml
+		Dictionaries\rules.xml = Dictionaries\rules.xml
+		Dictionaries\show2wrd.pl = Dictionaries\show2wrd.pl
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Implementation", "Implementation", "{7DBED371-6418-4F31-8C72-E3E539C4C493}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{7E0B6F8A-AD4E-4F5A-AA54-CDFC55CF5523}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{F6A48017-48E7-43CB-9AE3-F2B326AC700F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{15930203-F08C-47A8-995D-EFF378A5D554}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{0FE43834-AC52-43FD-963A-F5D0DAB65548}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lingvistics", "Lingvistics", "{B102CCFF-6CDB-4307-9A46-352B9C5558A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Offsets", "Offsets", "{9028481A-505C-497F-9170-48F740F427EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TonalityMarking.WcfService", "Implementation\TonalityMarking.WcfService\TonalityMarking.WcfService.csproj", "{5CC141D3-6839-4B92-A3A3-DA45E2427384}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TonalityMarking.ConsoleServiceHost", "Implementation\Hosting\TonalityMarking.ConsoleServiceHost\TonalityMarking.ConsoleServiceHost.csproj", "{6FD6FD9D-382D-4A58-8004-376280275922}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TonalityMarking.WindowsServiceHost", "Implementation\Hosting\TonalityMarking.WindowsServiceHost\TonalityMarking.WindowsServiceHost.csproj", "{39957321-7C1A-4244-829D-DC27FC101E05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.TonalityMarking.Web", "Web\Test.TonalityMarking.Web\Test.TonalityMarking.Web.csproj", "{D81A319A-66FA-499A-9E9C-282251D15AEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextMining.Core", "..\Core\TextMining.Core\TextMining.Core.csproj", "{F5C8040E-A219-4E32-968D-5A315C11B310}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TonalityMarking.WcfClient", "Client\TonalityMarking.WcfClient\TonalityMarking.WcfClient.csproj", "{7504B4C7-0F35-4B9D-92E3-EE2524DF4016}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextMining.Service", "..\Core\TextMining.Service\TextMining.Service.csproj", "{E90B466D-B0D8-4BF3-A463-D08D82251F87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Offsets", "..\Offsets\Offsets\Offsets.csproj", "{448C0A30-6DBA-41C6-ACE8-1C7057CE4BAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lingvistics.Client", "..\..\Core\csharp\Lingvistics.Client\Lingvistics.Client.csproj", "{3F51EC37-C4E4-458F-A1BE-C9959D3F6431}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lingvistics.Types", "..\..\Core\csharp\Lingvistics.Types\Lingvistics.Types.csproj", "{9A1890DC-37D1-4784-97DE-690FD50B029D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreferenceResolving", "..\..\Core\csharp\CoreferenceResolving\CoreferenceResolving.csproj", "{11528BC6-CA83-452D-9180-6D19F555FE7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linguistics.Core", "..\..\Core\csharp\Linguistics.Core\Linguistics.Core.csproj", "{449C9700-77EB-46F4-A32B-D7669D2A86BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CC141D3-6839-4B92-A3A3-DA45E2427384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CC141D3-6839-4B92-A3A3-DA45E2427384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CC141D3-6839-4B92-A3A3-DA45E2427384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CC141D3-6839-4B92-A3A3-DA45E2427384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FD6FD9D-382D-4A58-8004-376280275922}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FD6FD9D-382D-4A58-8004-376280275922}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FD6FD9D-382D-4A58-8004-376280275922}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FD6FD9D-382D-4A58-8004-376280275922}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39957321-7C1A-4244-829D-DC27FC101E05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39957321-7C1A-4244-829D-DC27FC101E05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39957321-7C1A-4244-829D-DC27FC101E05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39957321-7C1A-4244-829D-DC27FC101E05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D81A319A-66FA-499A-9E9C-282251D15AEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D81A319A-66FA-499A-9E9C-282251D15AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D81A319A-66FA-499A-9E9C-282251D15AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D81A319A-66FA-499A-9E9C-282251D15AEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5C8040E-A219-4E32-968D-5A315C11B310}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5C8040E-A219-4E32-968D-5A315C11B310}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5C8040E-A219-4E32-968D-5A315C11B310}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5C8040E-A219-4E32-968D-5A315C11B310}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7504B4C7-0F35-4B9D-92E3-EE2524DF4016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7504B4C7-0F35-4B9D-92E3-EE2524DF4016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7504B4C7-0F35-4B9D-92E3-EE2524DF4016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7504B4C7-0F35-4B9D-92E3-EE2524DF4016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E90B466D-B0D8-4BF3-A463-D08D82251F87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E90B466D-B0D8-4BF3-A463-D08D82251F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E90B466D-B0D8-4BF3-A463-D08D82251F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E90B466D-B0D8-4BF3-A463-D08D82251F87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{448C0A30-6DBA-41C6-ACE8-1C7057CE4BAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{448C0A30-6DBA-41C6-ACE8-1C7057CE4BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{448C0A30-6DBA-41C6-ACE8-1C7057CE4BAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{448C0A30-6DBA-41C6-ACE8-1C7057CE4BAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F51EC37-C4E4-458F-A1BE-C9959D3F6431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F51EC37-C4E4-458F-A1BE-C9959D3F6431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F51EC37-C4E4-458F-A1BE-C9959D3F6431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F51EC37-C4E4-458F-A1BE-C9959D3F6431}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A1890DC-37D1-4784-97DE-690FD50B029D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A1890DC-37D1-4784-97DE-690FD50B029D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A1890DC-37D1-4784-97DE-690FD50B029D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A1890DC-37D1-4784-97DE-690FD50B029D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11528BC6-CA83-452D-9180-6D19F555FE7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11528BC6-CA83-452D-9180-6D19F555FE7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11528BC6-CA83-452D-9180-6D19F555FE7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11528BC6-CA83-452D-9180-6D19F555FE7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{449C9700-77EB-46F4-A32B-D7669D2A86BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{449C9700-77EB-46F4-A32B-D7669D2A86BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{449C9700-77EB-46F4-A32B-D7669D2A86BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{449C9700-77EB-46F4-A32B-D7669D2A86BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7E0B6F8A-AD4E-4F5A-AA54-CDFC55CF5523} = {7DBED371-6418-4F31-8C72-E3E539C4C493}
+		{5CC141D3-6839-4B92-A3A3-DA45E2427384} = {7DBED371-6418-4F31-8C72-E3E539C4C493}
+		{6FD6FD9D-382D-4A58-8004-376280275922} = {7E0B6F8A-AD4E-4F5A-AA54-CDFC55CF5523}
+		{39957321-7C1A-4244-829D-DC27FC101E05} = {7E0B6F8A-AD4E-4F5A-AA54-CDFC55CF5523}
+		{D81A319A-66FA-499A-9E9C-282251D15AEA} = {F6A48017-48E7-43CB-9AE3-F2B326AC700F}
+		{F5C8040E-A219-4E32-968D-5A315C11B310} = {15930203-F08C-47A8-995D-EFF378A5D554}
+		{E90B466D-B0D8-4BF3-A463-D08D82251F87} = {15930203-F08C-47A8-995D-EFF378A5D554}
+		{7504B4C7-0F35-4B9D-92E3-EE2524DF4016} = {0FE43834-AC52-43FD-963A-F5D0DAB65548}
+		{3F51EC37-C4E4-458F-A1BE-C9959D3F6431} = {B102CCFF-6CDB-4307-9A46-352B9C5558A9}
+		{9A1890DC-37D1-4784-97DE-690FD50B029D} = {B102CCFF-6CDB-4307-9A46-352B9C5558A9}
+		{11528BC6-CA83-452D-9180-6D19F555FE7C} = {B102CCFF-6CDB-4307-9A46-352B9C5558A9}
+		{449C9700-77EB-46F4-A32B-D7669D2A86BF} = {B102CCFF-6CDB-4307-9A46-352B9C5558A9}
+		{448C0A30-6DBA-41C6-ACE8-1C7057CE4BAA} = {9028481A-505C-497F-9170-48F740F427EF}
+	EndGlobalSection
+EndGlobal
