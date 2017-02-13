@@ -1,1 +1,4 @@
 *.suo
+*.opensdf
+*.sdf
+*.psess
