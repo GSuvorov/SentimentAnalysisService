@@ -1,0 +1,5 @@
+/bin/*
+/bin-inproc-Lingvistic/*
+/obj/*
+/Logs/*
+*.csproj.user
