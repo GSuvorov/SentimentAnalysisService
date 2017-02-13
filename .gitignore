@@ -48,24 +48,3 @@ Temporary Items
 
 *.rar
 *.xml)
-Sources/[libraries]/cppunit-1.9.11/aclocal.m4
-Sources/[libraries]/cppunit-1.9.11/AUTHORS
-Sources/[libraries]/cppunit-1.9.11/ChangeLog
-Sources/[libraries]/cppunit-1.9.11/CodingGuideLines.txt
-Sources/[libraries]/cppunit-1.9.11/aclocal.m4
-Sources/[libraries]/cppunit-1.9.11/BUGS
-Sources/[libraries]/cppunit-1.9.11/TODO
-Sources/[libraries]/cppunit-1.9.11/THANKS
-Sources/[libraries]/cppunit-1.9.11/README
-Sources/[libraries]/cppunit-1.9.11/NEWS
-*.in
-Sources/[libraries]/cppunit-1.9.11/Makefile.am
-*.m4
-Sources/[libraries]/cppunit-1.9.11/AUTHORS
-Sources/[libraries]/cppunit-1.9.11/AUTHORS
-Sources/[libraries]/cppunit-1.9.11/ChangeLog
-*.txt
-Sources/[libraries]/cppunit-1.9.11/cppunit-config.1
-Sources/[libraries]/cppunit-1.9.11/cppunit.spec
-Sources/[libraries]/cppunit-1.9.11/INSTALL
-Sources/[libraries]/cppunit-1.9.11/INSTALL-unix
