@@ -1,0 +1,744 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.ServiceModel.Web;
+using System.Text;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Schema;
+using System.Xml.Serialization;
+using System.Xml.XPath;
+
+using OpinionMining;
+using TextMining.Core;
+using TonalityMarking;
+
+namespace TextMining.Core
+{
+    /*public enum OffsetType
+    {
+        Absolute,
+        Relative,
+    }*/
+
+    [DataContract]
+    [Serializable]
+    public class OffsetPair
+    {
+        public OffsetPair( int beginIndex, int length /*, OffsetType offsetType*/ )
+        {
+            if ( beginIndex <  0 ) throw (new ArgumentException("beginIndex <  0"));
+            if ( length     <= 0 ) throw (new ArgumentException("length     <= 0"));
+
+            BeginIndex = beginIndex;
+            Length     = length;
+            //OffsetType = offsetType; 
+        }
+
+        [DataMember]
+        public int BeginIndex
+        {
+            get;
+            private set;
+        }
+
+        [DataMember]
+        public int Length
+        {
+            get;
+            private set;
+        }
+
+        /*[DataMember]
+        public OffsetType OffsetType
+        {
+            get;
+            private set;
+        }*/
+
+        public override string ToString()
+        {
+            //return ("{" + BeginIndex + ";" + Length + " - " + OffsetType + "}");
+            return ("{" + BeginIndex + ";" + Length + "}");
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj is OffsetPair)
+            {
+                var op = (OffsetPair) obj;
+                return (BeginIndex == op.BeginIndex && 
+                        Length     == op.Length);
+            }
+            return base.Equals(obj);
+        }
+        public override int GetHashCode()
+        {
+            return (BeginIndex.GetHashCode() ^ Length.GetHashCode());
+        }
+
+        public static OffsetPair Create( int beginIndex, int length )
+        {
+            return (new OffsetPair( beginIndex, length ));
+        }
+        /*public static OffsetPair Create( int beginIndex, int length, OffsetType offsetType )
+        {
+            return (new OffsetPair( beginIndex, length, offsetType ));
+        }
+        public static OffsetPair CreateAbsolute( int beginIndex, int length )
+        {
+            return (new OffsetPair( beginIndex, length, OffsetType.Absolute ));
+        }
+        public static OffsetPair CreateRelative( int beginIndex, int length )
+        {
+            return (new OffsetPair( beginIndex, length, OffsetType.Relative ));
+        }*/
+    }
+
+    [DataContract]
+    [Serializable]
+    public class OffsetPairTonality : OffsetPair
+    {
+        public OffsetPairTonality( int beginIndex, int length, int frt )
+            : base( beginIndex, length )
+        {
+            if ( frt <  0 ) throw (new ArgumentException("frt"));
+
+            FRT = frt;
+        }
+
+        [DataMember]
+        public int FRT
+        {
+            get;
+            private set;
+        }
+
+
+        public static OffsetPairTonality Create( int beginIndex, int length, int frt )
+        {
+            return (new OffsetPairTonality( beginIndex, length, frt ));
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [DataContract]
+    [Serializable/*, XmlRoot("O")*/]
+    public class Offsets /*: IXmlSerializable*/
+    {
+        internal Offsets()
+        {
+        }
+        /*public Offsets( OffsetPair   sentence,
+                        OffsetPair?  subject,
+                        OffsetPair?  @object,
+                        OffsetPair?  indirectspeech,
+                        OffsetPair?  directspeech,
+                        OffsetPair[] positiveTonality,
+                        OffsetPair[] negativeTonality )
+        {
+            Sentence         = sentence;
+            Subject          = subject;
+            Object           = @object;
+            Indirectspeech   = indirectspeech;
+            Directspeech     = directspeech;
+            PositiveTonality = positiveTonality;
+            NegativeTonality = negativeTonality;
+        }*/
+
+        [DataMember]
+        public OffsetPair Sentence
+        {
+            get;
+            private set;
+        }
+
+        [DataMember]
+        public OffsetPair Subject
+        {
+            get;
+            private set;
+        }
+
+        [DataMember]
+        public OffsetPair Object
+        {
+            get;
+            private set;
+        }
+
+        [DataMember]
+        public OffsetPair[] Indirectspeech
+        {
+            get;
+            private set;
+        }
+
+        [DataMember]
+        public OffsetPair[] Directspeech
+        {
+            get;
+            private set;
+        }
+
+        [DataMember]
+        public OffsetPairTonality[] PositiveTonality
+        {
+            get;
+            private set;
+        }
+
+        [DataMember]
+        public OffsetPairTonality[] NegativeTonality
+        {
+            get;
+            private set;
+        }
+
+    #region [.IXmlSerializable.]
+        public XmlSchema GetSchema()
+        {
+            return (null);
+        }
+
+        public void ReadXml( XmlReader reader )
+        {
+            var xd = XDocument.Parse( reader.ReadOuterXml() );
+
+            Sentence         = ReadXmlOffsetPair ( xd, "S", true );
+            Subject          = ReadXmlOffsetPair ( xd, "SJ" );
+            Object           = ReadXmlOffsetPair ( xd, "OJ" );
+            Indirectspeech   = ReadXmlOffsetPairs( xd, "IS" );
+            Directspeech     = ReadXmlOffsetPairs( xd, "DS" );
+            PositiveTonality = ReadXmlOffsetPairTonalitys( xd, "P"  );
+            NegativeTonality = ReadXmlOffsetPairTonalitys( xd, "N"  );
+        }
+        public void WriteXml( XmlWriter writer )
+        {
+            WriteXmlOffsetPair( writer, Sentence        , "S" );
+            WriteXmlOffsetPair( writer, Subject         , "SJ"  );
+            WriteXmlOffsetPair( writer, Object          , "OJ"  );
+            WriteXmlOffsetPair( writer, Indirectspeech  , "IS" );
+            WriteXmlOffsetPair( writer, Directspeech    , "DS" );
+            WriteXmlOffsetPair( writer, PositiveTonality, "P" );
+            WriteXmlOffsetPair( writer, NegativeTonality, "N" );
+        }
+         
+        private static OffsetPair[] ReadXmlOffsetPairs( XDocument xd, string name )
+        {
+            var xpath = "O/" + name;
+            var xe = xd.XPathSelectElement( xpath );
+            if ( xe == null ) throw (new ArgumentException("Not found node on xpath: " + xpath ));
+
+            var list = new List< OffsetPair >();
+            foreach ( var e in xe.Elements( "T" ) )
+            {                
+                list.Add( ReadXmlOffsetPair( e ) );
+            }
+            if ( !list.Any() )
+                throw (new ArgumentException("Node not has needed child elements, xpath: " + xpath));
+
+            return (list.ToArray());
+        }
+        private static OffsetPair   ReadXmlOffsetPair( XElement xe )
+        {
+            var i = xe.GetAttribute( "I" ).TryConvert2Int();
+            var l = xe.GetAttribute( "L" ).TryConvert2Int();
+
+            if ( i.HasValue && l.HasValue )
+                return (OffsetPair.Create( i.Value, l.Value ));
+
+            throw (new ArgumentException("Node not has all needed attributes"));
+        }
+        private static OffsetPairTonality[] ReadXmlOffsetPairTonalitys( XDocument xd, string name )
+        {
+            var xpath = "O/" + name;
+            var xe = xd.XPathSelectElement( xpath );
+            if ( xe == null ) throw (new ArgumentException("Not found node on xpath: " + xpath ));
+
+            var list = new List< OffsetPairTonality >();
+            foreach ( var e in xe.Elements( "T" ) )
+            {                
+                list.Add( ReadXmlOffsetPairTonality( e ) );
+            }
+            if ( !list.Any() )
+                throw (new ArgumentException("Node not has needed child elements, xpath: " + xpath));
+
+            return (list.ToArray());
+        }
+        private static OffsetPairTonality   ReadXmlOffsetPairTonality( XElement xe )
+        {
+            var i = xe.GetAttribute( "I" ).TryConvert2Int();
+            var l = xe.GetAttribute( "L" ).TryConvert2Int();
+            var f = xe.GetAttribute( "F" ).TryConvert2Int();
+
+            if ( i.HasValue && l.HasValue && f.HasValue  )
+                return (OffsetPairTonality.Create( i.Value, l.Value, f.Value ));
+
+            throw (new ArgumentException("Node not has all needed attributes"));
+        }
+        private static OffsetPair ReadXmlOffsetPair( XDocument xd, string name, bool throwIfNull = false )
+        {
+            var xpath = "O/" + name;
+            var xe = xd.XPathSelectElement( xpath );
+            if ( xe == null ) throw (new ArgumentException("Not found node on xpath: " + xpath ));
+
+            var i = xe.GetAttribute( "I" ).TryConvert2Int();
+            var l = xe.GetAttribute( "L" ).TryConvert2Int();
+
+            if ( i.HasValue && l.HasValue )
+                return (OffsetPair.Create( i.Value, l.Value ));
+            if ( !i.HasValue && !l.HasValue )
+            {
+                if ( throwIfNull )
+                    throw (new ArgumentException("Node not has needed attributes, xpath: " + xpath ));
+                return (null);
+            }
+
+            throw (new ArgumentException("Node not has all needed attributes, xpath: " + xpath));
+        }
+
+        private static void WriteXmlOffsetPair( XmlWriter writer, OffsetPair[] offsetPair, string name )
+        {
+            writer.WriteStartElement( name );
+            if ( offsetPair != null && offsetPair.Any() )
+            {
+                foreach ( var op in offsetPair )
+                {
+                    WriteXmlOffsetPair( writer, op , "T" );
+                }
+            }
+            writer.WriteEndElement();
+        }
+        private static void WriteXmlOffsetPair( XmlWriter writer, OffsetPair offsetPair, string name )
+        {
+            writer.WriteStartElement( name );
+            if ( offsetPair.IsNotNull() )
+            {
+                writer.WriteAttributeString( "I", offsetPair.BeginIndex.ToString() );
+                writer.WriteAttributeString( "L", offsetPair.Length    .ToString() );
+            }
+            writer.WriteEndElement();
+        }
+        private static void WriteXmlOffsetPair( XmlWriter writer, OffsetPairTonality[] offsetPairTonality, string name )
+        {
+            writer.WriteStartElement( name );
+            if ( offsetPairTonality != null && offsetPairTonality.Any() )
+            {
+                foreach ( var op in offsetPairTonality )
+                {
+                    WriteXmlOffsetPair( writer, op , "T" );
+                }
+            }
+            writer.WriteEndElement();
+        }
+        private static void WriteXmlOffsetPair( XmlWriter writer, OffsetPairTonality offsetPairTonality, string name )
+        {
+            writer.WriteStartElement( name );
+            if ( offsetPairTonality.IsNotNull() )
+            {
+                writer.WriteAttributeString( "I", offsetPairTonality.BeginIndex.ToString() );
+                writer.WriteAttributeString( "L", offsetPairTonality.Length    .ToString() );
+                writer.WriteAttributeString( "F", offsetPairTonality.FRT       .ToString() );
+            }
+            writer.WriteEndElement();
+        }
+    #endregion
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            using ( var sw = new StringWriter( sb ) )
+            using ( var xw = new XmlTextWriter( sw ) { Formatting = Formatting.None } )
+            {
+                xw.WriteStartElement( "O" );
+                WriteXml( xw );
+                xw.WriteEndElement();
+            }
+            return (sb.ToString());
+        }
+
+        public static Offsets FromString( string text )
+        {
+            var offsets = new Offsets();
+
+            using ( var sr = new StringReader( text ) )
+            using ( var xr = new XmlTextReader( sr ) )
+            {
+                xr.Read();
+
+                offsets.ReadXml( xr );
+            }
+
+            return (offsets);
+        }
+
+
+        public void SetSentence( XElement sent )
+        {
+            sent.ThrowIfNotSent();
+
+            SetSentenceInternal( sent );
+            SetIndirectspeech  ( sent );
+            SetDirectspeech    ( sent );
+            SetTonality        ( sent );
+        }
+        public void SetSubject( SubjectEssence subject )
+        {
+            Subject = subject.IsAuthor ? ((OffsetPair) null) : Get4Essence( subject.Entity );
+        }
+        public void SetObject( ObjectEssence @object )
+        {
+            Object = Get4Essence( @object.Entity );
+        }
+        public void SetTonality( XElement sent )
+        {
+            var a  = from d in sent.Descendants()
+                     let sntfinal = d.TryGetAttributeSNTFINAL()
+                     where sntfinal.HasValue
+                     let frtfinal = d.GetAttributeFRTFINAL()
+                     select new 
+                     {
+                         e   = d, 
+                         snt = sntfinal.Value,
+                         frt = frtfinal 
+                     };
+
+            var positive = default(List< OffsetPairTonality >);
+            var negative = default(List< OffsetPairTonality >);
+            foreach ( var _ in a )
+            {
+                var pos = GetElementPosition( _.e );
+                var len = GetCDataLength    ( _.e );
+
+                if ( len <= 0 )
+                    continue;
+
+                var list = default(List< OffsetPairTonality >);
+                if ( _.snt.ToString().ToLowerEx().Contains( "neg" ) )
+                {
+                    if ( negative == null )
+                         negative = new List< OffsetPairTonality >();
+                    list = negative;
+                }
+                else
+                {
+                    if ( positive == null )
+                         positive = new List< OffsetPairTonality >();
+                    list = positive;
+                }
+
+                list.Add( OffsetPairTonality.Create( pos, len, _.frt ) );
+            }
+
+            PositiveTonality = (positive != null) ? positive.ToArray() : null;
+            NegativeTonality = (negative != null) ? negative.ToArray() : null;
+        }
+
+        private int SetSentenceInternal( XElement sent )
+        {
+            var pos = sent.GetAttributePOS().Value;
+
+            //calc len over last-with-pos-attribute element
+            var lastWithPos = sent.DescendantsAndSelf().Last( d => d.GetAttributePOS().HasValue );
+
+            var afterLastWithPos = from d in sent.DescendantNodes()
+                                   where d.IsAfter( lastWithPos ) &&
+                                        (d.NodeType == XmlNodeType.CDATA) 
+                                   select ((XCData) d);
+
+            var len = lastWithPos.GetAttributePOS().Value + 
+                      afterLastWithPos.Sum( cd => cd.Value.Length );
+
+            Sentence = OffsetPair.Create( pos, len );
+
+            return (pos);
+        }
+        private void SetIndirectspeech( XElement sent )
+        {
+            Indirectspeech = GetBeginEnd( sent,
+                                          XLinqExtensions.Consts.INDIRECTSPEECH_BEGIN_ATTRIBUTE,
+                                          XLinqExtensions.Consts.INDIRECTSPEECH_END_ATTRIBUTE );
+        }
+        private void SetDirectspeech( XElement sent )
+        {
+            Directspeech = GetBeginEnd( sent,
+                                        XLinqExtensions.Consts.DIRECTSPEECH_BEGIN_ATTRIBUTE,
+                                        XLinqExtensions.Consts.DIRECTSPEECH_END_ATTRIBUTE );
+        }
+        
+
+        private static int GetCDataLength( XElement element )
+        {
+            var descendantNodes = from d in element.DescendantNodes()
+                                  where (d.NodeType == XmlNodeType.CDATA) 
+                                  select ((XCData) d);
+
+            var len = descendantNodes.Sum( cd => cd.Value.Length );
+
+            return (len);
+        }
+        private static int GetElementPosition( XElement element )
+        {
+            var pos = element.GetAttributePOS();
+            /*if ( !pos.HasValue )
+            {
+                pos = (from a in element.ElementsBeforeSelf().Reverse()
+                       let p = a.GetAttributePOS()
+                       where p.HasValue
+                       select p
+                      )
+                      .FirstOrDefault();
+            }
+            if ( !pos.HasValue )
+            {
+                pos = (from a in element.Ancestors()
+                       let p = a.GetAttributePOS()
+                       where p.HasValue
+                       select a.IsElementSENT() ? 0 : p
+                      )
+                      .FirstOrDefault();
+            }*/
+            if ( !pos.HasValue )
+            {
+                pos = (from d in element.Descendants()
+                       let p = d.GetAttributePOS()
+                       where p.HasValue
+                       select p
+                      )
+                      .FirstOrDefault();
+            }
+            var adjustment = GetAdjustmentIfInDirectSpeech( element );
+            return (pos.GetValueOrDefault( 0 ) + adjustment);
+        }
+
+        private static OffsetPair Get4Essence( XElement entity )
+        {
+            if ( !entity.IsElementENTITY() )
+                throw (new ArgumentException("!entity.IsElementENTITY()"));
+
+            var pos = entity.GetAttributePOS().Value;
+            var len = GetCDataLength( entity );
+
+            return (OffsetPair.Create( pos, len ));
+        }
+        private static OffsetPair[] GetBeginEnd( XElement sent, string beginAttributeName, string endAttributeName )
+        {
+            //var sentPos = sent.GetAttributePOS().Value;
+
+            var begin = (from d in sent.DescendantsAndSelf()
+                         where d.GetAttribute( beginAttributeName ).IsNotNull()
+                         select d
+                        )
+                        .ToArray();
+
+            var end   = (from d in sent.DescendantsAndSelf()
+                         where d.GetAttribute( endAttributeName ).IsNotNull()
+                         select d
+                        )
+                        .ToArray();
+            
+            var list = new List< OffsetPair >();
+            var descendantNodesAndSelf = sent.DescendantNodesAndSelf().ToArray();
+            for ( int i = 0, count = Math.Min( begin.Length, end.Length ); i < count; i++ )
+            {
+                var pos = GetPosition4AnyElement( descendantNodesAndSelf, begin[ i ] );
+                var len = GetPosition4AnyElement( descendantNodesAndSelf, end  [ i ] ) + GetCDataLength( end[ i ] ) - pos;
+                if ( len <= 0 ) 
+                    continue;
+                list.Add( OffsetPair.Create( /*sentPos +*/ pos, len ) );
+            }
+            return (list.Any() ? list.ToArray() : null);
+        }
+        private static int GetPosition4AnyElement( XNode[] descendantNodesAndSelf, XElement element )
+        {
+            var withoutElement = descendantNodesAndSelf.TakeWhile( d => d != element ).ToArray();
+
+            var accumulateLen = 0;
+            var pos = default(int?);
+            var adjustment = 0;
+            foreach ( var e in withoutElement.Reverse() )
+            {
+                switch ( e.NodeType )
+                {
+                    case XmlNodeType.CDATA:
+                        accumulateLen += ((XCData) e).Value.Length;
+                    break;
+
+                    case XmlNodeType.Element:
+                        pos = ((XElement) e).GetAttributePOS();
+                        if ( pos.HasValue )
+                        {
+                            adjustment = GetAdjustmentIfInDirectSpeech( (XElement) e );
+                            return (pos.Value + accumulateLen + adjustment);
+                        }
+                    break;
+                }
+            }
+
+            pos = element.GetAttributePOS();
+            if ( !pos.HasValue )
+            {
+                pos = (from d in element.Descendants()
+                       let p = d.GetAttributePOS()
+                       where p.HasValue
+                       select p.Value
+                      )
+                      .FirstOrDefault();
+            }
+            adjustment = GetAdjustmentIfInDirectSpeech( element );
+            return (pos.GetValueOrDefault( 0 ) + accumulateLen + adjustment);
+
+            //throw (new ArgumentException("Position of element not found, element: " + element.ToString()));
+        }        
+        private static int GetAdjustmentIfInDirectSpeech( XElement element )
+        {
+            var adjustment = 0;
+            var wasDS = false;
+            foreach ( var a in element.Ancestors().Reverse().Skip( 1 ) )
+            {
+                if ( a.IsElementSENT() )
+                {
+                    adjustment += a.GetAttributePOS().GetValueOrDefault( 0 );
+                }
+                if ( a.IsElementSUBSENT() && (a.GetAttributeTYPE2() == SubsentenceType.DirectSpeech) )
+                {
+                    adjustment += a.GetAttributePOS().GetValueOrDefault( 0 );
+                    wasDS = true;
+                }
+            }
+            return (wasDS ? adjustment : 0);
+        }
+        /*public static bool IsInDirectSpeech( XElement element )
+        {
+            return (element.Ancestors().Any(_ => _.IsElementSUBSENT() && 
+                                                (_.GetAttributeTYPE2() == SubsentenceType.DirectSpeech) ));
+        }*/
+
+
+        private enum point_type 
+        {
+            start, 
+            end
+        }
+        private class point : IComparer< point >
+        {
+            public int        value
+            {
+                get;
+                set;
+            }
+            public point_type type
+            {
+                get;
+                set;
+            }
+            public string     tagName
+            {
+                get;
+                set;
+            }
+
+            public override string ToString()
+            {
+                return (value + " - " + type + ", " + tagName);
+            }
+
+            public static point[] createFrom( OffsetPair offsetPair, string tagName )
+            {
+                if ( offsetPair != null )
+                {
+                    return (new[] 
+                    { 
+                        new point() { value = offsetPair.BeginIndex + offsetPair.Length, type = point_type.end  , tagName = tagName },
+                        new point() { value = offsetPair.BeginIndex                    , type = point_type.start, tagName = tagName },
+                    });
+                }
+                return (new point[ 0 ]);
+            }
+            public static point[] createFrom( OffsetPair[] offsetPairs, string tagName )
+            {
+                if ( offsetPairs != null )
+                {
+                    var list = new List< point >();
+                    foreach ( var op in offsetPairs )
+                    {
+                        list.AddRange( createFrom( op, tagName ) );
+                    }
+                    return (list.ToArray());
+                }
+                return (new point[ 0 ]);
+            }
+
+            public void InsertMarker( ref string text )
+            {
+                var marker = (type == point_type.start) ? ("<" + tagName + ">") : ("</" + tagName + ">");
+                text = text.Insert( value, marker ); 
+            }
+
+            #region [.IComparer< point >.]
+            public static readonly point Comparer = new point();
+            public int Compare( point x, point y )
+            {
+                var z = x.value - y.value;
+                if ( z != 0 )
+                    return (z);
+
+                z = y.type - x.type;
+                if ( z != 0 )
+                    return (z);
+
+                if ( y.type == point_type.start )
+                    return (string.Compare( y.tagName, x.tagName ));
+                return (string.Compare( x.tagName, y.tagName ));
+            }
+            #endregion
+        }
+        public XDocument CreateXDocumentFromText( string oroginalText )
+        {
+            var pts
+                 = point.createFrom( Subject, "subject" )
+                   .Concat
+                   (
+                    point.createFrom( Object, "object" )
+                   )
+                   .Concat
+                   (
+                    point.createFrom( Indirectspeech, "is" )
+                   )
+                   .Concat
+                   (
+                    point.createFrom( Directspeech, "ds" )
+                   )
+                   .Concat
+                   (
+                    point.createFrom( PositiveTonality, "positive-tonality" )
+                   )
+                   .Concat
+                   (
+                    point.createFrom( NegativeTonality, "negative-tonality" )
+                   );
+
+            var sent = oroginalText.Substring( Sentence.BeginIndex, Sentence.Length );
+
+            foreach ( var pt in pts.OrderByDescending( _ => _, point.Comparer ) )
+            {
+                pt.InsertMarker( ref sent ); 
+            }
+
+            var xdoc = XDocument.Parse( "<text>" + sent + "</text>" );
+            return (xdoc);
+        }
+    }
+
+
+    /*internal static class Extensions4Offsets
+    {
+
+    }*/
+}

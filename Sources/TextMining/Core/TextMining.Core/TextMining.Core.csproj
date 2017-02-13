@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F5C8040E-A219-4E32-968D-5A315C11B310}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TextMining.Core</RootNamespace>
+    <AssemblyName>TextMining.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CompabilityWith2008</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;CompabilityWith2008</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\Core\csharp\SemanticResolution\SemanticNetwork\EntityNormalizer.cs">
+      <Link>Common\EntityNormalizer.cs</Link>
+    </Compile>
+    <Compile Include="Common\DataContracts\InputParamsBase.cs" />
+    <None Include="Common\DataContracts\InputParams4AutomatBase.cs" />
+    <Compile Include="Common\DataContracts\OutputResultTupleBase.cs" />
+    <Compile Include="Common\DataContracts\OutputResultBase.cs" />
+    <Compile Include="Common\Enums\ObjectAllocateMethod.cs" />
+    <Compile Include="Common\Enums\RoleAttributeValue.cs" />
+    <Compile Include="Common\Enums\SubsentenceType.cs" />
+    <Compile Include="Common\Enums\TonalityType.cs" />
+    <Compile Include="Common\Enums\TypeAttributeValue.cs" />
+    <Compile Include="Common\Infrastructure\ServiceModelExtensions.cs" />
+    <Compile Include="Common\Infrastructure\XLinqTonalityMarkingExtensions.cs" />
+    <Compile Include="Common\Infrastructure\SentenceText.cs" />
+    <Compile Include="Digest.Interface\ClientContract\IDigestWcfClient.cs" />
+    <Compile Include="Digest.Interface\DataContracts\DigestInputParams.cs" />
+    <Compile Include="Digest.Interface\DataContracts\DigestOutputResult.cs" />
+    <Compile Include="Digest.Interface\DataContracts\DigestTuple.cs" />
+    <Compile Include="Digest.Interface\ServiceContracts\IDigest.cs" />
+    <Compile Include="Common\Infrastructure\XLinqExtensions.cs" />
+    <Compile Include="OpinionMining.Interface\DataContracts\OpinionMiningInputParams.cs" />
+    <Compile Include="OpinionMining.Interface\DataContracts\OpinionMiningOutputResult.cs" />
+    <Compile Include="OpinionMining.Interface\DataContracts\OpinionMiningTuple.cs" />
+    <Compile Include="Common\Enums\ThemeType.cs" />
+    <Compile Include="Common\Infrastructure\Extensions.cs" />
+    <Compile Include="OpinionMining.Interface\ClientContract\IOpinionMiningWcfClient.cs" />
+    <Compile Include="OpinionMining.Interface\ServiceContracts\IOpinionMining.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TonalityMarking.Interface\DataContracts\Blogs\ProcessingBlogsMode.cs" />
+    <Compile Include="TonalityMarking.Interface\DataContracts\Blogs\OutputBlogsFormat.cs" />
+    <Compile Include="TonalityMarking.Interface\DataContracts\Blogs\TonalityMarkingTuple4Blogs.cs" />
+    <Compile Include="TonalityMarking.Interface\DataContracts\Blogs\TonalityMarkingInputParams4Blogs.cs" />
+    <Compile Include="TonalityMarking.Interface\DataContracts\Blogs\TonalityMarkingOutputResult4Blogs.cs" />
+    <Compile Include="TonalityMarking.Interface\DataContracts\Socview\SocviewMessage.cs" />
+    <Compile Include="TonalityMarking.Interface\DataContracts\Socview\SocviewProcessingData.cs" />
+    <Compile Include="TonalityMarking.Interface\DataContracts\TonalityMarkingObject.cs" />
+    <Compile Include="TonalityMarking.Interface\DataContracts\TonalityMarkingTuple.cs" />
+    <Compile Include="TonalityMarking.Interface\DataContracts\TonalityMarkingInputParams.cs" />
+    <Compile Include="TonalityMarking.Interface\DataContracts\TonalityMarkingOutputResult.cs" />
+    <Compile Include="Common\Enums\InputTextFormat.cs" />
+    <Compile Include="TonalityMarking.Interface\Enums\InquiryAllocateStatus.cs" />
+    <Compile Include="Common\Enums\LanguageType.cs" />
+    <Compile Include="TonalityMarking.Interface\ClientContract\ITonalityMarkingWcfClient.cs" />
+    <Compile Include="TonalityMarking.Interface\ServiceContracts\ITonalityMarking.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\csharp\Lingvistics.Client\Lingvistics.Client.csproj">
+      <Project>{3f51ec37-c4e4-458f-a1be-c9959d3f6431}</Project>
+      <Name>Lingvistics.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\csharp\Lingvistics.Types\Lingvistics.Types.csproj">
+      <Project>{9a1890dc-37d1-4784-97de-690fd50b029d}</Project>
+      <Name>Lingvistics.Types</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
