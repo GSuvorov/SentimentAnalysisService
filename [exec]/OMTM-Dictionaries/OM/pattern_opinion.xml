@@ -1,0 +1,1619 @@
+﻿<PatternSpeech>
+
+  <description>
+    <!-- МЕЖДУ ПАРАМИ {ENTITY - VERB}{VERB - VERB} или {VERB - ENTITY} МОЖЕТ БЫТЬ СКОКО УГОДНО ЭЛЕМЕНТОВ, ОКРОМЯ ЗНАКОВ ПУНКТУАЦИИ И VERB@TYPE=Verb -->
+    <!-- ТАМ ГДЕ <VERB TYPE="Verb" VALUE_FROM="Phrasis1"/>||<!-intr_word1.txt->-ФРАЗЫ НЕ МОГУТ МЕНЯТЬСЯ МЕСТАМИ,
+         В ОСТАЛЬНЫХ СЛУЧАЯХ {ENTITY - VERB} | {VERB - ENTITY} ИДУТ ТАКЖЕ В ОБРАТНОМ ПОРЯДКE -->
+    <!-- для VERB MI="*****A" - шестое (из шести) значение по порядку; для ENTITY MI="U*****" - первое (из пяти)-->
+    <!-- у ENTITY MI либо указанный в параметрах, либо MI="U"-->
+    <!-- ЗАПЯТЫЕ И ТИРЕ ВСЕГДА ПОПАДАЮТ В ЭЛЕМЕНТ <U />, В КОТОРОМ МОГУТ СОДЕРЖАТЬСЯ И ДРУГИЕ СИМВОЛЫ -->
+    <!-- ВО ВСЕХ ШАБЛОНАХ ИСКОМЫЙ ГЛАГОЛ МОЖЕТ ОКАЗАТЬСЯ ДОЧЕРНИМ ГЛАГОЛОМ НА ЛЮБОМ УРОВНЕ ВЛОЖЕНИЯ-->
+
+    <!-- Последовательность обработки
+         сперва работают паттерны
+         IndirectSpeech
+            <ThreeSubsent>
+            <ThreeParentChild>
+            <ParentChild-DanglingParticiple>            
+            <ParentChild>
+            <ParentChild-Desc>
+            <TwoSubsent>
+            <OneSubsent>
+            
+         DirectSpeech            
+            <ThreeSubsent>
+            <TwoSubsent-Ex>
+            <TwoSubsent>
+            <TwoCitation>
+            <OneCitation>
+    -->
+
+    <!--separator-->
+    <!-- 
+    separator1 ::= 
+    <
+          <U> - </U>
+    >
+    -->
+    <!-- 
+    separator2 ::= 
+    <
+          <U> - || , </U>
+    >
+    -->
+
+    <!--inderectspeech-->
+    <!-- 
+    inderectspeech ::= 
+    <
+          <!-begin->
+          <!-end->
+    >
+    -->
+    <!-- 
+    inderectspeech1 ::= 
+    <
+          <!-begin->
+          <!-end->
+          [::separator1::]
+    >
+    -->
+    <!-- 
+    inderectspeech2 ::= 
+    <
+          <!-begin->
+          <!-end->
+          [::separator2::]
+    >
+    -->
+    <!-- 
+    inderectspeech3 ::=
+    <
+            <!-begin->
+            <!-first words => "first_word1.txt" ->
+            <!-end->
+    >
+    -->
+    <!-- 
+    inderectspeech4 ::= 
+    <
+        <!-begin->
+        <!-first words->
+        <CET TYPE="Pretext" />
+        <!-"first_word1.txt" ->
+        <!-end->
+    >
+    -->
+    <!-- 
+    inderectspeech5 ::= 
+    <
+        <!-begin->
+        <!-first words->
+        <ENTITY />
+        <!-"first_word1.txt" ->
+        <!-end->
+    >
+    -->
+    <!-- 
+    inderectspeech6 ::= 
+    <
+        <!-begin->
+        <!-first words->
+        <CET TYPE="Pretext" />
+        <ENTITY />
+        <!-"first_word1.txt" ->
+        <!-end->
+    >
+    -->
+    <!--derectspeech-->
+    <!-- 
+    derectspeech ::= 
+    <
+          <!-begin->
+          <!-end->
+    >
+    -->
+
+    <!--patterns-->
+    <!--1-->
+    <!-- ПАРЫ {VERB - ENTITY[ @SUBJECT ]} НЕ МЕНЯЮТСЯ МЕСТАМИ. АЛГОРИТМ ПОИСКА: АНАЛОГИЧНО ПОИСКУ КОЛЛОКАЦИЙ
+    pattern1 ::= 
+    <
+        <VERB TYPE="Verb" VALUE_FROM="Phrasis1" MI="A" />
+        <ENTITY SUBJECT="TRUE" MI="N" />
+    >
+    -->
+    <!-- ПАРЫ НЕ МЕНЯЮТСЯ МЕСТАМИ. АЛГОРИТМ ПОИСКА: АНАЛОГИЧНО ПОИСКУ КОЛЛОКАЦИЙ
+    pattern2 ::= 
+    <
+        <!-intr_word1.txt->
+        <ENTITY SUBJECT="TRUE" MI="G" />
+    >
+    -->
+    <!--  ПАРЫ НЕ МЕНЯЮТСЯ МЕСТАМИ
+    pattern3-pointview ::=
+    <
+        <CET>с </CET>
+        <ENTITY SUBJECT="TRUE" MI="A"/>
+        <ENTITY>точка зрение</ENTITY>
+    >
+    -->
+    <!--  ПАРЫ НЕ МЕНЯЮТСЯ МЕСТАМИ
+    pattern4-opinion ::= 
+    <
+        <CET>по </CET>
+        <ENTITY SUBJECT="TRUE" MI="A" />
+        <ENTITY><!-intr_word2.txt-></ENTITY>
+    >
+    -->
+    <!--5-->
+    <!-- ПАРЫ НЕ МЕНЯЮТСЯ МЕСТАМИ
+    pattern5-onglance ::= 
+    <
+        <CET>на </CET>
+        <ENTITY SUBJECT="TRUE" MI="A"/>
+        <ENTITY>взгляд</ENTITY>
+    >
+    -->
+    <!--  ПАРЫ {VERB/VERB - ENTITY[ @SUBJECT ]}  МЕНЯЮТСЯ МЕСТАМИ
+    АЛГОРИТМ ПОИСКА: АНАЛОГИЧНО ПОИСКУ КОЛЛОКАЦИЙ С ПРОПУСКОМ СЛОВ
+      В СПИСКЕ КАЖДАЯ СТРОКА СОСТОИТ ИЗ ДВУХ ГЛАГОЛОВ, МЕЖДУ КОТОРЫМИ МОЖЕТ БЫТЬ 
+      ЛЮБОЕ КОЛ-ВО СЛОВ, КРОМЕ VERB@TYPE=VERB И ЗНАКОВ ПРЕПИНАНИЯ.
+      ИСКАТЬ ОБА ГЛАГОЛА С VERB@MI=A
+    
+    pattern6 ::= 
+    <        
+        <ENTITY SUBJECT="TRUE" MI="N" />
+        <VERB VALUE_FROM="Phrasis2" MI="A" />
+    >
+    -->
+    <!--  ПАРЫ {VERB - ENTITY[ @SUBJECT ]} МЕНЯЮТСЯ МЕСТАМИ
+    pattern7 ::= 
+    <
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion2" MI="A" />
+        <ENTITY SUBJECT="TRUE" MI="N" />
+    >
+    -->
+    <!--  ПАРЫ {VERB - CET+ENTITY[ @SUBJECT ]} МЕНЯЮТСЯ МЕСТАМИ
+    pattern8 ::=
+    <
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion2" MI="P" />
+        <CET>в </CET>
+        <ENTITY TYPE="OrgInfo || OrgName || OrgNoInfo || UnknownProper" SUBJECT="TRUE" MI="L"/>
+    >
+    -->
+    <!--  ПАРЫ {VERB - CET+ENTITY[ @SUBJECT ]} МЕНЯЮТСЯ МЕСТАМИ
+    pattern9 ::=
+    <
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion4" MI="A" />
+        <CET>в </CET>
+        <ENTITY TYPE="OrgInfo || OrgName || OrgNoInfo || UnknownProper" SUBJECT="TRUE" MI="L" />
+    >
+    -->
+    <!--10-->
+    <!--  ПАРЫ {VERB - CET+ENTITY/ENTITY[ @SUBJECT ]} МЕНЯЮТСЯ МЕСТАМИ
+    между ENTITY/ENTITY может быть любое кол-во дочерних элементов ENTITY, T , VERB@TYPE=participle и ENTITY@subject=true, 
+    находящихся в положении любой вложенности, не выше родительского. 
+    pattern10 ::=
+    <
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion2" MI="P" />
+        <CET>в </CET>
+        <ENTITY>
+         <ENTITY SUBJECT="TRUE" MI="G"/>
+       </ENTITY>
+    >
+    -->
+    <!--  ПАРЫ {VERB - CET+ENTITY/ENTITY[ @SUBJECT ]} МЕНЯЮТСЯ МЕСТАМИ
+    между ENTITY/ENTITY может быть любое кол-во дочерних элементов ENTITY, T , VERB@TYPE=participle и ENTITY@subject=true, 
+    находящихся в положении любой вложенности, не выше родительского. 
+    pattern11 ::=
+    <
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion4" MI="A" />
+        <CET>в </CET>
+        <ENTITY>
+          <ENTITY SUBJECT="TRUE" MI="G"/>
+        </ENTITY>
+    >
+    -->
+    <!--  ПАРЫ {VERB - ENTITY[ @SUBJECT ]}  МЕНЯЮТСЯ МЕСТАМИ
+    <
+        pattern12 ::=
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion1" MI="A" />
+        <ENTITY SUBJECT="TRUE" MI="N" />
+    >
+    -->
+    <!--  ПАРЫ {VERB - CET+ENTITY[ @SUBJECT ]} МЕНЯЮТСЯ МЕСТАМИ
+    <
+        pattern13 ::=
+        <CET>в </CET>
+        <ENTITY TYPE="OrgInfo || OrgName || OrgNoInfo || UnknownProper" SUBJECT="TRUE" MI="L" />
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion1" MI="P" />
+    >
+    -->
+    <!--15-->
+    <!--  ПАРЫ {VERB - CET+ENTITY[ @SUBJECT ]} МЕНЯЮТСЯ МЕСТАМИ
+    <
+        pattern15 ::=
+        <CET>в </CET>
+        <ENTITY TYPE="OrgInfo || OrgName || OrgNoInfo || UnknownProper" SUBJECT="TRUE" MI="L" />
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion3" MI="A" />
+    >
+    -->
+    <!--  ПАРЫ {VERB - CET+ENTITY/ENTITY[ @SUBJECT ]} МЕНЯЮТСЯ МЕСТАМИ
+    между ENTITY/ENTITY может быть любое кол-во дочерних элементов ENTITY, T , VERB@TYPE=participle и ENTITY@subject=true, 
+    находящихся в положении любой вложенности, не выше родительского. 
+    <
+        pattern16 ::=
+        <CET>в </CET>
+        <ENTITY>
+          <ENTITY SUBJECT="TRUE" MI="G"/>
+        </ENTITY>
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion1" MI="P" />
+    >
+    -->
+    <!--  ПАРЫ {VERB - CET+ENTITY/ENTITY[ @SUBJECT ]} МЕНЯЮТСЯ МЕСТАМИ
+    между ENTITY/ENTITY может быть любое кол-во дочерних элементов ENTITY, T , VERB@TYPE=participle и ENTITY@subject=true, 
+    находящихся в положении любой вложенности, не выше родительского. 
+    <
+        pattern17 ::=
+        <CET>в </CET>
+        <ENTITY>
+          <ENTITY SUBJECT="TRUE" MI="G"/>
+        </ENTITY>
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion3" MI="A" />
+    >
+    -->
+    <!-- ПАРЫ {ENTITY[ @SUBJECT ] - VERB+ENTITY } МЕНЯЮТСЯ МЕСТАМИ. 
+    pattern18 ::= 
+    <
+        <ENTITY SUBJECT="TRUE" MI="N" />
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion5" MI="A" />
+        <ENTITY VALUE_FROM="EntityOpinion"/>
+    >
+    -->
+    <!-- ПАРЫ {ENTITY[ @SUBJECT ] - VERB+ENTITY } МЕНЯЮТСЯ МЕСТАМИ.
+    pattern19 ::= 
+    <
+        <ENTITY SUBJECT="TRUE" MI="G" />
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion5" MI="P" />
+        <ENTITY VALUE_FROM="EntityOpinion"/>
+        
+            -or-
+            
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion5" MI="P" />
+        <ENTITY VALUE_FROM="EntityOpinion"/>
+          <ENTITY SUBJECT="TRUE" MI="G" />
+        </ENTITY>
+    >
+    -->
+    <!--20-->
+    <!-- ПАРЫ  {VERB+ENTITY - CET+ENTITY/ENTITY[ @SUBJECT ]} МЕНЯЮТСЯ МЕСТАМИ.
+    pattern20 ::= 
+    <
+        <CET>в </CET>
+        <ENTITY>
+          <ENTITY SUBJECT="TRUE" MI="G"/>
+        </ENTITY>
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion5" MI="P" />
+        <ENTITY VALUE_FROM="EntityOpinion"/>
+    >
+    -->
+    <!-- ПАРЫ  {VERB+ENTITY - CET+ENTITY/ENTITY[ @SUBJECT ]} МЕНЯЮТСЯ МЕСТАМИ. 
+    pattern21 ::= 
+    <
+        <CET>в </CET>
+        <ENTITY>
+          <ENTITY SUBJECT="TRUE" MI="G"/>
+        </ENTITY>
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion5" MI="A" />
+        <ENTITY VALUE_FROM="EntityOpinion"/>
+    >
+    -->
+    <!-- ПАРЫ {VERB+ENTITY - ENTITY[ @SUBJECT ]}  МЕНЯЮТСЯ МЕСТАМИ. 
+    pattern22 ::= 
+    <
+        <ENTITY SUBJECT="TRUE" MI="G" />
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion6" MI="A" />
+        <ENTITY VALUE_FROM="EntityOpinion"/>
+        
+            -or-
+            
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion6" MI="A" />
+        <ENTITY VALUE_FROM="EntityOpinion">
+          <ENTITY SUBJECT="TRUE" MI="G" />
+        </ENTITY>           
+    >
+    -->
+    <!--  ПАРЫ {VERB - ENTITY[ @SUBJECT ]} МЕНЯЮТСЯ МЕСТАМИ
+    pattern23 ::= 
+    <
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion7" MI="P" />
+        <ENTITY SUBJECT="TRUE" MI="N" />
+    >
+    -->
+    <!-- ПАРЫ {VERB + ENTITY[ @SUBJECT ] + ENTITY } НЕ МЕНЯЮТСЯ МЕСТАМИ. 
+    pattern24 ::= 
+    <        
+        <VERB TYPE="Verb" VALUE_FROM="VerbsOpinion5" MI="A" />
+        <ENTITY SUBJECT="TRUE" MI="N" />
+        <ENTITY VALUE_FROM="EntityOpinion"/>
+    >
+    -->
+  </description>
+
+  <IndirectSpeech>
+    <OneSubsent>
+      <pattern id="IS_OneSubsent_01">
+        <examples>
+          <example>Как заявил Петя - мы лучше всех.</example>
+          <example>Как дал понять Петя - сегодня пить пиво.</example>
+          <example>Как заявил Петя как дал понять Вася - мы лучше всех.</example>
+        </examples>
+        <examples>
+          <example>Президент выразил мнение - сегодня пить пиво.</example>
+          <example>Президент мнение  выразил так - сегодня пить пиво.</example>
+        </examples>
+        <examples>
+          <example>Тут приведена мысль президента - сегодня пить пиво.</example>
+        </examples>
+        <examples>
+          <example>Тут выражена мысль президента - сегодня пить пиво.</example>
+
+        </examples>
+        <examples>
+          <example>В письме президента выражено мнение - сегодня пить пиво.</example>
+        </examples>
+        <examples>
+          <example>В письме президента выражается мнение - сегодня пить пиво.</example>
+        </examples>
+        <examples>
+          <example>Приводится мысль президента - сегодня пить пиво.</example>
+          <example>В послании приводится мысль президента - сегодня пить пиво.</example>
+        </examples>
+        <examples>
+          <example>В послании приводится мысль дорогого президента - сегодня пить пиво.</example>
+        </examples>
+        <examples>
+          <example>Президент уверен - сегодня пить пиво.</example>
+        </examples>
+
+        <SUB_SENT TYPE="Subordinate || Default || Introductory">
+          [::pattern1::] + [::pattern6::] + [::pattern18::] + [::pattern19::] + [::pattern20::]+ [::pattern21::] + [::pattern22::] + [::pattern23::] + [::pattern24::]
+          [::separator1::]
+          [::inderectspeech::]
+        </SUB_SENT>
+      </pattern>
+    </OneSubsent>
+
+    <TwoSubsent>
+      <inderectspeech1>
+        <pattern id="IS_TwoSubsent_02">
+          <examples>
+            <example></example>
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::inderectspeech1::]
+            [::pattern1::]
+          </SUB_SENT>
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::inderectspeech::]
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech1>
+
+      <inderectspeech2>
+        <pattern id="IS_TwoSubsent_01">
+          <examples>
+            <example>Как сообщил Петя и сказал Петя, сегодня наступила зима.</example>
+          </examples>
+          <examples>
+            <example>По мнению Пети, скоро всем придет конец.</example>
+            <example>По мнению Пети, скоро всем придет конец, сообщили в газете Ведомости.</example>
+            <example>По мнению Пети, в газете Ведомомти сказали, что скоро всем придет конец.</example>
+            <example>С точки зрения Пети, скоро всем придет конец.</example>
+          </examples>
+          <examples>
+            <example>С Пети точки зрения, который большой чудак, скоро всем придет конец.</example>
+            <example>С Петиной точки зрения, который большой чудак, скоро всем придет конец.</example>
+          </examples>
+          <examples>
+            <example>По Пети мнению, который большой чудак, скоро всем придет конец.</example>
+            <example>По Петиному мнению, который большой чудак, скоро всем придет конец.</example>
+          </examples>
+          <examples>
+            <example>На Васин взгляд, который большой чудак, скоро всем придет конец.</example>
+            <example>На Васин взгляд и с Петиной точки зрения, который большой чудак, скоро всем придет конец.</example>
+          </examples>
+
+          <examples>
+            <example>Вот такое мнение выразил наш президент о том, что сегодня пить пиво.</example>
+            <example>Президент выразил мнение, сегодня пить пиво.</example>
+          </examples>
+          <examples>
+            <example>Тут выражена мысль президента, сегодня пить пиво.</example>
+            <example>Выражено мнение президента кратко и ясно - сегодня пить пиво.</example>
+          </examples>
+          <examples>
+            <example>Тут передано сообщение президента, сегодня пить пиво.</example>
+          </examples>
+          <examples>
+            <example>В письме президента выражено мнение, сегодня пить пиво.</example>
+          </examples>
+          <examples>
+            <example>В письме президента выражается мнение, сегодня пить пиво.</example>
+          </examples>
+          <examples>
+            <example>В послании приводится мысль любимого президента, сегодня пить пиво.</example>
+          </examples>
+          <examples>
+            <example>Приводится мысль президента, сегодня пить пиво.</example>
+            <example>В послании приводится мысль президента, сегодня пить пиво.</example>
+          </examples>
+          <examples>
+            <example>Президент уверен, сегодня пиво пить .</example>
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::pattern1::] + [::pattern2::] + [::pattern3-pointview::] + [::pattern4-opinion::] + [::pattern5-onglance::] +
+            [::pattern18::] + [::pattern19::]+ [::pattern20::]+ [::pattern21::] + [::pattern22::] + [::pattern23::]
+            [::separator2::]
+          </SUB_SENT>
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::inderectspeech::]
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech2>
+
+      <inderectspeech3>
+        <pattern id="IS_TwoSubsent_03">
+          <examples>
+
+            <example> Это только Петя выдал, кому сегодня подарят подарок.</example>
+
+
+          </examples>
+          <examples>
+            <!--SUB_SENT1 - SUB_SENT2-->
+
+            <!--SUB_SENT2 - SUB_SENT1-->
+
+          </examples>
+          <examples>
+
+
+          </examples>
+          <examples>
+            <!--SUB_SENT1 - SUB_SENT2-->
+
+            <!--SUB_SENT2 - SUB_SENT1-->
+
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::pattern8::] + [::pattern9::] + [::pattern10::] + [::pattern11::]
+            [::separator2::]
+          </SUB_SENT>
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::inderectspeech3::]
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech3>
+
+      <inderectspeech4>
+        <pattern id="IS_TwoSubsent_04">
+
+          <examples>
+            <!--SUB_SENT1 - SUB_SENT2-->
+            <example>С чем Маша пришла в школу, сказано в журнале АТФ.</example>
+            <!--SUB_SENT2 - SUB_SENT1-->
+            <example>В журнале АТФ опубликовано, с чем Маша пришла в школу.</example>
+            <example>С чем Маша кушает кашу, опубликовано в журнале АТФ и новом журнале Огонек.</example>
+            <example>С чем Маша кушает кашу, опубликовано в нашей журнале АТФ и в новом журнале Огонек.</example>
+            <example>С чем Маша кушает кашу, опубликовано в журнале АТФ и говорится в новом журнале Огонек.</example>
+            <example>С чем Маша кушает кашу, опубликовано в нашей самом лучшем в мире журнале АТФ.</example>
+          </examples>
+          <examples>
+            <example>С чем Маша пришла в школу, об этом говорится в журнале АТФ.</example>
+            <example>В журнале АТФ говорится, с чем Маша пришла в школу.</example>
+          </examples>
+          <examples>
+            <!--SUB_SENT1 - SUB_SENT2-->
+            <example>С чем Маша пришла в школу, опубликовано в сообщении ТАСС.</example>
+            <!--SUB_SENT2 - SUB_SENT1-->
+            <example>В сообщении ТАСС опубликовано, с чем Маша пришла в школу.</example>
+          </examples>
+          <examples>
+            <example>С чем Маша пришла в школу, об этом говорится в сообщении ТАСС.</example>
+            <example>В сообщении ТАСС говорится, с чем Маша пришла в школу.</example>
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::pattern8::] + [::pattern9::] + [::pattern10::] + [::pattern11::]
+            [::separator2::]
+          </SUB_SENT>
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::inderectspeech4::]
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech4>
+
+      <inderectspeech5>
+        <pattern id="IS_TwoSubsent_05">
+
+          <examples>
+            <!--SUB_SENT2 - SUB_SENT1-->
+            <example>В журнале АТФ сказано, экранизацию чего Маша будет смотреть по телевизору.</example>
+            <example>Имя кого сегодня будет названо, сказано в журнале АТФ.</example>
+          </examples>
+          <examples>
+            <example>В журнале АТФ говорится, экранизацию чего Маша будет смотреть по телевизору.</example>
+            <example>Имя кого сегодня будет названо, говорится в журнале АТФ.</example>
+          </examples>
+          <examples>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <!--SUB_SENT2 - SUB_SENT1-->
+            <example>В сообщении ТАСС произнесено, экранизацию чего Маша будет смотреть по телевизору.</example>
+
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <!--SUB_SENT2 - SUB_SENT1-->
+            <example>Имя кого сегодня будет названо, произнесено в сообщении ТАСС.</example>
+
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--SUB_SENT2 - SUB_SENT1-->
+          </examples>
+          <examples>
+            <!--SUB_SENT2 - SUB_SENT1-->
+            <example>В сообщении ТАСС говорится, экранизацию чего Маша будет смотреть по телевизору.</example>
+
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <!--SUB_SENT2 - SUB_SENT1-->
+            <example>Имя кого сегодня будет названо, говорится в сообщении ТАСС.</example>
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::pattern8::] + [::pattern9::] + [::pattern10::] + [::pattern11::]
+            [::separator2::]
+          </SUB_SENT>
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::inderectspeech5::]
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech5>
+
+      <inderectspeech6>
+        <pattern id="IS_TwoSubsent_06">
+          <examples>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <!--SUB_SENT1 - SUB_SENT2-->
+            <example>С именем кого сегодня связан праздник, добавлено в журнале АТФ.</example>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--SUB_SENT1 - SUB_SENT2-->
+            <example>В журнале АТФ добавлено, с именем кого сегодня связан праздник.</example>
+          </examples>
+          <examples>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <!--SUB_SENT1 - SUB_SENT2-->
+            <example>С именем кого сегодня связан праздник, говорится в журнале АТФ.</example>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--SUB_SENT1 - SUB_SENT2-->
+            <example>В журнале АТФ говорится, с именем кого сегодня связан праздник.</example>
+          </examples>
+          <examples>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <!--SUB_SENT1 - SUB_SENT2-->
+            <example>С именем кого сегодня связан праздник, подсказано в сообщении ТАСС.</example>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--SUB_SENT1 - SUB_SENT2-->
+            <example>В сообщении ТАСС подсказано, с именем кого сегодня связан праздник.</example>
+          </examples>
+          <examples>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <!--SUB_SENT1 - SUB_SENT2-->
+            <example>С именем кого сегодня связан праздник, говорится в сообщении ТАСС.</example>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--SUB_SENT1 - SUB_SENT2-->
+            <example>В сообщении ТАСС говорится, с именем кого сегодня связан праздник.</example>
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::pattern8::] + [::pattern9::] + [::pattern10::] + [::pattern11::]
+            [::separator2::]
+          </SUB_SENT>
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::inderectspeech6::]
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech6>
+
+      <inderectspeech7>
+        <pattern id="IS_TwoSubsent_07">
+          <examples>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <!--SUB_SENT1 - SUB_SENT2-->
+            <example>В этот день намечена манифестация оппозиционных сил против решения о продлении мандата на управление страной для президента Уго Чавеса, информируют СМИ.</example>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--SUB_SENT1 - SUB_SENT2-->
+            <example></example>
+          </examples>
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::inderectspeech2::]
+          </SUB_SENT>
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::pattern7::]
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech7>
+    </TwoSubsent>
+
+    <ThreeSubsent>
+      <pattern id="IS_ThreeSubsent_01">
+        <!--ПАРЫ {VERB - ENTITY[ @SUBJECT ]} НЕ МЕНЯЮТСЯ МЕСТАМИ-->
+        <examples>
+          <example></example>
+        </examples>
+        <examples>
+          <example>Сегодня вечером, по сообщению Пети, наступила зима.</example>
+          <example>С чем Маша кушает кашу, по мнению Пети, сказано в журнале АТФ.</example>
+        </examples>
+        <examples>
+          <example>Сегодня вечером, с Васиной точки зрения, наступила зима.</example>
+        </examples>
+        <examples>
+          <example>Сегодня вечером, по Васиному сообщению, наступила зима.</example>
+        </examples>
+        <examples>
+          <example>Сегодня вечером, на Васин взгляд, наступила зима.</example>
+        </examples>
+        <examples>
+          <example>Сегодня вечером, уверен Вася, наступила зима.</example>
+        </examples>
+        <SUB_SENT TYPE="Subordinate || Default || Introductory">
+          [::inderectspeech2::]
+        </SUB_SENT>
+        <SUB_SENT TYPE="Subordinate || Default || Introductory">
+          [::pattern1::] + [::pattern2::] + [::pattern3-pointview::] + [::pattern4-opinion::] + [::pattern5-onglance::] + [::pattern23::] + [::pattern24::]
+          [::separator2::]
+        </SUB_SENT>
+        <SUB_SENT TYPE="Subordinate || Default || Introductory">
+          [::inderectspeech::]
+        </SUB_SENT>
+      </pattern>
+    </ThreeSubsent>
+
+    <ParentChild>
+      <inderectspeech>
+        <pattern id="IS_ParentChild_01">
+          <examples>
+            <!--ПАРЫ {VERB - ENTITY[ @SUBJECT ]} НЕ МЕНЯЮТСЯ МЕСТАМИ-->
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>Мы лучше всех, как заявил великий Петя.</example>
+            <example>Сегодня наступила зима, как сообщил Петя.</example>
+
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::inderectspeech2::]
+            <SUB_SENT TYPE="Subordinate || Default || Introductory">
+              [::pattern1::]
+            </SUB_SENT>
+          </SUB_SENT>
+        </pattern>
+
+        <pattern id="IS_ParentChild_02">
+          <examples>
+            <!--ПАРЫ {VERB - ENTITY[ @SUBJECT ]} НЕ МЕНЯЮТСЯ МЕСТАМИ-->
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>Предполагает Петя, кто сегодня будет чемпионом.</example>
+          </examples>
+          <examples>
+            <example>Петя дал всем понять, какой мальчик работает на заводе.</example>
+          </examples>
+          <examples>
+          </examples>
+          <examples>
+          </examples>
+          <examples>
+          </examples>
+          <examples>
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::pattern1::] + [::pattern2::] + [::pattern6::] + [::pattern3-pointview::] + [::pattern4-opinion::] + [::pattern5-onglance::]
+            [::separator2::]
+            <SUB_SENT TYPE="Subordinate || Default || Introductory">
+              [::inderectspeech::]
+            </SUB_SENT>
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech>
+
+      <inderectspeech3>
+        <pattern id="IS_ParentChild_03">
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <example>Петя знает, почему мальчик не пришёл сегодня в школу.</example>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>Знает Петя, почему мальчик не пришёл сегодня в школу.</example>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <example>Петя предполагает, кто сегодня будет чемпионом.</example>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example> Это только Петя выдал,  что в газете "Факты" сказано, кому сегодня подарят подарок.</example>
+            <example>Саша сказал, что с точки зрения Пети, скоро всем придет конец.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <example>В журнале АТФ сказано, почему мальчик не пришёл сегодня в школу.</example>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example></example>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <example>В журнале АТФ сказано, кто сегодня будет чемпионом.</example>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>В журнале АТФ опубликовано, кому сегодня подарят подарок.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <example>В журнале АТФ говорится, почему мальчик не пришёл сегодня в школу.</example>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example></example>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <example>В журнале АТФ говорится, кто сегодня будет чемпионом.</example>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>В журнале АТФ говорится, кому сегодня подарят подарок.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <example>В послании президента сказано, почему мальчик не пришёл сегодня в школу.</example>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example></example>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <example>В послании президента сказано, кто сегодня будет чемпионом.</example>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>В сообщении ТАСС опубликовано, кому сегодня подарят подарок.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <example>В послании президента говорится, почему мальчик не пришёл сегодня в школу.</example>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example></example>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <example>В послании президента говорится, кто сегодня будет чемпионом.</example>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example></example>
+          </examples>
+
+          <examples>
+            <example>Мнение наш президент выразил о том, что сегодня неплохо бы выпить пиво.</example>
+            <example>Президент выразил мнение, что сегодня пить пиво.</example>
+          </examples>
+          <examples>
+            <example>Тут выражена мысль президента, что сегодня пить пиво.</example>
+          </examples>
+          <examples>
+            <example>Тут выражена мысль президента, что сегодня пить пиво.</example>
+          </examples>
+          <examples>
+            <example>В письме президента выражено мнение, что сегодня пить пиво.</example>
+          </examples>
+          <examples>
+            <example>В письме президента выражается мнение, что сегодня пить пиво.</example>
+          </examples>
+          <examples>
+            <example>В послании приводится высказывание нашего президента, что сегодня пить пиво.</example>
+          </examples>
+          <examples>
+            <example>Приводится мысль президента, что сегодня пить пиво.</example>
+            <example>В послании приводится мысль президента, что сегодня пить пиво.</example>
+          </examples>
+          <examples>
+            <example>Президент убежден, что сегодня пить пиво.</example>
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::pattern7::] + [::pattern8::] + [::pattern9::] + [::pattern10::] + [::pattern11::] +
+            [::pattern18::] + [::pattern19::] + [::pattern20::]+ [::pattern21::] + [::pattern22::]  + [::pattern23::] + [::pattern24::]
+            [::separator2::]
+            <SUB_SENT TYPE="Subordinate || Default || Introductory">
+              [::inderectspeech3::]
+            </SUB_SENT>
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech3>
+
+      <inderectspeech4>
+        <pattern id="IS_ParentChild_04">
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <example>Знает Петя, по какой причине мальчик не пришёл сегодня в школу.</example>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>Петя знает, по какой причине мальчик не пришёл сегодня в школу.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <example></example>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>В журнале АТФ сказано, по какой причине мальчик не пришёл сегодня в школу.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <example></example>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>В журнале АТФ говорится, по какой причине мальчик не пришёл сегодня в школу.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <example></example>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>В послании президента сказано, по какой причине мальчик не пришёл сегодня в школу.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <example></example>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>В послании президента говорится, по какой причине мальчик не пришёл сегодня в школу.</example>
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::pattern7::] + [::pattern8::] + [::pattern9::] + [::pattern10::] + [::pattern11::]
+            [::separator2::]
+            <SUB_SENT TYPE="Subordinate || Default || Introductory">
+              [::inderectspeech4::]
+            </SUB_SENT>
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech4>
+
+      <inderectspeech5>
+        <pattern id="IS_ParentChild_05">
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>Знает Петя, мама какого мальчика работает на заводе.</example>
+            <example>Петя знает, мама какого мальчика работает на заводе.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example></example>
+            <example>В журнале АТФ сказано, мама какого мальчика работает на заводе.</example>
+          </examples>
+          <examples>
+            <example>В журнале АТФ говорится, мама какого мальчика работает на заводе. </example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example></example>
+            <example>В послании президента сказано, мама какого мальчика работает на заводе.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example></example>
+            <example>В послании президента говорится, мама какого мальчика работает на заводе.</example>
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::pattern7::] + [::pattern8::] + [::pattern9::] + [::pattern10::] + [::pattern11::]
+            [::separator2::]
+            <SUB_SENT TYPE="Subordinate || Default || Introductory">
+              [::inderectspeech5::]
+            </SUB_SENT>
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech5>
+
+      <inderectspeech6>
+        <pattern id="IS_ParentChild_06">
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--SUB_SENT2 - SUB_SENT1-->
+            <example>Знает Петя, с мамой какого мальчика работает его мама.</example>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--SUB_SENT2 - SUB_SENT1-->
+            <example>Петя знает, с мамой какого мальчика работает его мама.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--SUB_SENT2 - SUB_SENT1-->
+            <example></example>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--SUB_SENT2 - SUB_SENT1-->
+            <example>В журнале АТФ сказано, с мамой какого мальчика работает его мама.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--SUB_SENT2 - SUB_SENT1-->
+            <example></example>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--SUB_SENT2 - SUB_SENT1-->
+            <example>В журнале АТФ говорится, с мамой какого мальчика работает его мама.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--SUB_SENT2 - SUB_SENT1-->
+            <example></example>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--SUB_SENT2 - SUB_SENT1-->
+            <example>В послании президента сказано, с мамой какого мальчика работает его мама.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--SUB_SENT2 - SUB_SENT1-->
+            <example></example>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--SUB_SENT2 - SUB_SENT1-->
+            <example>В послании президента говорится, с мамой какого мальчика работает его мама.</example>
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::pattern7::] + [::pattern8::] + [::pattern9::] + [::pattern10::] + [::pattern11::]
+            [::separator2::]
+            <SUB_SENT TYPE="Subordinate || Default || Introductory">
+              [::inderectspeech6::]
+            </SUB_SENT>
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech6>
+    </ParentChild>
+
+    <ParentChild-DanglingParticiple>
+      <!--  ПАРЫ {ENTITY[ @SUBJECT ] - VERB } НЕ МЕНЯЮТСЯ МЕСТАМИ -->
+      <inderectspeech>
+        <pattern id="IS_ParentChild_DanglingParticiple_01">
+          <examples>
+            <example>Премьер Путин сегодня также согласился с президентом, отметив, что бизнес переживает в связи с повышением социальных выплат трудности, и они носят объективный характер.</example>
+            <example>Вася посмотрел на Петю, бубня, будто он сам во всем виноват.</example>
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            <!--Может быть любое колическтво элементов, в том числе verb и знаки препинания-->
+            <ENTITY SUBJECT="TRUE" MI="N"/>
+            <!--Может быть любое колическтво элементов, в том числе verb и знаки препинания-->
+            <SUB_SENT TYPE="DanglingParticiple">
+              <!--Может быть любое колическтво элементов, но не verb и не знаки препинания-->
+              <VERB TYPE="Deepr" VALUE_FROM="VerbsOpinion2" MI="A" />
+              <!--Может быть любое колическтво элементов, но не verb и не знаки препинания-->
+              <SUB_SENT TYPE="Subordinate || Default || Introductory">
+                [::inderectspeech3::]
+              </SUB_SENT>
+            </SUB_SENT>
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech>
+    </ParentChild-DanglingParticiple>
+
+    <ParentChild-Desc>
+      <inderectspeech3>
+        <pattern id="IS_ParentChild_Desc_01">
+          <examples>
+            <example>О том что сегодня пить пиво, выразил свое мнение президент .</example>
+
+          </examples>
+          <examples>
+            <example>О том что сегодня пить пиво, выражена мысль президента.</example>
+            <example>Кто сегодня будет чемпионом, опубликовано в сообщении ТАСС.</example>
+          </examples>
+          <examples>
+            <example>О том что сегодня пить пиво, такое выражено мнение в письме президента.</example>
+            <example>Кто сегодня будет чемпионом, опубликовано в журнале АТФ.</example>
+          </examples>
+          <examples>
+            <example>О том что сегодня пить пиво, выражается мнение в письме президента.</example>
+            <example>Кто сегодня будет чемпионом, говорится в журнале АТФ.</example>
+            <example>Кто сегодня будет чемпионом, Петя воображает.</example>
+            <example>Кто сегодня будет чемпионом, воображает Петя.</example>
+          </examples>
+          <examples>
+            <example>О том что сегодня пить пиво,  такая мысль президента приводится послании к гражданам страны.</example>
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            <SUB_SENT TYPE="Subordinate || Default || Introductory">
+              [::inderectspeech3::]
+              [::separator2::]
+            </SUB_SENT>
+            [::pattern7::] + [::pattern8::] + [::pattern9::] + [::pattern10::] + [::pattern11::] +
+            [::pattern18::] + [::pattern19::] + [::pattern20::]+ [::pattern21::] + [::pattern22::] + [::pattern23::] + [::pattern24::]
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech3>
+
+      <inderectspeech4>
+        <pattern id="IS_ParentChild_Desc_02">
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <example>По какой причине Маша не пришла в школу - Петя знает.</example>
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>По какой причине Маша не пришла в школу - знает Петя.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>По какой причине Маша не пришла в школу - сказано в журнале АТФ.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>По какой причине Маша не пришла в школу - говорится в журнале АТФ.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>По какой причине Маша не пришла в школу - сказано в постановлении президента.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>По какой причине Маша не пришла в школу - говорится в постановлении президента.</example>
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            <SUB_SENT TYPE="Subordinate || Default || Introductory">
+              [::inderectspeech4::]
+              [::separator2::]
+            </SUB_SENT>
+            [::pattern7::] + [::pattern8::] + [::pattern9::] + [::pattern10::] + [::pattern11::]
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech4>
+
+      <inderectspeech5>
+        <pattern id="IS_ParentChild_Desc_03">
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>Мама какого мальчика работает на заводе,  рассказал всем Петя.</example>
+            <example>Мама какого мальчика работает на заводе, Петя рассказал всем.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>Мама какого мальчика работает на заводе, сказано в журнале АТФ.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>Мама какого мальчика работает на заводе, говорится в журнале АТФ.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>Мама какого мальчика работает на заводе, сказано в постановлении президента.</example>
+          </examples>
+          <examples>
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>Мама какого мальчика работает на заводе, говорится в постановлении президента.</example>
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            <SUB_SENT TYPE="Subordinate || Default || Introductory">
+              [::inderectspeech5::]
+              [::separator2::]
+            </SUB_SENT>
+            [::pattern7::] + [::pattern8::] + [::pattern9::] + [::pattern10::] + [::pattern11::]
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech5>
+
+      <inderectspeech6>
+        <pattern id="IS_ParentChild_Desc_04">
+          <examples>
+            <example>С мамой какого мальчика работает его мама, рассказал всем Петя.</example>
+            <example>С мамой какого мальчика работает его мама, Петя рассказал всему классу.</example>
+          </examples>
+          <examples>
+            <example>С мамой какого мальчика работает его мама, сказано в журнале АТФ.</example>
+          </examples>
+          <examples>
+            <example>С мамой какого мальчика работает его мама, говорится в журнале АТФ.</example>
+          </examples>
+          <examples>
+            <example>С мамой какого мальчика работает его мама, сказано в постановлении президента.</example>
+          </examples>
+          <examples>
+            <example>С мамой какого мальчика работает его мама, говорится в постановлении президента.</example>
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            <SUB_SENT TYPE="Subordinate || Default || Introductory">
+              [::inderectspeech6::]
+              [::separator2::]
+            </SUB_SENT>
+            [::pattern7::] + [::pattern8::] + [::pattern9::] + [::pattern10::] + [::pattern11::]
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech6>
+
+      <inderectspeech2>
+        <pattern id="IS_ParentChild_Desc_05">
+          <examples>
+            <!--ПАРЫ {VERB - ENTITY[ @SUBJECT ]} НЕ МЕНЯЮТСЯ МЕСТАМИ-->
+            <!--ENTITY[ @SUBJECT ] - VERB-->
+            <!--VERB - ENTITY[ @SUBJECT ]-->
+            <example>Как отмечала в середине марта глава Минэкономразвития Эльвира Набиуллина, министерство уже при ставке в 26 % получает негативные сигналы со стороны бизнеса.</example>
+            <example>Как сообщил Петя, сегодня наступила зима.</example>
+            <example>Как сообщил Петя и Петя, сегодня наступила зима.</example>
+            <example>Согласно сообщению следователей, утром 27 февраля Навального допросили по этому вопросу.</example>
+          </examples>
+
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            <SUB_SENT TYPE="Subordinate || Default || Introductory">
+              [::pattern1::] + [::pattern2::] + [::pattern6::] + [::pattern3-pointview::] + [::pattern4-opinion::] + [::pattern5-onglance::]
+              [::separator2::]
+            </SUB_SENT>
+            [::inderectspeech::]
+          </SUB_SENT>
+        </pattern>
+      </inderectspeech2>
+    </ParentChild-Desc>
+
+    <ThreeParentChild>
+      <pattern id="IS_ThreeParentChild_01">
+        <examples>
+          <example>Сегодня вечером, как сказал Петя, наступила зима.</example>
+          <example>По мнению Пети, как сообщил Вася, скоро всем придет Медведь.</example>
+        </examples>
+
+        <SUB_SENT TYPE="Subordinate || Default || Introductory">
+          [::inderectspeech2::]
+          <SUB_SENT TYPE="Subordinate || Default || Introductory">
+            [::pattern1::]
+            [::separator2::]
+          </SUB_SENT>
+        </SUB_SENT>
+        <SUB_SENT TYPE="Subordinate || Default || Introductory">
+          [::inderectspeech::]
+        </SUB_SENT>
+      </pattern>
+    </ThreeParentChild>
+  </IndirectSpeech>
+
+  <DirectSpeech>
+    <!--брать все между begin-end -->
+    <!-- Для шаблонов <OneCitation> и <TwoCitation> кавычки находятся на том же уровне, где находится паттерн
+         {ENTITY и ENTITY}, {ENTITY и VERB},{ VERB и ENTITY },{VERB и VERB}.
+    -->
+
+    <OneCitation>
+      <!-- между элементами может быть любое кол-во элементов, включая вложенные сабсенты (Subordinate) -->
+      <pattern id="DS_OneCitation_01">
+        <examples>
+          <example>Глава государства отметил "всем вроде известно кто собственник".</example>
+          <example>Глава государства отметил "всем вроде известно кто собственник", и хватит лохматить бабушку.</example>
+        </examples>
+        <examples>
+          <example>В журнале АТФ сказано "все равны перед законом".</example>
+          <example>В журнале АТФ сказано "все равны перед законом", и хватит лохматить бабушку.</example>
+        </examples>
+        <examples>
+          <example>В журнале АТФ говорится "все равны перед законом".</example>
+          <example>Как в журнале АТФ говорится  "все равны перед законом", и хватит лохматить бабушку.</example>
+        </examples>
+        <examples>
+          <example>В постановлении президента сказано  "все равны перед законом".</example>
+          <example>В постановлении президента сказано  "все равны перед законом", и хватит лохматить бабушку.</example>
+        </examples>
+        <examples>
+          <example>В постановлении президента говорится  "все равны перед законом".</example>
+          <example>В постановлении президента говорится  "все равны перед законом", и хватит лохматить бабушку.</example>
+        </examples>
+        <examples>
+          <example>Президент дал понять о «необратимости выбора России в пользу свободы».</example>
+        </examples>
+        <examples>
+          <example>По сообщению министра обороны Грузии "в мае в Ирак отправятся еще 55 военнослужащих ВС этой страны".</example>
+          <example>По словам полковника Министерства обороны США Дэвида Лэпана "Пентагон уже приступил к разработке планов на случай различных ситуаций".</example>
+        </examples>
+        <examples>
+          <example>На Васин взгляд "президент Владимир Путин правильно себя ведёт".</example>
+        </examples>
+        <examples>
+          <example>С Васиной точки зрения "надо быть готовым" к тому, что это потребует времени.</example>
+        </examples>
+
+        <examples>
+          <example>Президент выразил мнение о "готовности к большим затратам денег и времени".</example>
+        </examples>
+        <examples>
+          <example>Так же широко распространено мнение нашего президента о "готовности к большим затратам денег и времени".</example>
+        </examples>
+        <examples>
+          <example>Так же широко распространено мнение президента о "готовности к большим затратам денег и времени".</example>
+        </examples>
+        <examples>
+          <example>В письме президента выражено мнение о "готовности к большим затратам денег и времени".</example>
+        </examples>
+        <examples>
+          <example>В письме президента выражается мнение о "готовности к большим затратам денег и времени".</example>
+        </examples>
+        <examples>
+          <example>Так же приводится мнение нашего незабвенного президента о "готовности к большим затратам денег и времени".</example>
+        </examples>
+        <examples>
+          <example>Так же приводится мнение президента о "готовности к большим затратам денег и времени".</example>
+        </examples>
+
+        <SUB_SENT TYPE="Subordinate || Default || Introductory">
+          [::pattern12::] + [::pattern13::] + [::pattern15::] + [::pattern16::] + [::pattern17::] +
+          [::pattern6::] + [::pattern2::] + [::pattern5-onglance::] + [::pattern4-opinion::] + [::pattern3-pointview::]+
+          [::pattern18::] + [::pattern19::] + [::pattern20::]+ [::pattern21::] + [::pattern22::] + [::pattern23::] + [::pattern24::]
+          <CET TYPE="Quote" />
+          [::derectspeech::]
+          <CET TYPE="Quote" />
+        </SUB_SENT>
+      </pattern>
+
+      <pattern id="DS_OneCitation_02">
+        <examples>
+          <example>"Мубарак говорил то же самое" пошутил корреспондент газеты.</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом" сказано в журнале АТФ.</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом" говорится же в журнале АТФ.</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом" сказано в постановлении президента.</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом" говорится в постановлении президента.</example>
+        </examples>
+        <examples>
+          <example>О «необратимости выбора России в пользу свободы» наш президент дал понять собравшимся.</example>
+        </examples>
+        <examples>
+          <example>"В мае в Ирак отправятся еще 55 военнослужащих ВС этой страны" по сообщению министра обороны Грузии .</example>
+        </examples>
+        <examples>
+          <example></example>
+        </examples>
+        <examples>
+          <example>"Соединенные Штаты готовы оказать силам революции любую поддержку" по Васиным данным .</example>
+        </examples>
+        <examples>
+          <example>По Васиным словам "Соединенные Штаты готовы оказать силам революции любую поддержку".</example>
+        </examples>
+        <examples>
+          <example>Ведь "надо быть готовым" к тому, что это потребует времени с Васиной точки зрения .</example>
+        </examples>
+
+        <examples>
+          <example>О "готовности к большим затратам денег и времени" выразил свое мнение и президент.</example>
+        </examples>
+        <examples>
+          <example>О "готовности к большим затратам денег и времени" распространено речь в зале съездов нашего президента .</example>
+        </examples>
+        <examples>
+          <example>О "готовности к большим затратам денег и времени" распространено мнение президента .</example>
+        </examples>
+        <examples>
+          <example>О "готовности к большим затратам денег и времени" выражено мнение и в письме президента .</example>
+        </examples>
+        <examples>
+          <example>О "готовности к большим затратам денег и времени" выражается мнение в письме президента.</example>
+        </examples>
+        <examples>
+          <example>О "готовности к большим затратам денег и времени" муссируется мнение главного президента компании.</example>
+        </examples>
+        <examples>
+          <example>О "готовности к большим затратам денег и времени" муссируется мнение президента .</example>
+        </examples>
+
+        <SUB_SENT TYPE="Subordinate || Default || Introductory">
+          <CET TYPE="Quote" />
+          [::derectspeech::]
+          <CET TYPE="Quote" />
+          [::pattern12::] + [::pattern13::] + [::pattern15::] + [::pattern16::] + [::pattern17::] +
+          [::pattern6::] +  [::pattern2::]  + [::pattern5-onglance::] + [::pattern4-opinion::] + [::pattern3-pointview::] +
+          [::pattern18::] + [::pattern19::] + [::pattern20::]+ [::pattern21::] + [::pattern22::]+ [::pattern23::] + [::pattern24::]
+        </SUB_SENT>
+      </pattern>
+    </OneCitation>
+
+    <TwoCitation>
+      <!-- между элементами может быть любое кол-во элементов, включая вложенные сабсенты (Subordinate) -->
+      <pattern id="DS_TwoCitation_01">
+        <examples>
+          <example>"Мубарак говорил то же самое" сказал Лукин "что и всегда".</example>
+          <example>"Лётный состав эскадрильи АБС не готов" сказал Лукин "стар должно быть".</example>
+        </examples>
+        <examples>
+          <example>"Лётный состав эскадрильи АБС не готов" дал понять Лукин "стар должно быть".</example>
+        </examples>
+        <examples>
+          <example>"Лётный состав эскадрильи АБС не готов" сказано в журнале АТФ "стар должно быть".</example>
+        </examples>
+        <examples>
+          <example>"Лётный состав эскадрильи АБС не готов" говорится в журнале АТФ "стар должно быть".</example>
+        </examples>
+        <examples>
+          <example>"Лётный состав эскадрильи АБС не готов" сказано в постановлении правительства "стар должно быть".</example>
+        </examples>
+        <examples>
+          <example>"Лётный состав эскадрильи АБС не готов" говорится в постановлении правительства "стар должно быть".</example>
+        </examples>
+
+        <examples>
+          <example>О "готовности к большим затратам денег и времени" выразил свое мнение и президент "как о неизбежности".</example>
+        </examples>
+        <examples>
+          <example>О "готовности к большим затратам денег и времени" распространено сообщение российского президента "как о неизбежности".</example>
+        </examples>
+        <examples>
+          <example>О "готовности к большим затратам денег и времени" распространено мнение президента "как о неизбежности".</example>
+        </examples>
+        <examples>
+          <example>О "готовности к большим затратам денег и времени" выражено мнение и в письме президента "как о неизбежности".</example>
+        </examples>
+        <examples>
+          <example>О "готовности к большим затратам денег и времени" выражается мнение в письме президента "как о неизбежности".</example>
+        </examples>
+        <examples>
+          <example>О "готовности к большим затратам денег и времени" муссируется мнение нашего бывшего президента Юкоса "как о неизбежности".</example>
+        </examples>
+        <examples>
+          <example>О "готовности к большим затратам денег и времени" муссируется мнение президента "как о неизбежности".</example>
+        </examples>
+
+        <SUB_SENT TYPE="Subordinate || Default || Introductory">
+          <CET TYPE="Quote" />
+          [::derectspeech::]
+          <CET TYPE="Quote" />
+          [::pattern12::] + [::pattern6::] + [::pattern13::] + [::pattern15::] + [::pattern16::] + [::pattern17::]
+          [::pattern18::] + [::pattern19::] + [::pattern20::]+ [::pattern21::] + [::pattern22::] + [::pattern23::] + [::pattern24::]
+          <CET TYPE="Quote" />
+          [::derectspeech::]
+          <CET TYPE="Quote" />
+        </SUB_SENT>
+      </pattern>
+    </TwoCitation>
+
+    <TwoSubsent>
+      <pattern id="DS_TwoSubsent_01">
+        <examples>
+          <example>Глава государства отметил: "Всем вроде известно, кто собственник".</example>
+        </examples>
+        <examples>
+          <example>Политолог дал понять слушателям: "Сегодня таким резервом обладает именно ЕдРо".</example>
+        </examples>
+        <examples>
+          <example>По сообщению министра обороны Грузии: "В мае в Ирак отправятся еще 55 военнослужащих ВС этой страны".</example>
+          <example>По сообщению министра обороны Грузии и персонально бабушки Маши: "В мае в Ирак отправятся еще 55 военнослужащих ВС этой страны".</example>
+        </examples>
+        <examples>
+          <example>На Васин взгляд: "Президент Владимир Путин правильно себя ведёт, не давая личных указаний той же прокуратуре".</example>
+        </examples>
+        <examples>
+          <example>По Васиным словам: "Соединенные Штаты готовы оказать силам революции любую поддержку, которую они только пожелают".</example>
+        </examples>
+        <examples>
+          <example>В журнале АТФ сказано: "А все равны перед законом".</example>
+        </examples>
+        <examples>
+          <example>В журнале АТФ говорится: "А все равны перед законом".</example>
+        </examples>
+        <examples>
+          <example>В постановлении правительства сказано: "А все равны перед законом".</example>
+        </examples>
+        <examples>
+          <example>В постановлении правительства говорится: "А все равны перед законом".</example>
+        </examples>
+
+        <examples>
+          <example>Так же широко распространена застольная речь президента: "Готовность к большим затратам денег и времени наша судьба".</example>
+        </examples>
+        <examples>
+          <example>Президент выразил мнение: "Готовность к большим затратам денег и времени наша судьба".</example>
+        </examples>
+        <examples>
+          <example>Так же широко распространено мнение президента: "Готовность к большим затратам денег и времени наша судьба".</example>
+        </examples>
+        <examples>
+          <example>В письме президента выражено мнение: "Готовность к большим затратам денег и времени наша судьба".</example>
+        </examples>
+        <examples>
+          <example>В письме президента выражается мнение: "Готовность к большим затратам денег и времени наша судьба".</example>
+        </examples>
+        <examples>
+          <example>Так же приводится речь нашего президента: "Готовность к большим затратам денег и времени наша судьба".</example>
+        </examples>
+        <examples>
+          <example>Так же приводится мнение президента: "Готовность к большим затратам денег и времени наша судьба".</example>
+        </examples>
+
+        <SUB_SENT TYPE="Subordinate || Default || Introductory">
+          [::pattern12::] + [::pattern6::] + [::pattern2::] + [::pattern5-onglance::] + [::pattern4-opinion::] + [::pattern13::] +
+          [::pattern15::] + [::pattern16::] + [::pattern17::]+
+          [::pattern18::] + [::pattern19::] + [::pattern20::]+ [::pattern21::] + [::pattern22::] + [::pattern23::] + [::pattern24::]
+        </SUB_SENT>
+        <SUB_SENT TYPE="DirectSpeech">
+          [::derectspeech::]
+        </SUB_SENT>
+      </pattern>
+
+      <pattern id="DS_TwoSubsent_02">
+        <examples>
+          <example>"Мубарак, наверное, говорил то же самое?" - пошутил корреспондент газеты.</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом!" - сказано в журнале АТФ.</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом!" - говорится в журнале АТФ.</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом!" - сказано в постановлении правительства.</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом!" - говорится в постановлении правительства.</example>
+        </examples>
+
+        <examples>
+          <example>"Готовность к большим затратам денег и времени наша судьба!" - выразил свое мнение и президент.</example>
+        </examples>
+        <examples>
+          <example>"Готовность к большим затратам денег и времени наша судьба!" - распространено в обращении к гражданам страны мнение этого бывшего лидера.</example>
+          <example>"А все равны перед законом", - так выражена мысль этого неглупого президента в этом послании.</example>
+        </examples>
+        <examples>
+          <example>"Готовность к большим затратам денег и времени наша судьба!" - распространено в обращении к гражданам страны мнение президента.</example>
+          <example>"А все равны перед законом", - так выражена мысль президента в этом послании.</example>
+        </examples>
+        <examples>
+          <example>"Готовность к большим затратам денег и времени наша судьба?" - выражено мнение в письме президента по поводу России.</example>
+        </examples>
+        <examples>
+          <example>"Готовность к большим затратам денег и времени наша судьба?" - выражается мнение в письме президента.</example>
+        </examples>
+        <examples>
+          <example>"Готовность к большим затратам денег и времени наша судьба?" - муссируется в кулуарах высказывание ихнего белорусского президента.</example>
+        </examples>
+        <examples>
+          <example>"Готовность к большим затратам денег и времени наша судьба?" - муссируется в кулуарах высказывание президента.</example>
+        </examples>
+
+        <SUB_SENT TYPE="DirectSpeech">
+          [::derectspeech::]
+        </SUB_SENT>
+        <SUB_SENT TYPE="Subordinate || Default || Introductory">
+          [::pattern12::] + [::pattern13::] + [::pattern15::] + [::pattern16::] +[::pattern17::]+
+          [::pattern18::] + [::pattern19::] + [::pattern20::]+ [::pattern21::] + [::pattern22::]  + [::pattern23::] + [::pattern24::]
+        </SUB_SENT>
+      </pattern>
+
+      <pattern id="DS_TwoSubsent_03">
+        <examples>
+          <example>На что возмутился уже Зябрев: «Если лоббирующая организация имеет представительство в рамках конкурсной комиссии и соответственно в рамках работы конкурсной комиссии приводит аргументы в пользу того или иного проекта, то это абсолютно нормально».</example>
+          <example>«Если лоббирующая организация имеет представительство в рамках конкурсной комиссии и соответственно в рамках работы конкурсной комиссии приводит аргументы в пользу того или иного проекта, то это абсолютно нормально», - это на что возмутился Зябрев.</example>
+        </examples>
+
+        <SUB_SENT TYPE="Default">
+          <SUB_SENT TYPE="Subordinate">
+            [::pattern12::] + [::pattern6::] + [::pattern2::] + [::pattern5-onglance::] + [::pattern4-opinion::] + [::pattern13::] +
+            [::pattern15::] + [::pattern16::] + [::pattern17::]+
+            [::pattern18::] + [::pattern19::] + [::pattern20::]+ [::pattern21::] + [::pattern22::] + [::pattern23::] + [::pattern24::]
+          </SUB_SENT>
+        </SUB_SENT>
+        <SUB_SENT TYPE="DirectSpeech">
+          [::derectspeech::]
+        </SUB_SENT>
+      </pattern>
+    </TwoSubsent>
+
+    <TwoSubsent-Ex>
+      <pattern id="DS_TwoSubsent_EX_01">
+        <examples>
+          <example>"Мубарак, наверное, говорил то же самое?", - пошутил корреспондент газеты.</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом", - сказано в журнале АТФ.</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом", - говорится в журнале АТФ.</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом", - сказано в постановлении правительства.</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом", - говорится в постановлении правительства.</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом", - выразил свое мнение президент.</example>
+        </examples>
+        <examples>
+
+        </examples>
+        <examples>
+
+        </examples>
+        <examples>
+          <example>"А все равны перед законом", - выражено мнение в письме президента.</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом", - выражается мнение в письме президента.</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом", - приводится мысль президента в этом послании.</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом", - приводится мысль президента.</example>
+          <example>"А все равны перед законом", - приводится мысль президента в этом послании.</example>
+        </examples>
+
+        <SUB_SENT TYPE="DirectSpeech">
+          [::derectspeech::]
+        </SUB_SENT>
+        <SUB_SENT>
+          <U>, </U>
+        </SUB_SENT>
+        <SUB_SENT TYPE="Subordinate || Default || Introductory">
+          [::pattern12::] + [::pattern13::] + [::pattern15::] + [::pattern16::] + [::pattern17::]+
+          [::pattern18::] + [::pattern19::] + [::pattern20::]+ [::pattern21::] + [::pattern22::]  + [::pattern23::] + [::pattern24::]
+        </SUB_SENT>
+      </pattern>
+    </TwoSubsent-Ex>
+
+    <ThreeSubsent>
+      <pattern id="DS_ThreeSubsent_01">
+        <examples>
+          <example>"Лётный состав эскадрильи АБС не готов, - Лукин сказал вчера, - стар должно быть".</example>
+          <example>"Лётный состав эскадрильи АБС не готов, - сказал Лукин, - стар должно быть".</example>
+        </examples>
+        <examples>
+          <example>"Все люди, - сказано в журнале АТФ, - равны перед законом".</example>
+        </examples>
+        <examples>
+          <example>"Все люди, - говорится в журнале АТФ, - равны перед законом".</example>
+        </examples>
+        <examples>
+          <example>"Все люди, - сказано в постановлении правительства, - равны перед законом".</example>
+        </examples>
+        <examples>
+          <example>"Все люди, - говорится в постановлении правительства, - равны перед законом".</example>
+        </examples>
+        <examples>
+          <example>"Лётный состав эскадрильи АБС не готов, - дал всем понять Лукин, - стар должно быть".</example>
+        </examples>
+
+        <examples>
+          <example>"А все равны перед законом, - выразил свое мнение президент, - даже моя жена".</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом, - так выражена мысль этого неглупого президента в этом послании , - даже моя жена".</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом, - так выражена мысль президента в этом послании, - даже моя жена".</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом, - выражено мнение в письме президента, - даже моя жена".</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом, - выражается мнение в письме президента, - даже моя жена".</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом, - приводится мысль президента в этом послании, - даже моя жена".</example>
+        </examples>
+        <examples>
+          <example>"А все равны перед законом, - приводится мысль президента, - даже моя жена".</example>
+          <example>"А все равны перед законом, - приводится мысль президента в этом послании, - даже моя жена".</example>
+        </examples>
+
+        <SUB_SENT TYPE="DirectSpeech">
+          [::derectspeech::]
+        </SUB_SENT>
+        <SUB_SENT TYPE="Subordinate || Default || Introductory">
+          [::pattern12::] + [::pattern13::] + [::pattern15::] + [::pattern16::] + [::pattern17::] + [::pattern6::] +
+          [::pattern18::] + [::pattern19::] + [::pattern20::]+ [::pattern21::] + [::pattern22::] + [::pattern23::]  + [::pattern24::]
+        </SUB_SENT>
+        <SUB_SENT TYPE="DirectSpeech">
+          [::derectspeech::]
+        </SUB_SENT>
+      </pattern>
+    </ThreeSubsent>
+  </DirectSpeech>
+
+</PatternSpeech>
