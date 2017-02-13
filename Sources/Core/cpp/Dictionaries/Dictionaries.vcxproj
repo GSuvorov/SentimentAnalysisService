@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{31D91F78-1959-4EA2-8EF7-A8E158548A2C}</ProjectGuid>
+    <RootNamespace>Dictionaries</RootNamespace>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(projectdir)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;DICTIONARIES_EXPORTS;_SS_UNITTESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>../../cpp/FeatureLibrary/Debug/FeatureLibrary.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)Dictionaries.dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>$(OutDir)Dictionaries.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(TargetPath)" "..\..\..\..\[exec]\Core\Linguistics\"  /S/Y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;DICTIONARIES_EXPORTS;_SS_UNITTESTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <AssemblerOutput>
+      </AssemblerOutput>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>$(projectdir)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>../../cpp/FeatureLibrary/Release/FeatureLibrary.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)Dictionaries.dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>$(OutDir)Dictionaries.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(TargetPath)" "..\..\..\..\[exec]\Core\Linguistics\"  /S/Y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\[libs]\SSFramework\SSAuxiliary.cpp" />
+    <ClCompile Include="AbbreviationsDictionary.cpp" />
+    <ClCompile Include="AbbreviationSource.cpp" />
+    <ClCompile Include="AdditionalAnalysis.cpp" />
+    <ClCompile Include="CreateManagers.cpp" />
+    <ClCompile Include="Detail.cpp" />
+    <ClCompile Include="Dictionary.cpp" />
+    <ClCompile Include="InitData.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MALanguagesManager.cpp" />
+    <ClCompile Include="MinimalHypothesisTree.cpp" />
+    <ClCompile Include="MorphoTypesCollection.cpp" />
+    <ClCompile Include="NewWordsList.cpp" />
+    <ClCompile Include="NumberDictionary.cpp" />
+    <ClCompile Include="NumericOrderingDictionary.cpp" />
+    <ClCompile Include="OneRoot.cpp" />
+    <ClCompile Include="OrderingRussian.cpp" />
+    <ClCompile Include="OrderingRussianFeature.cpp" />
+    <ClCompile Include="PerfomanceTestRunner.cpp" />
+    <ClCompile Include="RomanNumberDictionary.cpp" />
+    <ClCompile Include="SmartDictionary.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Statistics.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="SymbolsDictionary.cpp" />
+    <ClCompile Include="TestAuxiliary.cpp" />
+    <ClCompile Include="TestRunner.cpp" />
+    <ClCompile Include="TestSmartDictionary.cpp" />
+    <ClCompile Include="EngineBase\cl_TimeMeter.cpp" />
+    <ClCompile Include="EngineBase\CMorphoTypesSearch.cpp" />
+    <ClCompile Include="EngineBase\CMorphoTypesSearch_Plus.cpp" />
+    <ClCompile Include="EngineBase\CPartOfWordsSearch.cpp" />
+    <ClCompile Include="EngineBase\CPartOfWordsSearch_Plus.cpp" />
+    <ClCompile Include="NumberDictionary\NumberCombinatory.cpp" />
+    <ClCompile Include="NumberDictionary\NumberGrammar.tab.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="NumberDictionary\NumericParser.cpp" />
+    <ClCompile Include="..\[libs]\Auxiliary.cpp" />
+    <ClCompile Include="..\[libs]\CoutConvert.cpp" />
+    <ClCompile Include="..\[libs]\FileSystem.cpp" />
+    <ClCompile Include="..\[libs]\TestHelper.cpp" />
+    <ClCompile Include="..\[libs]\Threads.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\[libs]\SSFramework\SSAuxiliary.h" />
+    <ClInclude Include="_Help.h" />
+    <ClInclude Include="AbbreviationsDictionary.h" />
+    <ClInclude Include="AbbreviationSource.h" />
+    <ClInclude Include="AdditionalAnalysis.h" />
+    <ClInclude Include="CreateManagers.h" />
+    <ClInclude Include="Detail.h" />
+    <ClInclude Include="Dictionary.h" />
+    <ClInclude Include="InitData.h" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="MALanguagesManager.h" />
+    <ClInclude Include="MinimalHypothesisTree.h" />
+    <ClInclude Include="MorphoTypesCollection.h" />
+    <ClInclude Include="NewWordsList.h" />
+    <ClInclude Include="NumberDictionary.h" />
+    <ClInclude Include="NumericOrderingDictionary.h" />
+    <ClInclude Include="OneRoot.h" />
+    <ClInclude Include="OrderingRussian.h" />
+    <ClInclude Include="OrderingRussianFeature.h" />
+    <ClInclude Include="PerfomanceTestRunner.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="RomanNumberDictionary.h" />
+    <ClInclude Include="SmartDictionary.h" />
+    <ClInclude Include="Source.h" />
+    <ClInclude Include="Statistics.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="SymbolsDictionary.h" />
+    <ClInclude Include="TestAuxiliary.h" />
+    <ClInclude Include="TestRunner.h" />
+    <ClInclude Include="TestSmartDictionary.h" />
+    <ClInclude Include="EngineBase\cl_TimeMeter.h" />
+    <ClInclude Include="EngineBase\CMorphoTypesSearch.h" />
+    <ClInclude Include="EngineBase\CPartOfWordsSearch.h" />
+    <ClInclude Include="EngineBase\IMorphoTypesSearch.h" />
+    <ClInclude Include="EngineBase\IPartOfWordsSearch.h" />
+    <ClInclude Include="NumberDictionary\NumberCombinatory.h" />
+    <ClInclude Include="NumberDictionary\NumberGrammar.tab.h" />
+    <ClInclude Include="NumberDictionary\NumericParser.h" />
+    <ClInclude Include="..\[libs]\AssocVector.h" />
+    <ClInclude Include="..\[libs]\Auxiliary.h" />
+    <ClInclude Include="..\[libs]\Compose.hpp" />
+    <ClInclude Include="..\[libs]\CoutConvert.h" />
+    <ClInclude Include="..\[libs]\DBMSAuxiliary.hpp" />
+    <ClInclude Include="..\[libs]\FileSystem.h" />
+    <ClInclude Include="..\[libs]\FirstHeader.h" />
+    <ClInclude Include="..\[libs]\LikePointer.hpp" />
+    <ClInclude Include="..\[libs]\MultipleCompare.hpp" />
+    <ClInclude Include="..\[libs]\Progress.hpp" />
+    <ClInclude Include="..\[libs]\StlAuxiliary.h" />
+    <ClInclude Include="..\[libs]\TestHelper.h" />
+    <ClInclude Include="..\[libs]\Threads.h" />
+    <ClInclude Include="..\[libs]\Timer.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\ArabicNumbersCharacters.txt" />
+    <None Include="res\EnglishAbbreviationCharacters.txt" />
+    <None Include="res\EnglishBaseCharacters.txt" />
+    <None Include="Res\EngNegationReduction.txt" />
+    <None Include="res\RomanNumbersCharacters.txt" />
+    <None Include="res\RussianAbbreviationCharacters.txt" />
+    <None Include="res\RussianBaseCharacters.txt" />
+    <None Include="res\SymbolsCharacters.txt" />
+    <CustomBuild Include="NumberDictionary\NumberGrammar">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating number parser...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"..\..\..\Libraries\bison\bin\bison.exe" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)%(Extension).tab.c;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating number parser...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"..\..\..\Libraries\bison\bin\bison.exe" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)%(Extension).tab.c;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="Res\NumericOrderingCharacters.txt" />
+    <None Include="Res\PreSearchTransform.txt" />
+    <None Include="Res\RussianOrdering.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Dictionaries.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="Dictionaries.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

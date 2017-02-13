@@ -1,0 +1,90 @@
+
+%pure_parser
+%locations
+%defines
+
+
+%start NUMBER
+
+%token trln
+%token mlrd
+%token mln
+%token thousand
+%token hundred
+%token hundreds
+%token dec
+%token ten
+%token unidec
+%token unit
+%token and
+%token hundreds_numeric
+%token digit
+
+%token unknown
+
+%%
+
+NUMBER:
+	TRLN { $$ = SetResult($1, parm, @$); }
+;
+
+TRLN:
+	HUNDRED trln MLRD { $$ = $1 * 1000000000000 + $3; SetResult($$, parm, @$); }
+|	trln MLRD { $$ = 1000000000000 + $2; SetResult($$, parm, @$); }
+|	HUNDRED trln { $$ = $1 * 1000000000000; SetResult($$, parm, @$); }
+|	trln { $$ = 1000000000000; SetResult($$, parm, @$); }
+|	MLRD { $$ = $1; SetResult($$, parm, @$); }
+;
+
+MLRD:
+	HUNDRED mlrd MLN { $$ = $1 * 1000000000 + $3; SetResult($$, parm, @$); }
+|	mlrd MLN { $$ = 1000000000 + $2; SetResult($$, parm, @$); }
+|	HUNDRED mlrd { $$ = $1 * 1000000000; SetResult($$, parm, @$); }
+|	mlrd { $$ = 1000000000; SetResult($$, parm, @$); }
+|	MLN { $$ = $1; SetResult($$, parm, @$); }
+;
+
+MLN:
+	HUNDRED mln THOUSAND { $$ = $1 * 1000000 + $3; SetResult($$, parm, @$); }
+|	mln THOUSAND { $$ = 1000000 + $2; SetResult($$, parm, @$); }
+|	HUNDRED mln { $$ = $1 * 1000000; SetResult($$, parm, @$); }
+|	mln { $$ = 1000000; SetResult($$, parm, @$); }
+|	THOUSAND { $$ = $1; SetResult($$, parm, @$); }
+;
+
+THOUSAND:
+	HUNDRED thousand and HUNDRED { $$ = $1 * 1000 + $4; SetResult($$, parm, @$); }
+|	HUNDRED thousand HUNDRED { $$ = $1 * 1000 + $3; SetResult($$, parm, @$); }
+|	thousand HUNDRED { $$ = 1000 + $2; SetResult($$, parm, @$); }
+|	thousand { $$ = 1000; SetResult($$, parm, @$); }
+|	HUNDRED thousand { $$ = $1 * 1000; SetResult($$, parm, @$); }
+|	PURE_HUNDRED { $$ = $1; SetResult($$, parm, @$); }
+;
+
+HUNDRED:
+	PURE_HUNDRED { $$ = $1; SetResult($$, parm, @$); }
+|	hundreds_numeric { $$ = $1; SetResult(MAX_NUMERIC_VALUE, parm, @$); }
+|	digit { $$ = $1; SetResult(MAX_NUMERIC_VALUE, parm, @$); }
+;
+
+PURE_HUNDRED:
+	HUNDREDS DEC { $$ = $1 + $2; SetResult($$, parm, @$); }
+|	HUNDREDS and DEC { $$ = $1 + $3; SetResult($$, parm, @$); }
+|	HUNDREDS { $$ = $1; SetResult($$, parm, @$); }
+|	DEC { $$ = $1; SetResult($$, parm, @$); }
+;
+
+HUNDREDS:
+	unit hundred { $$ = $1 * 100; SetResult($$, parm, @$); }
+|	digit hundred { $$ = $1 * 100; SetResult($$, parm, @$); }
+|	hundreds { $$ = $1; SetResult($$, parm, @$); }
+|	hundred { $$ = 100; SetResult($$, parm, @$); }
+;
+
+DEC:
+	dec unit { $$ = $1 + $2; SetResult($$, parm, @$); }
+|	dec { $$ = $1; SetResult($$, parm, @$); }
+|	ten { $$ = 10; SetResult($$, parm, @$); }
+|	unidec { $$ = $1; SetResult($$, parm, @$); }
+|	unit {$$ = $1; SetResult($$, parm, @$); }
+;
