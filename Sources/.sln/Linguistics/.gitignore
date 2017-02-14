@@ -2,3 +2,6 @@
 *.opensdf
 *.sdf
 *.psess
+*.VC.db
+*.VC.opendb
+/.vs/*
